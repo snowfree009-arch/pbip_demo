@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "40e86de8d1bf62da352a",
+  "displayName": "Outstanding AR ($)",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "991978d98bd658b1090a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Outstanding AR ($)"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "1f2211221ad9019550c0",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "35dea26a2e0e9ae223b5",
+        "boundFilter": "991978d98bd658b1090a",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Outstanding AR ($)"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "6c1692472159e5795ec4",
+      "target": "ae0ea5c01994e15656b3",
+      "type": "DataFilter"
+    }
+  ]
+}

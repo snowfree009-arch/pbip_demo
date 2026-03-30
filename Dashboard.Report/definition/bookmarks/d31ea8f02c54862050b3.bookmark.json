@@ -1,0 +1,4712 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "(Summary) Outstanding by OpCo",
+  "name": "d31ea8f02c54862050b3",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "36950fe6a0462ee24be1",
+      "f6c07ac00950e90ec3c5",
+      "008726091a032de374d0",
+      "c1438873c6a66cc6110c",
+      "d245dc3a3c0a29905329",
+      "e1c6793311e37d53dfbf"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "660b984ed46461368e3f",
+    "sections": {
+      "660b984ed46461368e3f": {
+        "visualContainers": {
+          "fe94fd4b9edaa058b75b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d6fe2fe411412070a00f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "520a1eb0ef97692f4593",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "CompanyMasters"
+                            }
+                          },
+                          "Property": "Legend"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "CompanyMasters"
+                            }
+                          },
+                          "Property": "Legend"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "a3e0c1b3119a6ab02eed": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "16bbe9d4c6f60eca62b2": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "59488f3d8fc1bb2befcf": {
+            "filters": {
+              "byName": {
+                "Filterc68f22108dd59ba79e6a": {
+                  "name": "Filterc68f22108dd59ba79e6a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MetricsData"
+                            }
+                          },
+                          "Property": "RevenuePerCall"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "48ab72426258d85e12f8",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "935125093ab77a9e561d": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "8681729eef910d5f1348": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter36ed2d09247b9d776766",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "dxm_PaymentDeposits"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter3aba20eff978f5039ac2",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "agg agg_revenue_call_report_payments",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "a"
+                                    }
+                                  },
+                                  "Property": "is_void"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'no'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "is_void"
+                    }
+                  },
+                  "howCreated": 1
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "dxm_PaymentDeposits"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "396c67475cd8acb035d2": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "b552aa6849fa7c5d5728": {
+            "filters": {
+              "byName": {
+                "Filterc68f22108dd59ba79e6a": {
+                  "name": "Filterc68f22108dd59ba79e6a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MetricsData"
+                            }
+                          },
+                          "Property": "RevenuePerCall"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "602d17b37c018e7cddab",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Outstanding"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Outstanding"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "5ed67e37978d38d2eeb4": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "efc86586c917a6636510": {
+            "filters": {
+              "byName": {
+                "Filterc68f22108dd59ba79e6a": {
+                  "name": "Filterc68f22108dd59ba79e6a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MetricsData"
+                            }
+                          },
+                          "Property": "RevenuePerCall"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "1b8ce2ac0da28de65b32",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Deposits"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Deposits"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "254701a1e69816bb62e9": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "06ecaba35855612bdead": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter00674d41b80a167e0b20",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "FHC_ITAT"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "e948f24eba08a88208f4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "ImpoundTurnaroundTime"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "ImpoundTurnaroundTime"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "f47549c2cc03ec8e7a6f": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d965dceae1040a49ff47": {
+            "filters": {
+              "byName": {
+                "Filterc68f22108dd59ba79e6a": {
+                  "name": "Filterc68f22108dd59ba79e6a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MetricsData"
+                            }
+                          },
+                          "Property": "RevenuePerCall"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "a3fe5ff59a57d2233ec9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "AverageCallsPerDay"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {}
+            }
+          },
+          "2855162dc3e3c5c18cc1": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "c0919325b265a2c72f1d": {
+            "filters": {
+              "byName": {
+                "Filterc68f22108dd59ba79e6a": {
+                  "name": "Filterc68f22108dd59ba79e6a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MetricsData"
+                            }
+                          },
+                          "Property": "RevenuePerCall"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "585d45aae8b8c3fc214f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "7d25957a8bd818935bb9": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "c59e2d7e7f6bdd93a345": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter8d34e4fc63f48fcc741b",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "agg agg_revenue_call_report_payments",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "a"
+                                    }
+                                  },
+                                  "Property": "is_void"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'no'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "is_void"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "476294a1405fcd3d6268",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "dxm_PaymentPerTow"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "dxm_PaymentPerTow"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "e72813aecac78c98ecc6": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "a6a1da1a62793b2217e1": {
+            "filters": {
+              "byName": {
+                "Filterc68f22108dd59ba79e6a": {
+                  "name": "Filterc68f22108dd59ba79e6a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MetricsData"
+                            }
+                          },
+                          "Property": "RevenuePerCall"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "bf446cc7c0087bb2f2af",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "RevenuePerDay"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "RevenuePerDay"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c10fcef7d9435bdb40a0": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "834d99b0b93c6a230148": {
+            "filters": {
+              "byName": {
+                "Filterc68f22108dd59ba79e6a": {
+                  "name": "Filterc68f22108dd59ba79e6a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MetricsData"
+                            }
+                          },
+                          "Property": "RevenuePerCall"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "e1b14291be4f7838b163",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "RevenuePerCall"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "RevenuePerCall"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "6ffaa8497fed49a5a8b2": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "67b94d50c6065e2b1176": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "56355cf0d49532fef1d1": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "2456ea5fb396c3c582b6": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8927abfe7567a57c9ce2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg agg_payroll_payperiod"
+                            }
+                          },
+                          "Property": "emp_id_sk"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dcc4236886b2dffcbb11",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b53f6b00a2f5b6a9f8e7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "fc66316f4bbe5f134067",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "donutChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "0cf6b78a22b39eb8142c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7bd3e371f472ce4c8c6c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg agg_payroll_payperiod"
+                            }
+                          },
+                          "Property": "emp_id_sk"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ca2a560135068e3a4adb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2d9a3dc1e7015170a97a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e96eb564b7bf7ea04a78",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "donutChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "8bb2277376c73aa6200c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "fa134b60c326063ae605": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "1d953fb9f4a33520b76b": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d2cc48110a040bab00d9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "031039a6e53acaa56d7f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7b0cb3f92b43b909e6f6",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "69e3973468e426cded2d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "27ab1ab1406abeb49348",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "13cb82da61820b479164",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "29e5d679b740a5fc3b98",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "836d75fe101db20b7aff": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6f1f9ef9e21c7a5319ca",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0f1470c00c0ea7e45e06",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "488a0234d17642ff7750",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6e7f1853deca8c3c9dbf",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a52b04d842de3f444750",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0e40ff2a048b66972c43",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "f06349c2411b04e555b0": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "5ac2d6ac206ce0963391": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "f15ab58489e2abf541c6": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d62f481463c133b9829c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter6432124e8558bc4bd502",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "Filter7ab409cc028e4e2d5774",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "dxm_PaymentDeposits"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter1c57aa5e8dc168b7cbf0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter050e86742b621dd5ae55",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter64eb9334134d51716976",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filterd776affb8b783a3e5ffb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg agg_revenue_call_report_payments"
+                            }
+                          },
+                          "Property": "payment_id"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter786d662e499914a9daa3",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "agg agg_revenue_call_report_payments",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "a"
+                                    }
+                                  },
+                                  "Property": "is_void"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'no'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "is_void"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "baf2c7247c3bdd899ca1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ad69cb80aba80c0be11b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter6432124e8558bc4bd502",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "Filter7ab409cc028e4e2d5774",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "dxm_PaymentDeposits"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter1c57aa5e8dc168b7cbf0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter050e86742b621dd5ae55",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter64eb9334134d51716976",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filterd776affb8b783a3e5ffb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg agg_revenue_call_report_payments"
+                            }
+                          },
+                          "Property": "payment_id"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "Filter786d662e499914a9daa3",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "agg agg_revenue_call_report_payments",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "a"
+                                    }
+                                  },
+                                  "Property": "is_void"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'no'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "is_void"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "0deb2b2e44227553e3db",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ba9c6fc81a36c3e9c4c4": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7d6b0576979dc9bddeef",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "c",
+                        "Entity": "CompanyMasters",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "Comparison": {
+                                "ComparisonKind": 0,
+                                "Left": {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "c"
+                                      }
+                                    },
+                                    "Property": "Sub Company"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "null"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "advancedSlicerVisual",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "c",
+                                "Entity": "CompanyMasters",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "c"
+                                            }
+                                          },
+                                          "Property": "Sub Company"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'ACTION ROAD SOLUTIONS, INC.'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "c4a4b194eeadb04462f2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2be6110a3ed39cc61d7c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "Sub-Company"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "519c8d2c1fd8b6799047": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "e25804829590e3429975": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "12f4571da1db5338b193",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "agg_revenue_call_report",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Comparison": {
+                            "ComparisonKind": 1,
+                            "Left": {
+                              "Measure": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "a"
+                                  }
+                                },
+                                "Property": "ImpoundRate"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "0L"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "ImpoundRate"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "d8c85a579da34ff2917f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Location"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b017455b237e08bfcc2b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Vehicle Type"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9a3c2e0c4e80987c356f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Truck Type"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f7f57529f307169c0762",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Impound_Count_OnlyDateFilter"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c341639753a5aef1276e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Total_Tow_Count_OnlyDateFilter"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "475ccaeb7f4d5a4775bf",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "ImpoundRateOverAll"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "decompositionTreeVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "ImpoundRateOverAll"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "ExplainBy": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Location"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Vehicle Type"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Truck Type"
+                    }
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "ExplainBy"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.Location"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "agg_revenue_call_report"
+                              }
+                            },
+                            "Property": "Location"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.VehicleType"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "agg_revenue_call_report"
+                              }
+                            },
+                            "Property": "Duty Type"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.TruckType"
+                      ],
+                      "isCollapsed": true,
+                      "isPinned": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": null,
+                    "children": [
+                      {
+                        "identityValues": [
+                          {
+                            "Literal": {
+                              "Value": "'Sacramento'"
+                            }
+                          }
+                        ],
+                        "isToggled": true,
+                        "children": [
+                          {
+                            "identityValues": [
+                              {
+                                "Literal": {
+                                  "Value": "'Other'"
+                                }
+                              }
+                            ],
+                            "isToggled": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "a76cdea8010c7f387951": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "f6c07ac00950e90ec3c5": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "008726091a032de374d0": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "c1438873c6a66cc6110c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d245dc3a3c0a29905329": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7707584e17d115406704",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "fce5b76602668ddcf590",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cc3682656ff92d2cbe35",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "87da849dd83591d8b99e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Outstanding"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4ac373e4c8c1a0f58008",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "e1c6793311e37d53dfbf": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "45e4e9ca0bc0dbe51250",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0334a07991dfca9214b9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "619ca55ba055eb5633be",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "142edbe997cd484c6ac5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Outstanding"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "72f32e4d977680fe3055",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            },
+            "highlight": {
+              "selection": [
+                {
+                  "dataMap": {
+                    "agg_revenue_call_report.OpCo-Company": [
+                      {
+                        "scopeId": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "agg_revenue_call_report"
+                                  }
+                                },
+                                "Property": "OpCo-Company"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'COLLEGE OAK ROAD SOLUTIONS LLC'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "metadata": [
+                    "Sum(agg_revenue_call_report.dax_column_Outstanding)"
+                  ]
+                }
+              ],
+              "filterExpressionMetadata": {
+                "expressions": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  }
+                ],
+                "cachedValueItems": [
+                  {
+                    "identities": [
+                      {
+                        "scopeId": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "agg_revenue_call_report"
+                                  }
+                                },
+                                "Property": "OpCo-Company"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'COLLEGE OAK ROAD SOLUTIONS LLC'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "valueMap": {
+                      "0": "COLLEGE OAK ROAD SOLUTIONS LLC"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "8a3324585babd5c8baae": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "804fab5aaa25c79fd97b": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "8e8cd5a7d4b9abe7242e": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "d762f1f222092d91145c": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "ac7ee9c7c52695f99eb4": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "f067f0d6ad2798015ba5": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "0701cc2354d507a8b9ee": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "61df6fcaf11b12e09c71": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a827f16a55a03152c3d8",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "c",
+                        "Entity": "CompanyMasters",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "Comparison": {
+                                "ComparisonKind": 0,
+                                "Left": {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "c"
+                                      }
+                                    },
+                                    "Property": "Sub Company"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "null"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "6dab50870ae0af5616ae",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "OpCo Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "OpCo Company"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "d83e67b0d3409bc61ff9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "bfcd1ff4b6587efd2159",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Location"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Location"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "3a2a586818508bd59e37": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8226cb2e2b32986ecd36",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "c",
+                        "Entity": "CompanyMasters",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "Comparison": {
+                                "ComparisonKind": 0,
+                                "Left": {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "c"
+                                      }
+                                    },
+                                    "Property": "Sub Company"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "null"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "73c5c74e2acea8fb43a1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1e22e7efe86b3cd483b0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Vehicle Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Vehicle Type"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "58a880dd1e830bae18ba": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ffae30503d19e88d6887",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Call Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "a",
+                                "Entity": "agg_revenue_call_report",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "a"
+                                            }
+                                          },
+                                          "Property": "Call Type"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Standard Calls'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Call Type"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "c90697f8e71f72784839": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f83c3830d30a27cf0930",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Account Type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Account Type"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "472a23b9e992d7093102": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "e907636b6c91a26dd088": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4a11e30d0ed19b8f044f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Lock Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Lock Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Lock Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "350b41b155c21762f7e1": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "f97062868668a4d80698": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4def8ea33b7e6bffc95f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "a",
+                                "Entity": "agg_revenue_call_report",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "And": {
+                                    "Left": {
+                                      "Comparison": {
+                                        "ComparisonKind": 2,
+                                        "Left": {
+                                          "Column": {
+                                            "Expression": {
+                                              "SourceRef": {
+                                                "Source": "a"
+                                              }
+                                            },
+                                            "Property": "Tow Completion Date"
+                                          }
+                                        },
+                                        "Right": {
+                                          "Literal": {
+                                            "Value": "datetime'2024-01-01T00:00:00'"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "Right": {
+                                      "Comparison": {
+                                        "ComparisonKind": 3,
+                                        "Left": {
+                                          "Column": {
+                                            "Expression": {
+                                              "SourceRef": {
+                                                "Source": "a"
+                                              }
+                                            },
+                                            "Property": "Tow Completion Date"
+                                          }
+                                        },
+                                        "Right": {
+                                          "Literal": {
+                                            "Value": "datetime'2024-09-24T00:00:00'"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "startDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2024-01-01T00:00:00'"
+                            }
+                          }
+                        },
+                        "endDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2024-09-23T00:00:00'"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "1a11401b112b82d5957c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "5069163b2cc0cfc7e7a6": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "280cecb2342bd2d66be1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a672ce25809a45f6ba76",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "a1",
+                                "Entity": "agg agg_revenue_call_report_payments",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "And": {
+                                    "Left": {
+                                      "Comparison": {
+                                        "ComparisonKind": 2,
+                                        "Left": {
+                                          "Column": {
+                                            "Expression": {
+                                              "SourceRef": {
+                                                "Source": "a1"
+                                              }
+                                            },
+                                            "Property": "Payment Date"
+                                          }
+                                        },
+                                        "Right": {
+                                          "Literal": {
+                                            "Value": "datetime'2024-01-01T00:00:00'"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "Right": {
+                                      "Comparison": {
+                                        "ComparisonKind": 3,
+                                        "Left": {
+                                          "Column": {
+                                            "Expression": {
+                                              "SourceRef": {
+                                                "Source": "a1"
+                                              }
+                                            },
+                                            "Property": "Payment Date"
+                                          }
+                                        },
+                                        "Right": {
+                                          "Literal": {
+                                            "Value": "datetime'2024-09-20T00:00:00'"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "startDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2024-01-01T00:00:00'"
+                            }
+                          }
+                        },
+                        "endDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2024-09-19T00:00:00'"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_payments"
+                        }
+                      },
+                      "Property": "Payment Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "186a288cdd12a3b3dad5": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "7d4dd74aca65e931a8bb": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "414b005fbcc122a08afc": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d436065554d2855bd282": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d40f324e5896e0dbe315": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7c3fa80d845468743f2f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "Total Generated Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "06773eda26061b28b552",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "51332abb50b4e1e9ffa2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Location"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a7731ae423da346c2cd4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "RevenuePerCall"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2ed0201dcb47b2c25a8f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "RevenuePerDay"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f7bb2264de21c3429ab7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "RevenuePerDollarReceived"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a38ad50af4b27f5c8875",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Vehicle Type"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ddd90f6f1e8eb7d46118",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Truck Type"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4c0ab3edf8bb0defdeb9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Driver"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "77633772ad2fb810f9b7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Revenue"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2af973d977ef3a583385",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Deposits"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8647a2fad7c2d2717ad1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_Outstanding"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a22bb3b35830ad5549c5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_variance"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "299f2fa7a20065f767fa",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "Rows"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.Company"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "agg_revenue_call_report"
+                              }
+                            },
+                            "Property": "Sub-Company"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.Location"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "agg_revenue_call_report"
+                              }
+                            },
+                            "Property": "Location"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.VehicleType"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "agg_revenue_call_report"
+                              }
+                            },
+                            "Property": "Duty Type"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.TruckType"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "agg_revenue_call_report"
+                              }
+                            },
+                            "Property": "Truck Type"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "agg_revenue_call_report.Driver"
+                      ],
+                      "isCollapsed": true,
+                      "isPinned": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": null,
+                    "children": [
+                      {
+                        "identityValues": [
+                          {
+                            "Literal": {
+                              "Value": "'MILNE ROAD SERVICES LLC'"
+                            }
+                          }
+                        ],
+                        "children": [
+                          {
+                            "identityValues": [
+                              {
+                                "Literal": {
+                                  "Value": "'Others'"
+                                }
+                              }
+                            ],
+                            "children": [
+                              {
+                                "identityValues": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'Medium'"
+                                    }
+                                  }
+                                ],
+                                "isToggled": true,
+                                "children": [
+                                  {
+                                    "identityValues": [
+                                      {
+                                        "Literal": {
+                                          "Value": "'Wrecker'"
+                                        }
+                                      }
+                                    ],
+                                    "isToggled": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "1571ac2f7c80a6e3be57": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "6ed5ef29b2e380754922": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "f012fe54e7af171e854c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "9cdf54365681dd21ce73": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2f51dd35227f70f55307",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4be581d52201bcf7b984",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1e0ce6c89899a6597389",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Deposits"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "24e9307043e7246f1235",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "81b6910b1ff5b41a6594": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "79da87a21961a515541f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7a28d54f40fc8a928efa",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a4864b0cddf7bc9ed7aa",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Deposits"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2fce3979d5845582988a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "80d7d406894032608ad7": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "80c20ba0826d6d27738a": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "da85b18e4724312d5f9f": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "11252b6a257be07580d9": {
+            "filters": {
+              "byName": {
+                "Filter6a649c2f95bc08a1bf20": {
+                  "name": "Filter6a649c2f95bc08a1bf20",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "dummy_executive_revenue_dashboard"
+                            }
+                          },
+                          "Property": "salary"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                },
+                "Filter06a78767b32ceab67963": {
+                  "name": "Filter06a78767b32ceab67963",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "dummy_executive_revenue_dashboard"
+                            }
+                          },
+                          "Property": "invoiced_amount"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "462af16447d477a30f4e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "141879175174523dbe46",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c6cf3f94edbab2f2ad91",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3d18aa59620dd37315c3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Sub-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "65fdebb91bb8008b68cc": {
+            "filters": {
+              "byName": {
+                "Filter6a649c2f95bc08a1bf20": {
+                  "name": "Filter6a649c2f95bc08a1bf20",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "dummy_executive_revenue_dashboard"
+                            }
+                          },
+                          "Property": "salary"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                },
+                "Filter06a78767b32ceab67963": {
+                  "name": "Filter06a78767b32ceab67963",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "dummy_executive_revenue_dashboard"
+                            }
+                          },
+                          "Property": "invoiced_amount"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                }
+              },
+              "byExpr": [
+                {
+                  "name": "b716ff9328414515b337",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "call_id_sk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8d1f0aab5b7844487b22",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "43bbc8e0d420d9b8e6e5",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8b47b3f20144a7144dae",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "OpCo-Company"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "2f768db94856a15c51d6": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "712515939c1300e20985": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "dc6c69558f587d44108b": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "0978a52bb1490ce672aa": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1038d5bd679f61888058",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b1bbeff9b9fb53dcfcfc",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6b5d913972777b39d5ba",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c5c68556f4eebdf7a016",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_variance"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9b07d1d4b8cf15ac5b42": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "bf0c05f4af0fc6e60c56",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CompanyMasters"
+                        }
+                      },
+                      "Property": "Sub Company"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a67caad0b38fd1530832",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d5ca007ebdf35b4b9e4c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8935fc8f86ad3267a136",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "agg_revenue_call_report"
+                            }
+                          },
+                          "Property": "dax_column_variance"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "Tow Completion Date"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "84a8494b70cd4a5685af": {
+            "isHidden": true
+          },
+          "577f4b6882bebc71d2a3": {
+            "isHidden": false
+          },
+          "36950fe6a0462ee24be1": {
+            "isHidden": false
+          },
+          "7ff6b0b09c09f2a41fcb": {
+            "isHidden": true
+          },
+          "6431df1792445c25da6e": {
+            "isHidden": false
+          },
+          "cbfe220a33ea76263cad": {
+            "isHidden": false
+          },
+          "9e29a487e6b914429e0b": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

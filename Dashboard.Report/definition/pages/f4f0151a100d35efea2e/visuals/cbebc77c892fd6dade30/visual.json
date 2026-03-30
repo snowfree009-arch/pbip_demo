@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "cbebc77c892fd6dade30",
+  "position": {
+    "x": 10,
+    "y": 1528,
+    "z": 9500,
+    "height": 352,
+    "width": 700.55555555555509
+  },
+  "visualGroup": {
+    "displayName": "Revenue/Tow ",
+    "groupMode": "ScaleMode"
+  }
+}

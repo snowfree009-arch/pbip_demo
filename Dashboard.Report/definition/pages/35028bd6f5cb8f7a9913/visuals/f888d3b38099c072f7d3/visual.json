@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f888d3b38099c072f7d3",
+  "position": {
+    "x": 995.88888888888891,
+    "y": 0.92576099667797962,
+    "z": 1000,
+    "height": 58.923569427771113,
+    "width": 141.48163923424013,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Revenue by Tow Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "e2c6e9c2bce39bf79e03"
+}

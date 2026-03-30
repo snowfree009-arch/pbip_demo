@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "279baaf50c982199f16b",
+  "position": {
+    "x": 128.92987924868797,
+    "y": 0.1200480192076725,
+    "z": 8000,
+    "height": 60,
+    "width": 125.45454545454544,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Deposit  Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "3dc7c6002de6dd080deb"
+}

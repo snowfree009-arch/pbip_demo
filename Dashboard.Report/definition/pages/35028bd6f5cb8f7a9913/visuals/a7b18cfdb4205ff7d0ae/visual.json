@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "a7b18cfdb4205ff7d0ae",
+  "position": {
+    "x": 5,
+    "y": 1310,
+    "z": 4000,
+    "height": 450.43478260869574,
+    "width": 1290.8792912513843,
+    "tabOrder": 12000
+  },
+  "visualGroup": {
+    "displayName": "Call Volume by Vehicle Type",
+    "groupMode": "ScaleMode"
+  }
+}

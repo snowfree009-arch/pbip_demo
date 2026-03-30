@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "36950fe6a0462ee24be1",
+  "position": {
+    "x": 0,
+    "y": 1510,
+    "z": 3000,
+    "height": 300,
+    "width": 646.66666666666674,
+    "tabOrder": 11000
+  },
+  "visualGroup": {
+    "displayName": "Outstanding AR by Company Graph",
+    "groupMode": "ScaleMode"
+  }
+}

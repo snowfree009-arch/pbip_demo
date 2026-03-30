@@ -1,0 +1,7 @@
+role Statewide
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"STATEWIDE TOWING AND RECOVERY"}
+
+	annotation PBI_Id = 18be31871ecd4fdea6c682897c61811e
+

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ca99006cc15af3eb8d70",
+  "position": {
+    "x": 843.962060300434,
+    "y": 0,
+    "z": 2000,
+    "height": 60,
+    "width": 142.01622108170295,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Tows by Day Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "bcc3f9d638ca52b0b6fc"
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "0c1e25588b6570dc10c6",
+  "position": {
+    "x": 9.3430656934306562,
+    "y": 0,
+    "z": 0,
+    "height": 280.29197080291971,
+    "width": 1147.8623566214806,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Reported Month Label"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Reported Month Label",
+              "nativeQueryRef": "Reported Month Label",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "call_id_sk"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.call_id_sk)",
+              "nativeQueryRef": "Count of call_id_sk"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Revenue"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.Revenue)",
+              "nativeQueryRef": "Revenue"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

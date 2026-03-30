@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "1c84054e6113a0c6b34b",
+  "displayName": "Employee Count (#)",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filterd34b6b1d7096058c2d2b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "TotalEmployeeCount"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "486735f019100a402b66",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filterd34b6b1d7096058c2d2b",
+        "boundFilter": "Filterd34b6b1d7096058c2d2b",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "TotalEmployeeCount"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "7a4b267123e3d5eceb76",
+      "target": "6b832d368d1042c0b40b",
+      "type": "DataFilter"
+    }
+  ]
+}

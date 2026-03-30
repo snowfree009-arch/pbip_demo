@@ -1,0 +1,9 @@
+role 'Statewide Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"STATEWIDE TOWING AND RECOVERY"}
+
+	annotation PBI_Id = 91a443c6edd24a1a9308fdf95bc363b3
+

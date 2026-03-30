@@ -1,0 +1,301 @@
+table 'agg agg_revenue_file'
+	lineageTag: 71568d23-0567-4696-937b-fc0e91e70ae8
+
+	measure Measure
+		lineageTag: 04a25351-9d28-4687-b44d-bb01ee6078e2
+
+	column CallNumber
+		dataType: string
+		lineageTag: 114bb22b-f02d-403a-b32d-ec595bf49844
+		summarizeBy: none
+		sourceColumn: CallNumber
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: 7acc4d1e-aad6-4117-be81-4c449c997528
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_completed_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4081c9ab-971e-4e10-b2e2-1e3bcf9ce1ed
+		summarizeBy: none
+		sourceColumn: tow_completed_date
+
+		variation Variation
+			isDefault
+			relationship: 51a084de-67a7-4cc8-a1c8-957627cea1bc
+			defaultHierarchy: LocalDateTable_624f0d35-268b-4656-991f-80e35821361e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column reporting_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9f6a93ea-017c-4dd2-a748-bc85d3f5df0a
+		summarizeBy: none
+		sourceColumn: reporting_date
+
+		variation Variation
+			isDefault
+			relationship: 89e5c73f-1780-4499-995a-ce2b38602d19
+			defaultHierarchy: LocalDateTable_30d140d9-d58f-4086-adc6-ef0a3c4916b7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		lineageTag: 93dd3fed-6ef2-45b5-b6b6-2eecf4b06901
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 287fc931-1492-4c0c-80c6-ba8644023286
+		summarizeBy: none
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: a9a94e03-9394-4f55-ba9e-7b95aaa52744
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column rateItem
+		dataType: string
+		lineageTag: 768fa0b7-75fe-4a20-82ca-603ef8a39432
+		summarizeBy: none
+		sourceColumn: rateItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column rateItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 56a8302f-cd2f-411d-b685-8474ecd84ce4
+		summarizeBy: count
+		sourceColumn: rateItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column rateItemPrice
+		dataType: double
+		lineageTag: 7b241678-2d16-4f07-ad90-b2e1aebaa5bc
+		summarizeBy: sum
+		sourceColumn: rateItemPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rateItemQuantity
+		dataType: double
+		lineageTag: c0fafe5a-a760-4011-8b0c-252cf56b0108
+		summarizeBy: sum
+		sourceColumn: rateItemQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total
+		dataType: double
+		lineageTag: 534fc093-cebf-4fff-844b-4fff7e07cab4
+		summarizeBy: sum
+		sourceColumn: total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_locked
+		dataType: string
+		lineageTag: 2ba603d5-f069-4cf0-95a6-cc155d361dff
+		summarizeBy: none
+		sourceColumn: is_locked
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_audited
+		dataType: string
+		lineageTag: fa45ff2f-56ed-4cbe-8063-682234b84891
+		summarizeBy: none
+		sourceColumn: is_audited
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_impounded
+		dataType: string
+		lineageTag: 45f5727e-bc74-451d-ac08-e6fa4e9b6856
+		summarizeBy: none
+		sourceColumn: is_impounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column released
+		dataType: string
+		lineageTag: 7af9f0b4-7bce-4105-b6a6-4c576ece5f0a
+		summarizeBy: none
+		sourceColumn: released
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: 0d2e8167-bd8c-422a-b12c-7d8ad642a29c
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_status
+		dataType: string
+		lineageTag: 72600eae-09b8-49ce-a278-b535671ba084
+		summarizeBy: none
+		sourceColumn: payment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column GLAccount
+		dataType: string
+		lineageTag: 186b8616-f7f0-4b0a-9dea-81e18e0826b0
+		summarizeBy: none
+		sourceColumn: GLAccount
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountNumber
+		dataType: string
+		lineageTag: 3e1422e8-b6f9-492e-82e3-2ce066cd45bd
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column lock_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f6934278-27ad-4b0f-9e4b-6c4fee9e1751
+		summarizeBy: none
+		sourceColumn: lock_date
+
+		variation Variation
+			isDefault
+			relationship: 290a1770-6618-4e2c-90b8-0f9cbe433903
+			defaultHierarchy: LocalDateTable_34626f35-509c-41ca-9cc1-6ed8d055d81a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column audit_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9d48bd51-60bc-47cc-9f4f-bb8730c0b07e
+		summarizeBy: none
+		sourceColumn: audit_date
+
+		variation Variation
+			isDefault
+			relationship: d1271cef-fdfa-47dc-912e-71110764dae2
+			defaultHierarchy: LocalDateTable_901d2ca5-ebe3-4eee-ba22-751b9c912811.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dutytype
+		dataType: string
+		lineageTag: c17bb975-8010-4649-b748-ecccbb83bf41
+		summarizeBy: none
+		sourceColumn: dutytype
+
+		annotation SummarizationSetBy = Automatic
+
+	column parent_company
+		dataType: string
+		lineageTag: 2fcdacf4-eb31-4466-9fac-d5c5357a63ca
+		summarizeBy: none
+		sourceColumn: parent_company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 5f266b05-db6f-4055-a0b3-7bd6744be86c
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_type
+		dataType: string
+		lineageTag: bd0de94b-9453-4826-a9d7-4d9e41b87ec6
+		summarizeBy: none
+		sourceColumn: transaction_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'show data' =
+			IF(
+			    'agg agg_revenue_file'[reporting_date] >= TODAY(),
+			    FALSE(),
+			    TRUE()
+			)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Custom Filter Columns
+		lineageTag: 7261174a-3620-4cb1-839a-b53472a47c71
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column dispatch_location
+		dataType: string
+		lineageTag: f6d37c09-a4f1-4dc5-ae26-873db7eb07d7
+		summarizeBy: none
+		sourceColumn: dispatch_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_location
+		dataType: string
+		lineageTag: b5e85779-132f-4715-94ea-e268ed0ea6ff
+		summarizeBy: none
+		sourceColumn: driver_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_intercompany
+		dataType: string
+		lineageTag: e486e968-f87c-49e5-9ddc-316bf326305b
+		summarizeBy: none
+		sourceColumn: is_intercompany
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'agg agg_revenue_file' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_revenue_file = Source{[Schema="agg",Item="agg_revenue_file"]}[Data]
+				in
+				    agg_agg_revenue_file
+

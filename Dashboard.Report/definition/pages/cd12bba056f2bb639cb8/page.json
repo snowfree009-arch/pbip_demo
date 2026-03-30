@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "cd12bba056f2bb639cb8",
+  "displayName": "Deposits ($)",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter121066fa4217288586be",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "Deposits"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "54ad582687d97626dbac",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filter121066fa4217288586be",
+        "boundFilter": "Filter121066fa4217288586be",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "Deposits"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "4107f390bd20db89adbc",
+      "target": "231864f6d77e490d2f08",
+      "type": "DataFilter"
+    }
+  ]
+}

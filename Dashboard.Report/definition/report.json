@@ -1,0 +1,186 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "reportVersionAtImport": {
+        "visual": "1.8.96",
+        "report": "2.0.96",
+        "page": "1.3.96"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Custom_Color_Theme7776278206619971.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.96",
+        "report": "2.0.96",
+        "page": "1.3.96"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "bubble_chart_visiochart_8c1a6a012eec332d822f79bf867dr059",
+    "chartexposankeydiagramD70B8BC1836C4420A7BFCE36F48EE4BE",
+    "CircularGauge1458053128559",
+    "lineStackedColumnMatrixADACEA3309644A92B1A6D50A68C81088",
+    "packedBubble563FBEFA65CC43A48496B6BB533D9890",
+    "payPalKPIDonutChart55A431AB15A540ED924ACD72ED8D259F",
+    "TornadoChart1452517688218",
+    "waterCupVisual821A487582524ED6878C0A8F277EF02F"
+  ],
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Close_ong9138691460482287.png",
+          "path": "Close_ong9138691460482287.png",
+          "type": "Image"
+        },
+        {
+          "name": "Custom_Color_Theme7776278206619971.json",
+          "path": "Custom_Color_Theme7776278206619971.json",
+          "type": "Image"
+        },
+        {
+          "name": "filter-icon8363452975234371.png",
+          "path": "filter-icon8363452975234371.png",
+          "type": "Image"
+        },
+        {
+          "name": "filter17319863071499042.png",
+          "path": "filter17319863071499042.png",
+          "type": "Image"
+        },
+        {
+          "name": "filter29726077212194735.png",
+          "path": "filter29726077212194735.png",
+          "type": "Image"
+        },
+        {
+          "name": "filter6522433915458399.png",
+          "path": "filter6522433915458399.png",
+          "type": "Image"
+        },
+        {
+          "name": "filter8243092030861225.png",
+          "path": "filter8243092030861225.png",
+          "type": "Image"
+        },
+        {
+          "name": "filter8962705068753438.png",
+          "path": "filter8962705068753438.png",
+          "type": "Image"
+        },
+        {
+          "name": "FirstLine-LOGO7746081773494062.png",
+          "path": "FirstLine-LOGO7746081773494062.png",
+          "type": "Image"
+        },
+        {
+          "name": "FirstLineLogo6865562327725441.png",
+          "path": "FirstLineLogo6865562327725441.png",
+          "type": "Image"
+        },
+        {
+          "name": "FirstLineLogo8024599774074022.png",
+          "path": "FirstLineLogo8024599774074022.png",
+          "type": "Image"
+        },
+        {
+          "name": "LightningRepositoryLogo-remove382732711960974.png",
+          "path": "LightningRepositoryLogo-remove382732711960974.png",
+          "type": "Image"
+        },
+        {
+          "name": "LightningRepositoryLogo28579572141788656.png",
+          "path": "LightningRepositoryLogo28579572141788656.png",
+          "type": "Image"
+        },
+        {
+          "name": "LightningRepositoryLogo5473315952809359.png",
+          "path": "LightningRepositoryLogo5473315952809359.png",
+          "type": "Image"
+        },
+        {
+          "name": "LightningRepositoryLogo5527325371550853.png",
+          "path": "LightningRepositoryLogo5527325371550853.png",
+          "type": "Image"
+        },
+        {
+          "name": "Luxury_background_with_silver_5417077774675227.jfif",
+          "path": "Luxury_background_with_silver_5417077774675227.jfif",
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU10",
+          "path": "BaseThemes/CY24SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "isPersistentUserStateDisabled": true,
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useScaledTooltips": true,
+    "queryLimitOption": "None",
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": true,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

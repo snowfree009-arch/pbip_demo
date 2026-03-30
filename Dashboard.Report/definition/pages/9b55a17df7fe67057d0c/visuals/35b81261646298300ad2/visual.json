@@ -1,0 +1,373 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "35b81261646298300ad2",
+  "position": {
+    "x": 10,
+    "y": 200,
+    "z": 0,
+    "height": 510,
+    "width": 1260,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "Payment Date"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.CalendarDate",
+              "nativeQueryRef": "Calendar Date",
+              "displayName": "Calendar Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "Sub Company"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.Company",
+              "nativeQueryRef": "Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "Location"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.Location",
+              "nativeQueryRef": "Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "Employee Type"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.EmployeeType",
+              "nativeQueryRef": "Employee Type1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "Employee Name"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.EmployeeName",
+              "nativeQueryRef": "Employee Name1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "Employee Type Category"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.EmployeeTypeCategory",
+              "nativeQueryRef": "Employee Type Category",
+              "displayName": "Employee Type Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "Job Title"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.Job Title",
+              "nativeQueryRef": "Job Title1"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_payroll_payperiod"
+                        }
+                      },
+                      "Property": "Revenue"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_payroll_payperiod.Revenue)",
+              "nativeQueryRef": "Revenue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "ProductivityRatio"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.ProductivityRatio",
+              "nativeQueryRef": "Productivity Ratio",
+              "displayName": "Productivity Ratio"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_payroll_payperiod"
+                        }
+                      },
+                      "Property": "avg_daily_sal"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_payroll_payperiod.avg_daily_sal)",
+              "nativeQueryRef": "Daily Salary ($)",
+              "displayName": "Daily Salary ($)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_payroll_payperiod"
+                        }
+                      },
+                      "Property": "avg_daily_hrs"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_payroll_payperiod.avg_daily_hrs)",
+              "nativeQueryRef": "Total Hours (Hours)",
+              "displayName": "Total Hours (Hours)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "dxm_avg_rate"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.dxm_avg_rate",
+              "nativeQueryRef": "Average Rate",
+              "displayName": "Average Rate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "PayPeriodBeginDate"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.PayPeriodBeginDate",
+              "nativeQueryRef": "Pay Period Begin Date",
+              "displayName": "Pay Period Begin Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_payroll_payperiod"
+                    }
+                  },
+                  "Property": "PayPeriodEndDate"
+                }
+              },
+              "queryRef": "agg agg_payroll_payperiod.PayPeriodEndDate",
+              "nativeQueryRef": "Pay Period End Date",
+              "displayName": "Pay Period End Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_payroll_payperiod"
+                        }
+                      },
+                      "Property": "Net"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_payroll_payperiod.Net)",
+              "nativeQueryRef": "Net Salary (For Pay Period)",
+              "displayName": "Net Salary (For Pay Period)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_payroll_payperiod"
+                        }
+                      },
+                      "Property": "Total_hrs"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_payroll_payperiod.Total_hrs)",
+              "nativeQueryRef": "Total Hours (For Pay Period)",
+              "displayName": "Total Hours (For Pay Period)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

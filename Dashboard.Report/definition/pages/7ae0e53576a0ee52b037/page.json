@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "7ae0e53576a0ee52b037",
+  "displayName": "Revenue Per Day ($)",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filtere5a06de7c3b2cab6adcc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "RevenuePerDay"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "b695a29ec44b2900378a",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filtere5a06de7c3b2cab6adcc",
+        "boundFilter": "Filtere5a06de7c3b2cab6adcc",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "RevenuePerDay"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "9121941048718a77800a",
+      "target": "76384aecd9614a651db2",
+      "type": "DataFilter"
+    }
+  ]
+}

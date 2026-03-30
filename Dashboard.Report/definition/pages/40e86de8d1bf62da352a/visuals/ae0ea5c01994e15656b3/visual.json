@@ -1,0 +1,609 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ae0ea5c01994e15656b3",
+  "position": {
+    "x": 0,
+    "y": 431.0724043715847,
+    "z": 0,
+    "height": 378.879781420765,
+    "width": 1415,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "Call Number"
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_account_receivable.Call Number)",
+              "nativeQueryRef": "Call Number1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "Reporting Date"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.Reporting Date",
+              "nativeQueryRef": "Reporting Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "Location"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.Location",
+              "nativeQueryRef": "Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "AccountType"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.AccountType",
+              "nativeQueryRef": "Account Type",
+              "displayName": "Account Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "Account"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.Account",
+              "nativeQueryRef": "Account"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "Age Category"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.Age Category",
+              "nativeQueryRef": "Age Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "Age"
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_account_receivable.Age)",
+              "nativeQueryRef": "Age1"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_account_receivable"
+                        }
+                      },
+                      "Property": "Outstanding AR ($)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_account_receivable.Outstanding AR ($))",
+              "nativeQueryRef": "Outstanding AR ($)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_account_receivable"
+                        }
+                      },
+                      "Property": "revenue"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_account_receivable.revenue)",
+              "nativeQueryRef": "Billed Revenue ($)",
+              "displayName": "Billed Revenue ($)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_account_receivable"
+                        }
+                      },
+                      "Property": "transaction_amount"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_account_receivable.transaction_amount)",
+              "nativeQueryRef": "Payments ($)",
+              "displayName": "Payments ($)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "source_application"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.source_application",
+              "nativeQueryRef": "Source Application",
+              "displayName": "Source Application"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "OpCo Company"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.OpCo Company",
+              "nativeQueryRef": "OpCo Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_account_receivable"
+                    }
+                  },
+                  "Property": "Company"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_account_receivable.Company",
+              "nativeQueryRef": "Sub Company",
+              "displayName": "Sub Company"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_account_receivable"
+                  }
+                },
+                "Property": "Reporting Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg_revenue_call_report"
+                    }
+                  },
+                  "Property": "FHC_DynamicTitle_TPPBC"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg_revenue_call_report"
+                        }
+                      },
+                      "Property": "FHC_BGC_TPPBC"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "059ccf03638300bc0446",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Account"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "de930863e92e4ad123c7",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "AccountType"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "04fde986a440b020ee62",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Age"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "07adeab65d26d707b175",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Age Category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a034bcad63000d7884c9",
+        "ordinal": 4,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_account_receivable"
+                  }
+                },
+                "Property": "revenue"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bbb083f9789e1d958890",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Call Number"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4a554de4c9e04d293865",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Location"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8a37955273d90c60abad",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "OpCo Company"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f727e33a32086737e77b",
+        "ordinal": 8,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_account_receivable"
+                  }
+                },
+                "Property": "Outstanding AR ($)"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bc968c82da6a7d180cb5",
+        "ordinal": 9,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_account_receivable"
+                  }
+                },
+                "Property": "transaction_amount"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e32cfd1d75854bda1da1",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Reporting Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "35d96fecdad2212a8966",
+        "ordinal": 11,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "source_application"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ff708edd73450c856018",
+        "ordinal": 12,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Company"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d578e3ccb8545541735b",
+        "ordinal": 13,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_account_receivable"
+              }
+            },
+            "Property": "Is Current Month"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "agg agg_revenue_call_report_account_receivable",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "Is Current Month"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "1L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

@@ -1,0 +1,1693 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f8323579217a433e7e77",
+  "position": {
+    "x": 9.2285508291276148,
+    "y": 234.4051910598414,
+    "z": 14000,
+    "height": 475.27036770007214,
+    "width": 1260.6200432588321,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "CallNumber"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.CallNumber",
+              "nativeQueryRef": "Call Number",
+              "active": true,
+              "displayName": "Call Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "rateItem_id_sk"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.rateItem_id_sk",
+              "nativeQueryRef": "Line Item ID",
+              "active": true,
+              "displayName": "Line Item ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_RateItem_mapping"
+                    }
+                  },
+                  "Property": "Line Item"
+                }
+              },
+              "queryRef": "agg agg_RateItem_mapping.Rate Item",
+              "nativeQueryRef": "Line Item",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "parent_company"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.parent_company)",
+              "nativeQueryRef": "OpCo Company",
+              "displayName": "OpCo Company"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Company"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Company)",
+              "nativeQueryRef": "Sub Company",
+              "displayName": "Sub Company"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Call Type"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Call Type)",
+              "nativeQueryRef": "Call Type",
+              "displayName": "Call Type"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Reporting Date"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Reporting Date)",
+              "nativeQueryRef": "Latest Reporting Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Tow Completed Date"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Tow Completed Date)",
+              "nativeQueryRef": "Tow Completed Date",
+              "displayName": "Tow Completed Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Account"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Account)",
+              "nativeQueryRef": "Account",
+              "displayName": "Account"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Account Type"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Account Type)",
+              "nativeQueryRef": "Account Type",
+              "displayName": "Account Type"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Location"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Location)",
+              "nativeQueryRef": "Location",
+              "displayName": "Location"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "source_application"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.source_application)",
+              "nativeQueryRef": "Source Application",
+              "displayName": "Source Application"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Employee Type"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Employee Type)",
+              "nativeQueryRef": "Employee Type",
+              "displayName": "Employee Type"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Duty Type"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Duty Type)",
+              "nativeQueryRef": "Duty Type",
+              "displayName": "Duty Type"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Vehicle Type"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Vehicle Type)",
+              "nativeQueryRef": "Vehicle Type",
+              "displayName": "Vehicle Type"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Truck Type"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Truck Type)",
+              "nativeQueryRef": "Truck Type",
+              "displayName": "Truck Type"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Truck"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Truck)",
+              "nativeQueryRef": "Truck",
+              "displayName": "Truck"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Truck Vin"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Truck Vin)",
+              "nativeQueryRef": "Truck Vin",
+              "displayName": "Truck Vin"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Revenue"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.Revenue)",
+              "nativeQueryRef": "Revenue ($)",
+              "displayName": "Revenue ($)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Total_revenue"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.Total_revenue)",
+              "nativeQueryRef": "Invoice Amount ($)",
+              "displayName": "Invoice Amount ($)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "PendingPayments"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.PendingPayments)",
+              "nativeQueryRef": "Outstanding AR ($)",
+              "displayName": "Outstanding AR ($)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Lock Date"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Lock Date)",
+              "nativeQueryRef": "Lock Date",
+              "displayName": "Lock Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Lock Status"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Lock Status)",
+              "nativeQueryRef": "Lock Status",
+              "displayName": "Lock Status"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Audit Date"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Audit Date)",
+              "nativeQueryRef": "Audit Date",
+              "displayName": "Audit Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Audit Status"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.Audit Status)",
+              "nativeQueryRef": "Audit Status",
+              "displayName": "Audit Status"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Released Date"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.released_date)",
+              "nativeQueryRef": "Released Date",
+              "displayName": "Released Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "released"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_revenue_call_report_revenue.released)",
+              "nativeQueryRef": "Release Status",
+              "displayName": "Release Status"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_RateItem_mapping"
+                        }
+                      },
+                      "Property": "Line Item"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_RateItem_mapping.Rate Item)",
+              "nativeQueryRef": "Rate Item1",
+              "displayName": "Rate Item"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_RateItem_mapping"
+                        }
+                      },
+                      "Property": "Account Number"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_RateItem_mapping.Account Number)",
+              "nativeQueryRef": "Account Number",
+              "displayName": "Account Number"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_RateItem_mapping"
+                        }
+                      },
+                      "Property": "GL Account"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_RateItem_mapping.GL Account)",
+              "nativeQueryRef": "GL Account",
+              "displayName": "GL Account"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_RateItem_mapping"
+                        }
+                      },
+                      "Property": "Line Item ID"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(agg agg_RateItem_mapping.Rate Item ID)",
+              "nativeQueryRef": "Rate Item ID",
+              "displayName": "Rate Item ID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_RateItem_mapping"
+                        }
+                      },
+                      "Property": "Line Item Price"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_RateItem_mapping.rateItemPrice)",
+              "nativeQueryRef": "Line Item Price"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_RateItem_mapping"
+                        }
+                      },
+                      "Property": "Rate Item Quantity"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_RateItem_mapping.rateItemQuantity)",
+              "nativeQueryRef": "Rate Item Quantity"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_RateItem_mapping"
+                        }
+                      },
+                      "Property": "Line Item Total"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_RateItem_mapping.Line Item Total)",
+              "nativeQueryRef": "Line Item Total"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "CallNumber"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "rateItem_id_sk"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "Line Item"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "agg agg_revenue_call_report_revenue.CallNumber"
+            ],
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "CallNumber"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "agg agg_revenue_call_report_revenue.rateItem_id_sk"
+            ],
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "rateItem_id_sk"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "agg agg_RateItem_mapping.Rate Item"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "142.0879120879121D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(agg agg_revenue_call_report_revenue.PendingPayments)"
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "16f6fc9f3d89ebad62d8",
+        "ordinal": 0,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Account"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2c86ee2e24c207dcd52c",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "Is Exception Data"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "agg agg_revenue_call_report_revenue",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "Is Exception Data"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'No'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "3fb703f85576d0d4b475",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "callstatus"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "agg agg_revenue_call_report_revenue",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "callstatus"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Completed'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "c712b1ab0b34bbe328a1",
+        "ordinal": 3,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "Account Number"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fdc3dae5cf0d399539e0",
+        "ordinal": 4,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Account Type"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "77d218176577d96973a1",
+        "ordinal": 5,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Audit Date"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1bbb80ef9f45ace9dfd1",
+        "ordinal": 6,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Audit Status"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "619fec692dd4c314b48b",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "CallNumber"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0ca86c3adbc19880e65f",
+        "ordinal": 8,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Call Type"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "acf07333c3484b5379c4",
+        "ordinal": 9,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Duty Type"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6489494ab486efb8206f",
+        "ordinal": 10,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Employee Type"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bcca77501b4e5121a206",
+        "ordinal": 11,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "GL Account"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fa4c833d242bf4d48d18",
+        "ordinal": 12,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Total_revenue"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "73093a223d19918c9cc7",
+        "ordinal": 13,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Reporting Date"
+              }
+            },
+            "Function": 4
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8723699e02a50c1e959d",
+        "ordinal": 14,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_RateItem_mapping"
+              }
+            },
+            "Property": "Line Item"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "792b3e8a12677829c998",
+        "ordinal": 15,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "rateItem_id_sk"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "043663f5a52567c05774",
+        "ordinal": 16,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "Line Item Price"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8560291027c30b00b2dc",
+        "ordinal": 17,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "Line Item Total"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fd3900247e3b6ae76f65",
+        "ordinal": 18,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Location"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0c057d7ea008f43e5694",
+        "ordinal": 19,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Lock Date"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e6d058bbc06383dbd731",
+        "ordinal": 20,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Lock Status"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6c02095dd8b7048da806",
+        "ordinal": 21,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "parent_company"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "67bcfe124c6efeb1b621",
+        "ordinal": 22,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "PendingPayments"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0b4503b6e48c47ce2861",
+        "ordinal": 23,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "Line Item"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7baa24e2d8073554d3cc",
+        "ordinal": 24,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "Line Item ID"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3e10a418de8c869d5051",
+        "ordinal": 25,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_RateItem_mapping"
+                  }
+                },
+                "Property": "Rate Item Quantity"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b5cd3f16c65d35b5585a",
+        "ordinal": 26,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "released"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d2aed25dba65c5cfaa95",
+        "ordinal": 27,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Released Date"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a4e244817407e87d327e",
+        "ordinal": 28,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Revenue"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bf902c08bcb257104bca",
+        "ordinal": 29,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "source_application"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9b59edb5d14b978f8909",
+        "ordinal": 30,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Company"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "52a27cc7b57b40812c6b",
+        "ordinal": 31,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Tow Completed Date"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ae48913dfa359e411a3c",
+        "ordinal": 32,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Truck"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9958c50273f0b93aa0c3",
+        "ordinal": 33,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Truck Type"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "56b19f2d94c69127765b",
+        "ordinal": 34,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Truck Vin"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dbe0784be6b759688756",
+        "ordinal": 35,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "Vehicle Type"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

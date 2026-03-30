@@ -1,0 +1,1320 @@
+table 'agg agg_revenue_call_report_revenue'
+	lineageTag: 325faa89-ec32-4c5c-b51b-80531bded5f5
+
+	measure 'OpCo Current Month Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			    YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			) 
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 1d738ab3-8f0a-4018-8fa1-6036a2d3f55f
+
+	measure 'OpCo Last Month Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, 12, (MONTH(TODAY())-1)) && YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY())-1, YEAR(TODAY()))
+			)
+			 
+			```
+		lineageTag: 41ac6ca9-3e4e-4483-aea1-82bfa47a0ca3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'OpCo Previous Year Current Month Revenue' =
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = (MONTH(TODAY())) && YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = (YEAR(TODAY())-1)
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: cc71fe89-efe1-407a-8259-dd3525bbb093
+
+	measure 'OpCo Current Week Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date],2) = WEEKNUM(TODAY(),2) &&
+			    YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 53a05b8d-dd29-4a08-901e-e6e8171c1e8c
+
+	measure 'OpCo Last Week Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()-7)
+			        )
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 5c622a8e-a681-4aa4-8b5e-08b09d11bbe5
+
+	measure 'OpCo Previous Year Current Week Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    DATESBETWEEN(
+			        'agg agg_revenue_call_report_revenue'[Reporting Date],
+			        TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365,
+			        TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365
+			    )
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a4d8a020-828c-437c-9ef1-bdc6d8c41270
+
+	measure 'OpCo Yesterday Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 1
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c27c8eff-a738-4a60-9044-4903f80fd6c5
+
+	measure 'OpCo Day Before Yesterday Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 2
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a5c70c49-d24e-484e-a99b-d5082be92c2c
+
+	measure 'OpCo Last Year Yesterday Revenue' = ```
+			
+			CALCULATE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    'agg agg_revenue_call_report_revenue'[Reporting Date] = EDATE((TODAY()-1), -12)
+			
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7b87d63d-fda1-4ee0-b836-4179e803274c
+
+	measure 'OpCo Current Month Revenue Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			        YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[Reporting Date]),
+			        MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			        YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 15e79af4-6606-48b6-87ae-31cece3edf2f
+
+	measure 'OpCo Last Month Revenue Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, 12, (MONTH(TODAY())-1)) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[Reporting Date]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, 12, (MONTH(TODAY())-1)) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: eb166162-e185-4a02-851b-3128f09a6144
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'OpCo Previous Year Current Month Revenue Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[Reporting Date]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: e768c827-dc95-4050-a0da-b76b3f7c7a19
+
+	measure 'OpCo Current Week Revenue Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date],2) = WEEKNUM(TODAY(),2) &&
+			        YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[Reporting Date]),
+			        WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date],2) = WEEKNUM(TODAY(),2) &&
+			        YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a2223a5f-468f-4c9a-aab8-203e2fd4b0a5
+
+	measure 'OpCo Last Week Revenue Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()-7)
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[Reporting Date]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()-7)
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: cb1f997c-e196-43b1-af84-498f25507c53
+
+	measure 'OpCo Previous Year Current Week Revenue Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[Reporting Date]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b83a7873-21d8-4078-b8b3-19553a85ca43
+
+	measure 'OpCo Yesterday Revenue Per Day' = ```
+			
+			CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 1
+			    )
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d90b17b8-ad98-49f8-8d60-1048c785ae26
+
+	measure 'OpCo Day Before Yesterday Revenue Per Day' = ```
+			
+			CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 2
+			    )
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: fc738c0c-50a4-47d2-9621-60f20d320437
+
+	measure 'OpCo Last Year Yesterday Revenue Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = EDATE((TODAY()-1), -12)
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[Reporting Date]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = EDATE((TODAY()-1), -12)
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a5ff6bd7-aa1f-4203-a6d2-a9e00ddf2b15
+
+	measure 'OpCo Current Month Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			    YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			    YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4b55f590-cbb9-4f1c-8b04-bc4ca3fba208
+
+	measure 'OpCo Last Month Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, 12, (MONTH(TODAY())-1)) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, 12, (MONTH(TODAY())-1)) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 39e4000c-3304-4d9f-9571-b5cb407b9624
+
+	measure 'OpCo Previous Year Current Month Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            MONTH('agg agg_revenue_call_report_revenue'[Reporting Date]) = MONTH(TODAY()) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 22603b5c-5693-4816-a4c6-20933c9da490
+
+	measure 'OpCo Current Week Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date],2) = WEEKNUM(TODAY(),2) &&
+			        YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date],2) = WEEKNUM(TODAY(),2) &&
+			        YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY())
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a1d187d5-3c0c-464e-89a3-e1118a880499
+
+	measure 'OpCo Last Week Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()-7)
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            WEEKNUM('agg agg_revenue_call_report_revenue'[Reporting Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()-7)
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 0a083347-9056-486a-b49c-d7a53c785bec
+
+	measure 'OpCo Previous Year Current Week Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        FILTER(
+			            'agg agg_revenue_call_report_revenue',
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			            'agg agg_revenue_call_report_revenue'[Reporting Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			            YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 27fec29d-e710-467f-bcbb-3de4b49e9dd8
+
+	measure 'OpCo Yesterday Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 1
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 1
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c22a2839-9459-48db-9f7d-734be738205e
+
+	measure 'OpCo Day Before Yesterday Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 2
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = TODAY() - 2
+			    ),
+			    0
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4ce13a13-b39b-496a-a6c0-e0750d26c5a1
+
+	measure 'OpCo Last Year Yesterday Revenue Per Tow' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = EDATE((TODAY()-1), -12)
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			        'agg agg_revenue_call_report_revenue'[Reporting Date] = EDATE((TODAY()-1), -12)
+			    ),
+			    0
+			)
+			
+			```
+		lineageTag: ac494d8e-72a9-45d8-a13f-3fb361427cc1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'opco revenue per call' =
+			DIVIDE(
+			    SUM('agg agg_revenue_call_report_revenue'[Revenue]),
+			    DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 28f726f0-96ab-437d-b87b-8008c0b8b290
+
+	measure 'Outstanding AR ($)' =
+			CALCULATE(
+			    SUM(agg_revenue_call_report[Pending Payments]),
+			    agg_revenue_call_report[is_impounded] = "no"
+			)
+		lineageTag: 0edc606d-b841-4ec5-a265-eb620af58be9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current Date' = "Current ("&FORMAT(TODAY()-1,"MM/DD/YYYY")&")"
+		lineageTag: 58f4e29b-ae1a-4906-a62f-874b66ef8ade
+
+	measure 'Last Date' = "Last ("&FORMAT((TODAY()-2),"mm/dd/yyyy")&")"
+		lineageTag: caa01653-75b3-4664-b6db-dc674e4c1e46
+
+	measure 'Current Week' = ```
+			"Current ("&FORMAT((TODAY() - WEEKDAY(TODAY(), 2) + 1),"MM/DD/YYYY")&"-"&FORMAT((TODAY() - WEEKDAY(TODAY(), 2) + 7
+			),"MM/DD/YYYY")&")"
+			
+			```
+		lineageTag: 228215e0-39b8-4696-bfbf-b64c95620118
+
+	measure 'Last Week' = ```
+			"Last ("&FORMAT((TODAY()-7 - WEEKDAY(TODAY()-7, 2) + 1),"MM/DD/YYYY")&"-"&format((TODAY()-7 - WEEKDAY(TODAY()-7, 2) + 7
+			), "MM/DD/YYYY")&")"
+			
+			```
+		lineageTag: df5235d8-0702-40a1-8bb5-bf7ac82f40af
+
+	measure PreviousYearCurrentWeek = ```
+			
+			"Previous Year Current (" & 
+			FORMAT(
+			    TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365, 
+			    "MM/DD/YYYY"
+			) & 
+			" - " & 
+			FORMAT(
+			    TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365, 
+			    "MM/DD/YYYY"
+			) & 
+			")"
+			
+			```
+		lineageTag: 30619928-00dd-418e-839c-058007759a4b
+
+	measure CurrentMonthRange = ```
+			
+			"Current (" &
+			FORMAT(DATE(YEAR(TODAY()), MONTH(TODAY()), 1), "MM/DD/YYYY") & "-" &
+			FORMAT(EOMONTH(TODAY(), 0), "MM/DD/YYYY") & ")"
+			
+			```
+		lineageTag: 1762aaf8-691f-457a-877e-59f0d753bb2d
+
+	measure LastMonthRange = ```
+			
+			"Last (" & 
+			FORMAT(DATE(
+			    IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY())), 
+			    IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY()) - 1), 
+			    1
+			), "MM/DD/YYYY") & 
+			" - " & 
+			FORMAT(EOMONTH(TODAY(), -1), "MM/DD/YYYY") & 
+			")"
+			
+			```
+		lineageTag: e3dcb162-9a32-4c0c-ab37-c17151ef4e5b
+
+	measure PreviousYearCurrentMonthRange = ```
+			
+			"Previous Year Current (" &
+			FORMAT(DATE(YEAR(TODAY()) - 1, MONTH(TODAY()), 1), "MM/DD/YYYY") & " - " &
+			FORMAT(EOMONTH(TODAY(), -12), "MM/DD/YYYY") & ")"
+			
+			```
+		lineageTag: ef3eb1dd-d284-4a6d-9bcb-40bdfc892f3a
+
+	measure Tows(#)_new =
+			
+			var _include_zero_revenue = IF(
+			    SELECTEDVALUE(ZeroRevenueFlag[Label]) = "Exclude Zero Revenue",
+			    "No", "Yes"
+			)
+			
+			return
+			IF(
+			    _include_zero_revenue="Yes",
+			    DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			    CALCULATE(DISTINCTCOUNT('agg agg_revenue_call_report_revenue'[call_id_sk]),
+			       agg_revenue_call_report[Is Zero Revenue Call] = "No"
+			    )
+			)
+		formatString: 0
+		lineageTag: b033e392-983d-415a-a2e4-2a088d36f3d1
+
+	measure call_type_label = ```
+			
+			VAR SelectedValues = VALUES('agg agg_revenue_call_report_revenue'[Call Type])
+			VAR SelectedCount = COUNTROWS(SelectedValues)
+			VAR TotalCount = COUNTROWS(ALL('agg agg_revenue_call_report_revenue'[Call Type]))
+			RETURN
+			    IF(
+			        SelectedCount = 0 || SelectedCount = TotalCount,
+			        "Standard Calls, Impound Calls",
+			        IF(
+			            SelectedCount = 1,
+			            CONCATENATEX(SelectedValues, 'agg agg_revenue_call_report_revenue'[Call Type], ", "),
+			            CONCATENATEX(SelectedValues, 'agg agg_revenue_call_report_revenue'[Call Type], ", ")
+			        )
+			    )
+			
+			```
+		lineageTag: 4a98a359-ea39-49ef-b720-2e9b0e4575a1
+
+	column CallNumber
+		dataType: string
+		lineageTag: 737f9fd8-4e83-4ab4-af55-107487eb89b9
+		summarizeBy: none
+		sourceColumn: CallNumber
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: a9798c80-dbdd-463b-91db-ddac7187511a
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Driver
+		dataType: string
+		lineageTag: c2f23896-f198-4972-8410-f65cbc37d959
+		summarizeBy: none
+		sourceColumn: Driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tow Completed Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 26764ce3-90cc-4f6e-ba87-dfc90d077492
+		summarizeBy: none
+		sourceColumn: Tow Completed Date
+
+		variation Variation
+			isDefault
+			relationship: 1a34e14a-304b-4d72-a774-3af0788be8e6
+			defaultHierarchy: LocalDateTable_838a922d-4b52-442a-8419-fe9b7e232310.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Reporting Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f72997de-1566-487d-8681-1665f20a7268
+		summarizeBy: none
+		sourceColumn: Reporting Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Employee Type'
+		dataType: string
+		lineageTag: 6a42479e-b6c4-49af-8575-11fc8c008d90
+		summarizeBy: none
+		sourceColumn: Employee Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: c3771c10-eaf6-4945-8fd4-544bf67b39ae
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Truck Type'
+		dataType: string
+		lineageTag: 99212f5a-baf6-472b-81ed-b1ddae9389d5
+		summarizeBy: none
+		sourceColumn: Truck Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vehicle Type'
+		dataType: string
+		lineageTag: 1c2e87f9-66e3-4238-ae17-0e8714fec2c2
+		summarizeBy: none
+		sourceColumn: Vehicle Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Type'
+		dataType: string
+		lineageTag: 310811e1-0daa-404d-9be4-9ba71fbe65bc
+		summarizeBy: none
+		sourceColumn: Account Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_count
+		dataType: int64
+		formatString: 0
+		lineageTag: c3e17685-a9c8-42e3-85cf-096374cfbcfa
+		summarizeBy: sum
+		sourceColumn: Impound_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Service_calls_type
+		dataType: string
+		lineageTag: f4f8122d-416b-4460-8ffd-9068f196a5cf
+		summarizeBy: none
+		sourceColumn: Service_calls_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_revenue
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: abff1c21-badf-4e79-8e73-80bbf6e77816
+		summarizeBy: sum
+		sourceColumn: Total_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 590c278c-5e75-4630-ab91-1bc1ba8dede4
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_duration_min
+		dataType: int64
+		formatString: 0
+		lineageTag: 39771bf8-2cd2-4950-8ee1-ad10e64ccaea
+		summarizeBy: sum
+		sourceColumn: Impound_duration_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentDeposit
+		dataType: double
+		lineageTag: 7c47e1c3-1654-4851-92e9-faaf91b0db99
+		summarizeBy: sum
+		sourceColumn: PaymentDeposit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PendingPayments
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 56d44e55-ba62-416c-bdc0-06d5f1a5ae6d
+		summarizeBy: sum
+		sourceColumn: PendingPayments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Status'
+		dataType: string
+		lineageTag: ef7af06a-37a5-4bc3-a56e-ff13358b7bce
+		summarizeBy: none
+		sourceColumn: Audit Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lock Status'
+		dataType: string
+		lineageTag: 797b6803-ffe6-4ac6-9923-21e20cd681ae
+		summarizeBy: none
+		sourceColumn: Lock Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_impounded
+		dataType: string
+		lineageTag: 8736f649-4968-4681-87f4-763644339321
+		summarizeBy: none
+		sourceColumn: is_impounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lock Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0e0a177c-5b3d-4574-86f0-5912ae336721
+		summarizeBy: none
+		sourceColumn: Lock Date
+
+		variation Variation
+			isDefault
+			relationship: c5db97f6-7299-4a71-8894-3c53c0ca9807
+			defaultHierarchy: LocalDateTable_8c04f928-e0ac-4b14-814c-393ad4f6803a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Audit Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ba1cb56d-8b0e-476b-8a02-3bd6650d916a
+		summarizeBy: none
+		sourceColumn: Audit Date
+
+		variation Variation
+			isDefault
+			relationship: 79fac665-0513-4a8a-978d-95c703f3e254
+			defaultHierarchy: LocalDateTable_95c8e51c-32d6-40a7-8576-debc10ed4a7f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column released
+		dataType: string
+		lineageTag: a523a40c-b889-4259-a48e-708675cb37a6
+		summarizeBy: none
+		sourceColumn: released
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_miles
+		dataType: double
+		lineageTag: 425eee84-04c8-4919-84ba-e0b4b4f0d34f
+		summarizeBy: sum
+		sourceColumn: total_miles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column emp_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: b9a10845-8729-4b61-8b74-2860a8085312
+		summarizeBy: sum
+		sourceColumn: emp_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Released Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b6079be0-22aa-4042-af2d-1d6070935e56
+		summarizeBy: none
+		sourceColumn: Released Date
+
+		variation Variation
+			isDefault
+			relationship: 24620ba7-2e86-47cb-b1c4-388dcfd57d0a
+			defaultHierarchy: LocalDateTable_b8acffba-754e-4248-9104-a9e406e7b44b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Account
+		dataType: string
+		lineageTag: 7aadf6ff-26a4-42a4-80db-c42de7ac825c
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 48d26c05-086c-48e6-82b7-f1a7bb93b93d
+		summarizeBy: sum
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 477261ed-154e-4958-9dcb-c3ccb5314164
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: aecea3ed-ed48-46e3-b9ba-9144cd185c34
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_no
+		dataType: int64
+		formatString: 0
+		lineageTag: e34a03f8-052b-42c0-bc57-c97d2504697d
+		summarizeBy: sum
+		sourceColumn: week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column Disp_to_on_scene
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cd4ff96-ab9e-4dc8-bd1b-fe7a83d494a4
+		summarizeBy: sum
+		sourceColumn: Disp_to_on_scene
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatched_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ba325692-7617-47ae-9879-0aa6e8a86e86
+		summarizeBy: none
+		sourceColumn: Dispatched_time
+
+		variation Variation
+			isDefault
+			relationship: ea8ec637-8c9b-4dda-82f7-5e7b8f666d0f
+			defaultHierarchy: LocalDateTable_646a4fef-63d2-48ba-b2db-2c9bd79211e7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column On_scene_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2ba2e789-49c8-47bf-ae09-30be38887585
+		summarizeBy: none
+		sourceColumn: On_scene_time
+
+		variation Variation
+			isDefault
+			relationship: fa5d6020-9e99-4b0c-8d1e-682a3db7592a
+			defaultHierarchy: LocalDateTable_b9dee8eb-7864-4135-8084-298c688adc99.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column parent_company
+		dataType: string
+		lineageTag: 4d76841b-16af-4684-84b8-eb70600520a1
+		summarizeBy: none
+		sourceColumn: parent_company
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_completed_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a5be1bb6-ca6c-4d31-b1a3-ff1f7aefc19e
+		summarizeBy: none
+		sourceColumn: tow_completed_date_time
+
+		variation Variation
+			isDefault
+			relationship: d44479af-217b-4aa7-8e2e-1dc9f626369b
+			defaultHierarchy: LocalDateTable_e1909c3b-c673-4937-8bcd-20e8fff6e261.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_received_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 76c079ee-6356-41ec-94ec-070215603e15
+		summarizeBy: none
+		sourceColumn: tow_received_date_time
+
+		variation Variation
+			isDefault
+			relationship: 90cb10fb-3704-4ebb-bf02-60f5682eeb37
+			defaultHierarchy: LocalDateTable_899d6af3-fe9c-46c7-b753-4e20c1bebcfc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_application
+		dataType: string
+		lineageTag: ed743059-18e1-4dfa-972f-db4414a6bcff
+		summarizeBy: none
+		sourceColumn: source_application
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatcher
+		dataType: string
+		lineageTag: 507e2296-b033-4f53-8bec-36874c38e3ad
+		summarizeBy: none
+		sourceColumn: Dispatcher
+
+		annotation SummarizationSetBy = Automatic
+
+	column Truck
+		dataType: string
+		lineageTag: eee3b90b-441f-4737-96e8-305e4e9e0b21
+		summarizeBy: none
+		sourceColumn: Truck
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Truck Vin'
+		dataType: string
+		lineageTag: 8c639c50-ab0f-4c5e-a243-f219077d24af
+		summarizeBy: none
+		sourceColumn: Truck Vin
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Report Month Label Sort Order' = FORMAT('agg agg_revenue_call_report_revenue'[Reporting Date],"yyyyMM")
+		lineageTag: 865a7da4-ed19-4ea3-8421-488490f8ebe6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reported Month Label' = FORMAT('agg agg_revenue_call_report_revenue'[Reporting Date],"MMM-yyyy")
+		lineageTag: 1e4dd5d1-bea0-4ea9-9dd5-d2381b0f0e95
+		summarizeBy: none
+		sortByColumn: 'Report Month Label Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reported Week Sort Order' = ```
+			
+			VAR StartOfWeek = 'agg agg_revenue_call_report_revenue'[Reporting Date] - WEEKDAY('agg agg_revenue_call_report_revenue'[Reporting Date], 2) + 1
+			VAR EndOfWeek = StartOfWeek + 6
+			RETURN EndOfWeek
+			
+			```
+		formatString: General Date
+		lineageTag: ecca0a11-262c-4587-abfc-4e77a10fe6dc
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 48628f1c-d00e-4b35-95f2-b8a22810ff98
+			defaultHierarchy: LocalDateTable_076a1d50-ee12-4cec-8c4e-dbab3a20ef6e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reported Month Comparison' = FORMAT('agg agg_revenue_call_report_revenue'[Reporting Date], "MMM-yyyy")
+		lineageTag: 7b4e0a84-9ce3-49bb-ab3e-458186dd2024
+		summarizeBy: none
+		sortByColumn: 'Reported Month Comparison Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reported Month Comparison Sort Order' = MONTH('agg agg_revenue_call_report_revenue'[Reporting Date])
+		formatString: 0
+		lineageTag: 4618e863-4c51-4dac-8893-70436b8ca3e6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reported Week Label' = ```
+			
+			VAR StartOfWeek = 'agg agg_revenue_call_report_revenue'[Reporting Date] - WEEKDAY('agg agg_revenue_call_report_revenue'[Reporting Date], 2) + 1
+			VAR EndOfWeek = StartOfWeek + 6
+			RETURN 
+			    FORMAT(StartOfWeek, "MM/DD") & " - " & FORMAT(EndOfWeek, "MM/DD")
+			```
+		lineageTag: 4a626733-c46f-4d62-abc2-718b2b5a0a74
+		summarizeBy: none
+		sortByColumn: 'Reported Week Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Last Two Year' = IF(YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) > (YEAR(TODAY())-2),1,0)
+		formatString: 0
+		lineageTag: 90853e23-4269-4fdb-b9bf-df9ad594a406
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Type' = IF('agg agg_revenue_call_report_revenue'[is_impounded] = "yes", "Impound Call", "Standard Call")
+		lineageTag: dd298bf9-d69f-488d-b65d-ef70f9851569
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'is comparison' = IF(YEAR('agg agg_revenue_call_report_revenue'[Reporting Date]) >= YEAR(TODAY())-1, 1, 0)
+		formatString: 0
+		lineageTag: a68cab7a-6d4a-478c-b3e3-503abbdc2663
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Day = FORMAT('agg agg_revenue_call_report_revenue'[Reporting Date], "MM/DD/YY DDD")
+		lineageTag: 93d4b635-5394-4751-bf80-155d01dafde4
+		summarizeBy: none
+		sortByColumn: date_id
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_id = ```
+			FORMAT('agg agg_revenue_call_report_revenue'[Reporting Date], "YYYYMMDD") 
+			```
+		lineageTag: 32829f8e-961d-424a-bc95-7ef26a22ffde
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatcher_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e3065a6-9e07-4754-a77d-d658d41ddb96
+		summarizeBy: sum
+		sourceColumn: Dispatcher_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Created Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 796ae2fc-5dda-447f-86a0-5ed414a88aee
+		summarizeBy: none
+		sourceColumn: Account Created Date
+
+		variation Variation
+			isDefault
+			relationship: 6baaa0a9-af16-48ea-814e-a0f7e59f492d
+			defaultHierarchy: LocalDateTable_0cb6bea8-4243-4967-a105-930a3f0ee18c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Is Zero Revenue Call' =
+			IF(
+			    'agg agg_revenue_call_report_revenue'[Total_revenue] = 0 &&
+			    'agg agg_revenue_call_report_revenue'[Revenue] = 0
+			    ,"Yes", "No"
+			)
+		lineageTag: 4600ba16-aabe-4677-a035-c0ef5bbd2a1c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_call_lookup = 1
+		formatString: 0
+		lineageTag: db77df52-17a9-4e6d-b97a-dfdcaf5cce9a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Exception Data'
+		dataType: string
+		lineageTag: 2b7088d0-51cc-4c84-a918-70f0570955df
+		summarizeBy: none
+		sourceColumn: Is Exception Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Duty Type'
+		dataType: string
+		lineageTag: 8ef4bfd9-7a6b-4b8b-818f-487ab7f79111
+		summarizeBy: none
+		sourceColumn: Duty Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Call_Status = ```
+			IF('agg agg_revenue_call_report_revenue'[is_impounded] = "yes"
+			                    && 'agg agg_revenue_call_report_revenue'[Lock Status] = "yes" 
+			                    && 'agg agg_revenue_call_report_revenue'[Audit Status] = "yes" 
+			                    && 'agg agg_revenue_call_report_revenue'[released] = "yes"
+			                    , "Closed", 
+			                    IF('agg agg_revenue_call_report_revenue'[is_impounded] = "no"
+			                    && 'agg agg_revenue_call_report_revenue'[Lock Status] = "yes" 
+			                    && 'agg agg_revenue_call_report_revenue'[Audit Status] = "yes" 
+			                    && 'agg agg_revenue_call_report_revenue'[released] = "no",
+			                    "std-Closed", "Open"
+			                    )
+			                )
+			```
+		lineageTag: 10f810b7-6449-4531-b0d6-4677a3137634
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: a46e4abb-69ab-43f2-a18d-11fe33b92409
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Taken By'
+		dataType: string
+		lineageTag: 96013d46-09a7-4489-aadf-79bd0b32e7cc
+		summarizeBy: none
+		sourceColumn: Call Taken By
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_status
+		dataType: string
+		lineageTag: bad9b775-e5e6-43de-9623-58638815e387
+		summarizeBy: none
+		sourceColumn: payment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: c799badc-375d-4633-b0fe-732f17b181b0
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_cancelled
+		dataType: string
+		lineageTag: 7a36ead3-cd11-4bc5-b78c-c19f5e0563ae
+		summarizeBy: none
+		sourceColumn: is_cancelled
+
+		annotation SummarizationSetBy = Automatic
+
+	column callstatus
+		dataType: string
+		lineageTag: 55639f04-3320-4101-818d-ac2e6f20ed21
+		summarizeBy: none
+		sourceColumn: callstatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column rateItem_id_sk
+		dataType: string
+		lineageTag: 9528705e-8b6f-4fba-b463-4b457b8b3ba9
+		summarizeBy: none
+		sourceColumn: rateItem_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_id_sk_call_id_sk = 'agg agg_revenue_call_report_revenue'[rateItem_id_sk]&"-"&'agg agg_revenue_call_report_revenue'[call_id_sk]
+		lineageTag: 6cb71ade-fd06-4fbe-890d-1bfcd958a92a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column towing_services_sub_total
+		dataType: double
+		lineageTag: c6c7a6c7-e40e-4d80-9072-f3104a4f282c
+		summarizeBy: sum
+		sourceColumn: towing_services_sub_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column storage_fees_sub_total
+		dataType: double
+		lineageTag: 60d97809-69ea-4330-b8ba-aa00eff67d83
+		summarizeBy: sum
+		sourceColumn: storage_fees_sub_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column transection_type
+		dataType: string
+		lineageTag: 865f241c-9d08-4a78-a411-97b584636fef
+		summarizeBy: none
+		sourceColumn: transection_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Membership_type
+		dataType: string
+		lineageTag: b856db0d-46a4-45c4-ae72-e13bcb2a4037
+		summarizeBy: none
+		sourceColumn: Membership_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'agg agg_revenue_call_report_revenue' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_revenue_call_report_revenue = Source{[Schema="agg",Item="agg_revenue_call_report_revenue"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(agg_agg_revenue_call_report_revenue,{{"revenue", "Revenue"}, {"VehicleType", "Vehicle Type"}, {"reporting_date", "Reporting Date"}, {"TruckType", "Truck Type"}, {"AccountType", "Account Type"}, {"EmployeeType", "Employee Type"}, {"is_error", "Is Exception Data"}, {"dutytype", "Duty Type"}, {"tow_completed_date", "Tow Completed Date"}, {"audit_date", "Audit Date"}, {"is_audited", "Audit Status"}, {"lock_date", "Lock Date"}, {"is_locked", "Lock Status"}, {"reason", "Reason"}, {"CallTakenBy", "Call Taken By"}, {"account_created_date", "Account Created Date"}, {"dispatcher", "Dispatcher"}, {"truck", "Truck"}, {"truck_vin", "Truck Vin"}, {"released_date", "Released Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

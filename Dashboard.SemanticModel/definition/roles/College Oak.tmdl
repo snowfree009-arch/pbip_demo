@@ -1,0 +1,7 @@
+role 'College Oak'
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"COLLEGE OAK ROAD SOLUTIONS LLC"}
+
+	annotation PBI_Id = d7252c46387e49b79f88bd7dda7c1936
+

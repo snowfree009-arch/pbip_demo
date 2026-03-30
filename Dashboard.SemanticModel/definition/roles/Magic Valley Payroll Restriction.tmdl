@@ -1,0 +1,9 @@
+role 'Magic Valley Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"MAGIC VALLEY TOWING"}
+
+	annotation PBI_Id = 4f0c3d8e57bc4b8987d70e77f20789a0
+

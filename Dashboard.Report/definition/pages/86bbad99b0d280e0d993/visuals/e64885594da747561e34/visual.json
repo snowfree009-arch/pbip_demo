@@ -1,0 +1,602 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "e64885594da747561e34",
+  "position": {
+    "x": 10.350404312668463,
+    "y": 234.60916442048517,
+    "z": 500,
+    "height": 475,
+    "width": 1260,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "CallNumber"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.CallNumber",
+              "nativeQueryRef": "CallNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "Company"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.Company",
+              "nativeQueryRef": "Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "tow_completed_date"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.tow_completed_date",
+              "nativeQueryRef": "Tow Completed Date",
+              "displayName": "Tow Completed Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "reporting_date"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.reporting_date",
+              "nativeQueryRef": "Reporting Date",
+              "displayName": "Reporting Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "call_id_sk"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.call_id_sk",
+              "nativeQueryRef": "Call Id Surrogate Key",
+              "displayName": "Call Id Surrogate Key"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "rateItem"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.rateItem",
+              "nativeQueryRef": "rateItem",
+              "displayName": "Rate Item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "rateItemID"
+                }
+              },
+              "queryRef": "CountNonNull(agg agg_revenue_file.rateItemID)",
+              "nativeQueryRef": "rateItemID1",
+              "displayName": "Rate Item Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "rateItemPrice"
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_file.rateItemPrice)",
+              "nativeQueryRef": "rateItemPrice",
+              "displayName": "Rate Item Price"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "rateItemQuantity"
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_file.rateItemQuantity)",
+              "nativeQueryRef": "rateItemQuantity",
+              "displayName": "Rate Item Quantity"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_file"
+                        }
+                      },
+                      "Property": "total"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_file.total)",
+              "nativeQueryRef": "Total",
+              "displayName": "Total"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "is_locked"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.is_locked",
+              "nativeQueryRef": "Lock Status",
+              "displayName": "Lock Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "is_audited"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.is_audited",
+              "nativeQueryRef": "Audit Status",
+              "displayName": "Audit Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "is_impounded"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.is_impounded",
+              "nativeQueryRef": "Impound Status",
+              "displayName": "Impound Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "released"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.released",
+              "nativeQueryRef": "Release Status",
+              "displayName": "Release Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "Account"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.Account",
+              "nativeQueryRef": "Account"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "is_intercompany"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.is_intercompany",
+              "nativeQueryRef": "Is Inter-Company",
+              "displayName": "Is Inter-Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "dispatch_location"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.dispatch_location",
+              "nativeQueryRef": "Dispatch Location",
+              "displayName": "Dispatch Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "driver_location"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.driver_location",
+              "nativeQueryRef": "Driver Location",
+              "displayName": "Driver Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "Location"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.Location",
+              "nativeQueryRef": "Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "payment_status"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.payment_status",
+              "nativeQueryRef": "Payment Status",
+              "displayName": "Payment Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "GLAccount"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.GLAccount",
+              "nativeQueryRef": "GLAccount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "AccountNumber"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.AccountNumber",
+              "nativeQueryRef": "AccountNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "lock_date"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.lock_date",
+              "nativeQueryRef": "Lock Date",
+              "displayName": "Lock Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "audit_date"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.audit_date",
+              "nativeQueryRef": "Audit Date",
+              "displayName": "Audit Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "dutytype"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.dutytype",
+              "nativeQueryRef": "Duty Type",
+              "displayName": "Duty Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_file"
+                    }
+                  },
+                  "Property": "transaction_type"
+                }
+              },
+              "queryRef": "agg agg_revenue_file.transaction_type",
+              "nativeQueryRef": "Transaction Type",
+              "displayName": "Transaction Type"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_file"
+                  }
+                },
+                "Property": "CallNumber"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.rateItem"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.CallNumber"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.Company"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.tow_completed_date"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.reporting_date"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.call_id_sk"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "CountNonNull(agg agg_revenue_file.rateItemID)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Sum(agg agg_revenue_file.rateItemPrice)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Sum(agg agg_revenue_file.rateItemQuantity)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Sum(agg agg_revenue_file.total)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.is_locked"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.is_audited"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.is_impounded"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.released"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.Account"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.payment_status"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.GLAccount"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.AccountNumber"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.lock_date"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.audit_date"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.dutytype"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "agg agg_revenue_file.transaction_type"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "agg agg_revenue_file.CallNumber"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

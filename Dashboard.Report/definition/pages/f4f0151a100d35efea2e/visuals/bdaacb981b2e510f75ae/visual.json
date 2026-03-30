@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "bdaacb981b2e510f75ae",
+  "position": {
+    "x": 10,
+    "y": 442,
+    "z": 12062,
+    "height": 352,
+    "width": 700
+  },
+  "visualGroup": {
+    "displayName": "Outstanding and Variance",
+    "groupMode": "ScaleMode"
+  }
+}

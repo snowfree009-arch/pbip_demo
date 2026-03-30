@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "6717d3f7a55ad243a951",
+  "displayName": "Revenue Per Tow ($)",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter14bc84b4a57a1171c678",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "dxm_RevenuePerCall"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "a627b3bb67051a420225",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "opco revenue per call"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "f31c8584eeb75e735683",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filter14bc84b4a57a1171c678",
+        "boundFilter": "Filter14bc84b4a57a1171c678",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "dxm_RevenuePerCall"
+          }
+        }
+      },
+      {
+        "name": "6ca6773e89e2c06d00d0",
+        "boundFilter": "a627b3bb67051a420225",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "opco revenue per call"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "ac6e53e0020e9e9e8503",
+      "target": "bcc0a3c821e62eb2728a",
+      "type": "DataFilter"
+    }
+  ]
+}

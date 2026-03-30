@@ -1,0 +1,42 @@
+table 'Company to Source Application'
+	lineageTag: dcd87e00-f862-4872-bdc9-e1f05c0a400b
+
+	column 'Parent Company'
+		lineageTag: 91cf1ae4-0f4b-4a6f-bd7b-65fe99bb6f4f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Parent Company]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Company'
+		lineageTag: 0d824407-1138-4b6a-acc1-55e57b51babc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [sub Company]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Application'
+		lineageTag: e414eaa5-e185-441d-92d0-337dcb79628a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Source Application]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Company to Source Application' = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				    SELECTCOLUMNS(
+				        agg_revenue_call_report,
+				        "Parent Company",  agg_revenue_call_report[OpCo-Company],
+				        "Sub Company",  agg_revenue_call_report[Sub-Company],
+				        "Source Application", agg_revenue_call_report[source_application]
+				    )
+				)
+
+	annotation PBI_Id = f38e2a062b694c8190f767a05db01e2a
+

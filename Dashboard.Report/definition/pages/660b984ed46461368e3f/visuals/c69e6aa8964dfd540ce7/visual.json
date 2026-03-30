@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c69e6aa8964dfd540ce7",
+  "position": {
+    "x": 648.92987924868783,
+    "y": 0.12004801920768671,
+    "z": 4000,
+    "height": 60,
+    "width": 125.15024038461539,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Revenue by Day Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "3dc7c6002de6dd080deb"
+}

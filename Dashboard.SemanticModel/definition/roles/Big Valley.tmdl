@@ -1,0 +1,7 @@
+role 'Big Valley'
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"BIG VALLEY TOWING"}
+
+	annotation PBI_Id = 7db9ab41c8bb4920a169df9ecfd205a8
+

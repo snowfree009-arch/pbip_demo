@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "9e29a487e6b914429e0b",
+  "position": {
+    "x": 656.0922855082913,
+    "y": 1508.0749819754867,
+    "z": 2000,
+    "height": 299.92790194664747,
+    "width": 643.90771449170882,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Variance by Company Graph",
+    "groupMode": "ScaleMode"
+  }
+}

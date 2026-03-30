@@ -1,0 +1,2204 @@
+table agg_revenue_call_report
+	lineageTag: 95bc2312-e68e-469d-ab5a-5ab313f1a996
+
+	measure CompletionRate =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[IsClosed]),
+			    COUNT(agg_revenue_call_report[CallNumber])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a40f42e0-efb7-4d80-8eb8-5cd14a88c7e7
+
+	measure dxm_RevenuePerCall =
+			
+			DIVIDE(
+			        sum(agg_revenue_call_report[dax_column_Revenue]),
+			        count(agg_revenue_call_report[call_id_sk]),
+			        0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 16a25297-5d89-4e25-b168-ce5306c9e1a8
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure dxm_RevenuePerDay =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[Total Generated Revenue]),
+			    DISTINCTCOUNT(agg_revenue_call_report[Tow Completion Date]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: db257cfe-469b-4b9d-becf-03324cf4950a
+
+	measure PaymentPerInvoice =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[Payment Deposit]),
+			    count(agg_revenue_call_report[CallNumber]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7f34530e-ccde-4180-8ec8-a97d01673c5b
+
+	measure ImpoundRate =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[Impound_count]),
+			    count(agg_revenue_call_report[CallNumber]),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 517226f3-eff9-4c87-8d21-6f07eac18052
+
+	measure ImpoundTurnaroundTime = ```
+			
+			VAR TotalImpoundCount = SUM(agg_revenue_call_report[Impound_count])
+			VAR TotalImpoundDuration = SUM(agg_revenue_call_report[Impound_duration_min])
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: 142996b6-06a1-4d20-9b85-4842a3634c09
+
+		formatStringDefinition = ""
+
+	measure dxm_RevenuePerDollarReceived =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[Payment Deposit]),
+			    sum(agg_revenue_call_report[Total Generated Revenue]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b5aa79d4-6466-4883-8f41-6a23e3c871d9
+
+	measure PaymentByRevenuePercentage =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[Payment Deposit]),
+			    sum(agg_revenue_call_report[dax_column_Revenue])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b803d8b8-fa98-47c5-bb34-f82429c584fb
+
+	measure LaborRatio = "NA"
+		lineageTag: ec2e64d2-d01d-468e-973c-91c1c21c035c
+
+	measure dxm_AverageCallsPerDay = ```
+			
+			DIVIDE(
+			    COUNT(agg_revenue_call_report[CallNumber]),
+			    DISTINCTCOUNT(agg_revenue_call_report[Tow Completion Date]),
+			    0
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 68b331b2-2461-40f4-8675-bccfde72ad3d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure LockDateFilters =
+			
+			"Lock Date: " & IF(
+			    ISFILTERED(agg_revenue_call_report[Lock Date]),
+			    CONCATENATE(min(agg_revenue_call_report[Lock Date]), "-"&max(agg_revenue_call_report[Lock Date])),
+			    "Not Applied"
+			)
+		lineageTag: a400655a-937f-4a1d-b994-5c1846736d7d
+
+	measure CompletionDateFilters =
+			
+			"Completion Date: " & IF(
+			    ISFILTERED(agg_revenue_call_report[Tow Completion Date]),
+			    CONCATENATE(min(agg_revenue_call_report[Tow Completion Date]), "-"&max(agg_revenue_call_report[Tow Completion Date])),
+			    "Not Applied"
+			)
+		lineageTag: 5e5ee976-563f-4da1-8d66-1fc43b9a712a
+
+	measure ReleaseDateFilters =
+			
+			"Release Date: " & IF(
+			    ISFILTERED(agg_revenue_call_report[Released Date]),
+			    CONCATENATE(format(min(agg_revenue_call_report[Released Date]),"mm/dd/yyyy"), "-"& format(max(agg_revenue_call_report[Released Date]),"mm/dd/yyyy")),
+			    "Not Applied"
+			)
+		lineageTag: b9a04753-ca70-4c94-a2ab-854585428ad5
+
+	measure FHC_ITAT = IF(SELECTEDVALUE(agg_revenue_call_report[is_impounded]) in {"No"} || SELECTEDVALUE(agg_revenue_call_report[released]) in {"No"}, 1, 0)
+		formatString: 0
+		lineageTag: 7201a771-cd67-487a-91b8-f002e3a0ca8d
+
+	measure FHC_DynamicTitle_ITAT = IF([FHC_ITAT] = 1, " ", "Impound Turnaround Time")
+		lineageTag: 2c586630-1dc7-4675-a3df-0ca6cc8b4ad4
+
+	measure FHC_BGC_ITAT = IF([FHC_ITAT] = 1, "#FFFFFF00", "#005FF2")
+		lineageTag: a4113bcf-3851-4be4-b067-5e8ddf9b5686
+
+	measure FHC_DynamicTitle_OTVBC = IF([FHC_Outstanding_Amount] = 1, "", "Outstanding Trend View by Company")
+		lineageTag: fd320ddb-bc05-4f76-ad00-bc550b3575ec
+
+	measure dxm_TotalAmountOutStanding = IF([FHC_Outstanding_Amount] = 1, 0, sum(agg_revenue_call_report[Pending Payments]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 6897d19d-2e9e-4fe3-a8eb-dbdce3177c85
+
+	measure FHC_Outstanding_Amount = ```
+			
+			IF
+			(
+			    ISFILTERED(agg_revenue_call_report[released]) && 
+			    ISFILTERED(agg_revenue_call_report[is_impounded]) &&
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) in {"Yes"} && 
+			    SELECTEDVALUE(agg_revenue_call_report[released]) in {"No"},
+			    1,
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 067fa907-9c20-423b-8b0d-d8eee413a598
+
+	measure FHC_BGC_OTVBC_TXT = IF(sum(agg_revenue_call_report[Pending Payments]) = 0, "#FFFFFF00", "#252423")
+		lineageTag: d7505f82-c658-45ed-baed-1409c4415126
+
+	measure FHC_DynamicTitle_TPPBC = IF([FHC_Outstanding_Amount] = 1, "", "Total Payment Pending by Company")
+		lineageTag: e3365979-109a-4947-b30f-84ffbd94592e
+
+	measure FHC_BGC_TPPBC = IF([FHC_Outstanding_Amount] = 1, "#FFFFFF00", "#FFFFFF")
+		lineageTag: cf00f0f1-0485-44f9-b6b7-986623e25c4a
+
+	measure FHC_DynamicTitle_PPDT = IF([FHC_Outstanding_Amount] = 1, "", "Payment Pending Drill-Through")
+		lineageTag: c8e74aad-1617-4616-858a-91ea29bad812
+
+	measure OutstandingRatio =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[Pending Payments]),
+			    sum(agg_revenue_call_report[Total Generated Revenue]),
+			    0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b5e81765-3c46-4f06-b2e8-068db731351b
+
+	measure FHC_BGC_OTVBC = IF(sum(agg_revenue_call_report[Pending Payments]) = 0, "#FFFFFF00", "#FFFFFF")
+		lineageTag: 69b88da5-1d8e-4aae-a04d-8c476a620367
+
+	measure FHC_DynamicTitle_NDA = IF([FHC_Outstanding_Amount] = 1, "No Data Available", "")
+		lineageTag: 5ad35c46-2a40-46b2-998e-d06526dc23db
+
+	measure FHC_ReleaseStatus = if(SELECTEDVALUE(agg_revenue_call_report[is_impounded]) in {"No"},1,0)
+		formatString: 0
+		lineageTag: 24f1cfc1-b95d-46a3-b12f-b32452a14bb0
+
+	measure Deposits = SUM(agg_revenue_call_report[Payment Deposit])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 79afe5d5-ed40-498f-b190-4263a06edce0
+
+	measure dx_Revenue_Per_Mile =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[dax_column_Revenue]),
+			    sum(agg_revenue_call_report[Total Miles]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4fa60d83-9dce-4ff7-a18b-c4ff63449177
+
+	measure dxm_ImpountTrunaroundMinutes =
+			
+			VAR TotalImpoundCount = SUM(agg_revenue_call_report[Impound_count])
+			VAR TotalImpoundDuration = SUM(agg_revenue_call_report[Impound_duration_min])
+			RETURN
+			IF(
+			    (TotalImpoundCount < 0),
+			    0,
+			    (DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)/60)
+			)
+		lineageTag: c8220c9b-6208-476c-bbd2-2d331db1678b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure dxm_DispatchToOnsceneArrival =
+			
+			VAR Counts = COUNT(agg_revenue_call_report[call_id_sk])
+			VAR Duration = SUM(agg_revenue_call_report[Disp_to_on_scene])
+			RETURN
+			IF(
+			    (Counts <= 0),
+			    0,
+			    (DIVIDE(Duration, Counts, 0))
+			)
+		lineageTag: ce1d1fe6-4c45-4e3c-96b9-e119b26097d6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RevenuePerCall =
+			
+			DIVIDE(
+			        sum(agg_revenue_call_report[dax_column_Revenue]),
+			        count(agg_revenue_call_report[call_id_sk]),
+			        0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7d5e3259-95c7-4eeb-a0f9-16c1100718ad
+
+	measure TotalAmountOutStanding = IF([FHC_Outstanding_Amount] = 1, "", sum(agg_revenue_call_report[Pending Payments]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 8318c2d0-1049-492f-abac-f33300d570e8
+
+	measure AverageCallsPerDay =
+			
+			DIVIDE(
+			    COUNT(agg_revenue_call_report[CallNumber]),
+			    DISTINCTCOUNT(agg_revenue_call_report[Tow Completion Date]),
+			    0
+			)
+		formatString: 0.00
+		lineageTag: a1c1813b-4d84-4971-95cf-737ee86d05fc
+
+	measure RevenuePerDollarReceived =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[Payment Deposit]),
+			    sum(agg_revenue_call_report[dax_column_Revenue]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 83f9cb94-1c2d-4a27-b09b-110da3e9b384
+
+	measure RevenuePerDay =
+			
+			DIVIDE(
+			    sum(agg_revenue_call_report[dax_column_Revenue]),
+			    DISTINCTCOUNT(agg_revenue_call_report[Tow Completion Date]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c4f9e69b-af5e-40f1-8330-a93d5224a9a3
+
+	measure FHC_DynamicTitle_TOA = IF([FHC_Outstanding_Amount] = 1, " ", "Total Amount Outstanding")
+		lineageTag: fa71f1f4-843d-4a7a-a70d-5d1d168d886e
+
+	measure CR_Calls_by_VT = COUNT('agg_revenue_call_report'[CallNumber])
+		formatString: 0
+		lineageTag: 0f8b1015-6e72-4a2d-ae1e-807a4c0ce9e1
+
+	measure CR_Revenu_by_VT = SUM(agg_revenue_call_report[Total Generated Revenue])
+		lineageTag: 85bf0b7c-d568-4b54-b9e0-236a58d42c53
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure dxm_TotalRevenue = SUM(agg_revenue_call_report[dax_column_Revenue])
+		lineageTag: c92bde35-19c1-421d-8d07-91c39344d294
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure dxm_Rank_RevenueRank =
+			
+			IF([dxm_TotalRevenue] > 0,
+			RANKX(
+			    ALLSELECTED(agg_revenue_call_report[Account]),
+			    CALCULATE([dxm_TotalRevenue]),,
+			    DESC,
+			    Skip
+			))
+		formatString: 0
+		lineageTag: 0deb0e07-12af-424c-91fa-7e4b5dc0b88a
+
+	measure call_type_Name =
+			
+			VAR SelectedValues = VALUES(agg_revenue_call_report[Call Type])
+			VAR SelectedCount = COUNTROWS(SelectedValues)
+			VAR TotalCount = COUNTROWS(ALL(agg_revenue_call_report[Call Type]))
+			RETURN CONCATENATE("Call Type: ",
+			    IF(
+			        SelectedCount = 0 || SelectedCount = TotalCount,
+			        "Standard Calls, Impound Calls",
+			        IF(
+			            SelectedCount = 1,
+			            CONCATENATEX(SelectedValues, agg_revenue_call_report[Call Type], ", "),
+			            CONCATENATEX(SelectedValues, agg_revenue_call_report[Call Type], ", ")
+			        )
+			    )
+			)
+		lineageTag: e2c2dc7d-ffbf-4f93-b71b-6c41340cdbc5
+
+	measure ED_Revenue_Status
+		lineageTag: 5ce9b7f1-51b1-4366-974c-dfc378adc5e0
+
+	measure Revenue_by_Call_Type =
+			
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[Call Type]) = "Standard Calls",
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Total Generated Revenue]),
+			        agg_revenue_call_report[is_impounded] = "no",
+			        agg_revenue_call_report[is_audited] = "yes",
+			        agg_revenue_call_report[is_locked] = "yes"
+			    ),
+			    IF(
+			        SELECTEDVALUE(agg_revenue_call_report[Call Type]) = "Impounds",
+			        CALCULATE(
+			            SUM(agg_revenue_call_report[Payment Deposit]),
+			            agg_revenue_call_report[is_impounded] = "yes"
+			        )
+			        ,0
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: ab9de443-2a7f-4719-86d1-13f5ed430739
+
+	measure ImpoundRateOverAll =
+			
+			DIVIDE(
+			    [Impound_Count_OnlyDateFilter],
+			    agg_revenue_call_report[Total_Tow_Count_OnlyDateFilter],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f92f0eff-4b83-493e-9ac7-f86df4d991c6
+
+	measure Impound_Count_OnlyDateFilter =
+			CALCULATE(
+			    SUM(agg_revenue_call_report[Impound_count]),
+			    ALL(agg_revenue_call_report),
+			    KEEPFILTERS(VALUES('agg_revenue_call_report'[Tow Completion Date])),
+			    KEEPFILTERS(VALUES('agg_revenue_call_report'[Sub-Company])),
+			    KEEPFILTERS(VALUES('agg_revenue_call_report'[Location])),
+			    KEEPFILTERS(VALUES('agg_revenue_call_report'[Truck Type])),
+			    KEEPFILTERS(VALUES('agg_revenue_call_report'[Vehicle Type]))
+			)
+		formatString: 0
+		lineageTag: 2ade0037-e7a6-44cd-bb9d-d51e6c874b83
+
+	measure Total_Tow_Count_OnlyDateFilter =
+			CALCULATE(
+			    count(agg_revenue_call_report[call_id_sk]),
+			    ALL(agg_revenue_call_report),
+			    KEEPFILTERS(VALUES('agg_revenue_call_report'[Tow Completion Date])),
+			    KEEPFILTERS(VALUES('agg_revenue_call_report'[Sub-Company]))
+			)
+		formatString: 0
+		lineageTag: 6c122bc4-e650-4c1e-bd28-7f6d80e5601a
+
+	measure 'Selected Company' =
+			
+			CALCULATE(
+			            SELECTEDVALUE(agg_revenue_call_report[Sub-Company]),
+			            ALL('agg_revenue_call_report'),
+			            KEEPFILTERS(VALUES(agg_revenue_call_report[Sub-Company])
+			        ))
+		lineageTag: 3d285076-58bf-4e41-9aed-21c3d9dae01b
+
+	measure OpCo_CustomerRank = ```
+			
+			RANKX(
+			    ALLSELECTED(agg_revenue_call_report[Account]),
+			    CALCULATE(SUM(agg_revenue_call_report[Total Generated Revenue])),
+			    ,
+			    DESC,
+			    Dense
+			)
+			
+			```
+		formatString: 0
+		lineageTag: b2f36652-7834-4829-974d-350be20abeb5
+
+	measure RevenueDifference = [dxm_TotalRevenue] - SUM(agg_revenue_call_report[PreviousYearRevenue])
+		lineageTag: 4fc25fce-7f4d-450e-88c7-0425e8e12615
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RevenuePercentageChange =
+			
+			DIVIDE([RevenueDifference], SUM(agg_revenue_call_report[PreviousYearRevenue]), 0)
+		lineageTag: ad3de509-c04f-4d3b-9cea-cd85c004cc4b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Tows' = ```
+			
+			CALCULATE(
+			    COUNT('agg_revenue_call_report'[call_id_sk]),
+			    ALL('agg_revenue_call_report'),
+			    KEEPFILTERS('agg_revenue_call_report'[Tow Completion Date]),
+			    KEEPFILTERS('agg_revenue_call_report'[Sub-Company])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 29397cef-21d5-47fc-ac96-9bf4ec1b2730
+
+	measure PaymentPerTow =
+			
+			DIVIDE(
+			    sum('agg_revenue_call_report'[Payment Deposit]),
+			    count('agg_revenue_call_report'[call_id_sk]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4321f1d5-9339-456e-8754-77401ab479e8
+
+	measure dxm_total_revenue =
+			IF(SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "yes"
+			,sum(agg_revenue_call_report[Payment Deposit])
+			,sum(agg_revenue_call_report[Total Generated Revenue]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: e0369eb9-a6cd-4795-8cc8-0aa1c81d211c
+
+	measure 'opco current month outstanding' =
+			
+			CALCULATE(
+			    SUM(agg_revenue_call_report[Outstanding AR]),
+			    agg_revenue_call_report[Reporting Date] <= TODAY()
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: e2655946-e7a1-453f-9ac3-2a131921882d
+
+	measure 'opco last month outstanding' = ```
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] < DATE(YEAR(TODAY()), MONTH(TODAY()), 1)
+			    )
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 161e9c65-0a32-4347-8e4e-ab0ffea1294f
+
+	measure 'opco previous year current month outstanding' = ```
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] <= EOMONTH(DATE(YEAR(TODAY()) - 1, MONTH(TODAY()), 1), 0)
+			    )
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 482c5914-5433-4801-8991-c6d2876f45e4
+
+	measure 'opco current week outstanding' =
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] <= TODAY()
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: aa086e16-6e36-4a72-8d96-f541d46ac1df
+
+	measure 'opco last week outstanding' =
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] <= TODAY()-7
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 06c0d298-928c-4938-b80a-ad952870160a
+
+	measure 'OpCo Previous Year Current Week Outstanding' = ```
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			        'agg_revenue_call_report'[Reporting Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			        YEAR('agg_revenue_call_report'[Reporting Date]) = YEAR(TODAY()) - 1
+			    )
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: ac1c2fea-53a9-4364-be06-d77534b008c9
+
+	measure 'opco yesterday outstanding' =
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] <= TODAY()-1
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 12455318-543b-4320-8012-d956f3e0605b
+
+	measure 'opco day before yesterday outstanding' =
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] <= TODAY()-2
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 52e3b6f9-b387-414f-97f8-0c64d14f1da5
+
+	measure 'opco previous year yesterday outstanding' =
+			
+			CALCULATE(
+			    SUM('agg_revenue_call_report'[Outstanding AR]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Reporting Date] <= EDATE(TODAY()-1,-12)
+			    )
+			)
+		lineageTag: 66ab5a06-1e80-49cd-8ea5-797355d257ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'opco current month variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 8b0e4178-5c56-461f-aed1-0e5707bc284e
+
+	measure 'opco last month variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    MONTH('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY()) - 1) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: f3571730-a33b-48ca-9f1e-f00c0d54c7f8
+
+	measure 'opco previous year current month variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 125f7970-e42a-4584-9a11-2a520668cc7d
+
+	measure 'opco current week variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 6bbf1005-d2af-4337-ba62-82df87b474a7
+
+	measure 'opco last week variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()-7)
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: e61da55b-9b29-40a8-b48a-b75cb86e2d52
+
+	measure 'OpCo Previous Year Current Week Variance' = ```
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Tow Completion Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			        'agg_revenue_call_report'[Tow Completion Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			        YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			    )
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c7bd0fa6-fcca-48df-8b74-82175a4f4a81
+
+	measure 'opco yesterday variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        (SUM('agg_revenue_call_report'[Total Generated Revenue]) - SUM('agg_revenue_call_report'[Payment Deposit]))
+			    ),
+			    'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 1
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: ff19ffcf-f1fa-4c9d-80ea-91b281a1df08
+
+	measure 'opco day before yesterday variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 2
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a8c3501c-f105-4987-8915-79edcee3376b
+
+	measure 'opco previous year yesterday variance' =
+			
+			CALCULATE(
+			    IF(
+			        SELECTEDVALUE('agg_revenue_call_report'[is_impounded]) = "no",
+			        0,
+			        SUM('agg_revenue_call_report'[Total Generated Revenue]) -
+			        SUM('agg_revenue_call_report'[Payment Deposit])
+			    ),
+			    'agg_revenue_call_report'[Tow Completion Date] = EDATE(TODAY()- 1, -12)
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d0079de4-a132-44b7-8c9a-0c1f9e9d8a70
+
+	measure 'opco current month tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 6540cc44-8c22-4de3-9e97-df76c4f8c4bb
+
+	measure 'opco last month tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    MONTH('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY()) - 1) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 79b4a49d-89d7-4379-aacb-aaf6436ce60c
+
+	measure 'opco previous year current month tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 3a26d50e-8160-4084-9e9e-0893a0215821
+
+	measure 'opco current week tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 073f520e-1b60-4121-9e92-db1b6d27f574
+
+	measure 'opco last week tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()-7)
+			)
+			
+			```
+		formatString: 0
+		lineageTag: c70f436b-0fa5-4ac1-85d5-ec76fdb072e6
+
+	measure 'OpCo Previous Year Current Week Tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    FILTER(
+			        'agg_revenue_call_report',
+			        'agg_revenue_call_report'[Tow Completion Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			        'agg_revenue_call_report'[Tow Completion Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			        YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e29df788-4878-40bd-9563-0a478a4fe69c
+
+	measure 'opco yesterday tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 1
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 55817f96-9df5-468e-bc27-4c515feb9997
+
+	measure 'opco day before yesterday tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 2
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 17e80e65-13d4-45f7-a8d5-2db02971b54e
+
+	measure 'opco previous year yesterday tows' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    'agg_revenue_call_report'[Tow Completion Date] = EDATE(TODAY()-1,-12)
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 694106a9-ad83-46e5-8884-0d4d1fc4d9fc
+
+	measure 'opco current month tows per day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]), 
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			            ),
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[Tow Completion Date]), 
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			        ),
+			    0
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: 401beca7-046d-433a-b664-5e67be84e454
+
+	measure 'opco last month tows per day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]), 
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY()) - 1) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			            ),
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[Tow Completion Date]), 
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY()) - 1) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			        ),
+			    0
+			)
+			
+			```
+		formatString: #,0.00
+		lineageTag: a4880124-3c07-437a-9c9d-f175412a4994
+
+	measure 'opco previous year current month tows per day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]), 
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			            ),
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[Tow Completion Date]), 
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			        ),
+			    0
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: 348c2f5b-88a1-4dda-98ff-756dc0f3df85
+
+	measure 'opco current week tows per day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]), 
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			            ),
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[Tow Completion Date]), 
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			        ),
+			    0
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: 2a818155-2c38-4324-8f7c-2e02aba1fe91
+
+	measure 'opco last week tows per day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]), 
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()-7)
+			            ),
+			    CALCULATE(
+			            DISTINCTCOUNT('agg_revenue_call_report'[Tow Completion Date]), 
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()-7)
+			        ),
+			    0
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: 28ddde10-d762-4b0f-8c92-37112c26d090
+
+	measure 'OpCo Previous Year Current Week Tows Per Day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			        FILTER(
+			            'agg_revenue_call_report',
+			            'agg_revenue_call_report'[Tow Completion Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			            'agg_revenue_call_report'[Tow Completion Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg_revenue_call_report'[Tow Completion Date]),
+			        FILTER(
+			            'agg_revenue_call_report',
+			            'agg_revenue_call_report'[Tow Completion Date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			            'agg_revenue_call_report'[Tow Completion Date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: b45516e2-1c73-47e7-8193-f1d81880237a
+
+	measure 'opco yesterday tows per day' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 1
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: 0075801c-5f80-4896-8331-e0120c7e9f37
+
+	measure 'opco day before yesterday tows per day' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]),
+			    'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 2
+			)
+			
+			```
+		formatString: 0.00
+		lineageTag: 64748349-26af-46a5-8a4e-0564c40932c0
+
+	measure 'opco previous year yesterday tows per day' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT('agg_revenue_call_report'[call_id_sk]), 
+			        'agg_revenue_call_report'[Tow Completion Date] = EDATE(TODAY()-1,-12)
+			        ),
+			    CALCULATE(
+			        DISTINCTCOUNT('agg_revenue_call_report'[Tow Completion Date]),
+			        'agg_revenue_call_report'[Tow Completion Date] = EDATE(TODAY()-1,-12)
+			        ),
+			    0
+			)
+			
+			```
+		lineageTag: c3aad0b6-c11b-44ce-b551-ee4b8d7a4549
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'opco current month avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            MONTH(agg_revenue_call_report[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR(agg_revenue_call_report[Tow Completion Date]) = YEAR(TODAY())
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            MONTH(agg_revenue_call_report[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR(agg_revenue_call_report[Tow Completion Date]) = YEAR(TODAY())
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: 10f83cb7-7a08-4673-9fc8-8f38a14a3765
+
+	measure 'opco last month avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY()) - 1) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY()) - 1) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY()) - 1, YEAR(TODAY()))
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: cc2ca3cd-33ea-4c7a-bd41-862aa8a28986
+
+	measure 'opco previous year month avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            MONTH('agg_revenue_call_report'[Tow Completion Date]) = MONTH(TODAY()) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: ce917344-d02c-4a40-8dc0-5fb2579de36c
+
+	measure 'opco current week avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY())
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: a806ff05-ecd5-4dff-8bcb-df8002b564b4
+
+	measure 'opco last week avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()-7)
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY()-7, 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()-7)
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: 843db187-2287-4356-aafd-06d41b9d0771
+
+	measure 'opco previous year current week avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            WEEKNUM('agg_revenue_call_report'[Tow Completion Date], 2) = WEEKNUM(TODAY(), 2) &&
+			            YEAR('agg_revenue_call_report'[Tow Completion Date]) = YEAR(TODAY()) - 1
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: fa90cb41-1296-4930-b817-71d768ffb0df
+
+	measure 'opco yesterday avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 1
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 1
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: 490b959b-d337-4470-bfd3-f979daf9aa8f
+
+	measure 'opco day before yesterday avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 2
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            'agg_revenue_call_report'[Tow Completion Date] = TODAY() - 2
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: 38d77257-7923-4158-a266-b58c0f983ba6
+
+	measure 'opco previous year yesterday avg impound duration' = ```
+			
+			VAR TotalImpoundCount = 
+			CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_count]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            'agg_revenue_call_report'[Tow Completion Date] = EDATE(TODAY()-1,-12)
+			        )
+			    )
+			VAR TotalImpoundDuration = 
+			    CALCULATE(
+			        SUM(agg_revenue_call_report[Impound_duration_min]),
+			        FILTER(
+			            agg_revenue_call_report,
+			            'agg_revenue_call_report'[Tow Completion Date] = EDATE(TODAY()-1,-12)
+			        )
+			    )
+			VAR ImpoundTurnaroundTimeMin = 
+			    IF(
+			        TotalImpoundCount < 0,
+			        0,
+			        DIVIDE(TotalImpoundDuration, TotalImpoundCount, 0)
+			    )
+			VAR Days = INT(ImpoundTurnaroundTimeMin / 1440)  // 1440 minutes in a day
+			VAR RemainingMinutes = MOD(ImpoundTurnaroundTimeMin, 1440)
+			VAR Hours = INT(RemainingMinutes / 60)
+			VAR Minutes = MOD(RemainingMinutes, 60)
+			RETURN
+			IF(
+			    SELECTEDVALUE(agg_revenue_call_report[is_impounded]) = "no", "Not Available",
+			    FORMAT(Days, "00") & "d:" & FORMAT(Hours, "00") & "h:" & FORMAT(Minutes, "00") & "m"
+			)
+			```
+		lineageTag: 92c4f65c-4b53-4793-9abd-91705ef66b0c
+
+	measure 'Running Monthly Outstanding AR' = ```
+			
+			CALCULATE(SUM(agg_revenue_call_report[Outstanding AR]), 
+			    FILTER(
+			        ALL(DateDimension),
+			        DateDimension[Date] <= max(DateDimension[Date])
+			    )
+			)
+			```
+		lineageTag: 5ba19cb2-31d8-416d-84f5-3a79ba4cd16c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tow Completion Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 261181bf-a360-48c8-98da-182bb120417e
+		summarizeBy: none
+		sourceColumn: Tow Completion Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CallNumber
+		dataType: string
+		lineageTag: 0942e15e-36ca-4592-92cc-1a205ba4161f
+		summarizeBy: none
+		sourceColumn: CallNumber
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Company
+		dataType: string
+		lineageTag: 1308cb26-5045-4924-ace9-805e061fa71e
+		summarizeBy: none
+		sourceColumn: Sub-Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 8274ef6d-a4f6-4da7-989f-7f3c98bfbabc
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Type'
+		dataType: string
+		lineageTag: 4bcdb3bb-cb7b-4878-bf2f-0f6e26e597ae
+		summarizeBy: none
+		sourceColumn: Employee Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Type'
+		dataType: string
+		lineageTag: 1a54dc43-46e4-4af5-8889-43aa099ce144
+		summarizeBy: none
+		sourceColumn: Account Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vehicle Type'
+		dataType: string
+		lineageTag: 7f92a1e6-0ee1-4b7e-9673-d5422d4be65f
+		summarizeBy: none
+		sourceColumn: Vehicle Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Truck Type'
+		dataType: string
+		lineageTag: 402bdbe7-1c9e-4372-8a95-f1750f2828c4
+		summarizeBy: none
+		sourceColumn: Truck Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_count
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		lineageTag: 81bcc4c8-a763-4061-9727-a89c7db7e981
+		summarizeBy: sum
+		sourceColumn: Impound_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Service_calls_type
+		dataType: string
+		lineageTag: b1cef14e-e673-4abb-8eb0-d40e641c9aea
+		summarizeBy: none
+		sourceColumn: Service_calls_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Generated Revenue'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 1014e96d-0fa6-4ea8-ba66-d5e41b74da5b
+		summarizeBy: sum
+		sourceColumn: Total Generated Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_duration_min
+		dataType: int64
+		formatString: 0
+		lineageTag: bd364f3f-53da-46ee-b711-01b790500354
+		summarizeBy: sum
+		sourceColumn: Impound_duration_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsClosed = IF(agg_revenue_call_report[Service_calls_type] = "open", 0, 1)
+		dataType: double
+		formatString: 0
+		lineageTag: 057a1f74-cd7c-4151-9593-31c05894b756
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Driver
+		dataType: string
+		lineageTag: 4f197cfb-f089-4260-972f-5e5ad419f4a2
+		summarizeBy: none
+		sourceColumn: Driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pending Payments'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 66663f34-e6eb-4940-b909-0d872cda0030
+		summarizeBy: sum
+		sourceColumn: Pending Payments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Deposit'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4889d74a-b89d-40b1-bf44-b396b8fff7b2
+		summarizeBy: sum
+		sourceColumn: Payment Deposit
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_audited
+		dataType: string
+		lineageTag: 7200cffb-bb04-484d-b07c-5c14f8e1682d
+		summarizeBy: none
+		sourceColumn: is_audited
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_locked
+		dataType: string
+		lineageTag: c15c71de-9809-4c84-99d5-69f3cee7dac1
+		summarizeBy: none
+		sourceColumn: is_locked
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_impounded
+		dataType: string
+		lineageTag: 8581ebcb-8e10-4c75-9a4f-d73f71192734
+		summarizeBy: none
+		sourceColumn: is_impounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lock Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4d55be9d-3555-4419-9d71-c625e4738f66
+		summarizeBy: none
+		sourceColumn: Lock Date
+
+		variation Variation
+			isDefault
+			relationship: c1285130-712d-440f-aa4e-08516e35afde
+			defaultHierarchy: LocalDateTable_dba7f6d3-9608-4014-91cc-09fd74ed7d39.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Audit Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 867b6e7d-71f1-4a94-94ee-1bd947c497d5
+		summarizeBy: none
+		sourceColumn: Audit Date
+
+		variation Variation
+			isDefault
+			relationship: 1133ecef-fbc6-41a1-ae70-fff68e951e36
+			defaultHierarchy: LocalDateTable_566aa55c-544d-4868-9a52-b4978ee2ac74.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column released
+		dataType: string
+		lineageTag: 1553cd8c-6687-4e63-aa25-4b5a1d23d1a6
+		summarizeBy: none
+		sourceColumn: released
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Released Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f6b71a2f-fc03-4785-bd3d-b98e72c8058d
+		summarizeBy: none
+		sourceColumn: Released Date
+
+		variation Variation
+			isDefault
+			relationship: 09eb7178-4554-4f8e-8354-05c5a0a5a0a6
+			defaultHierarchy: LocalDateTable_15a211ec-c2b8-4758-aed9-4d71c49522a9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Total Miles'
+		dataType: double
+		lineageTag: 821bdd68-7b48-4fec-af10-9c174af2a3af
+		summarizeBy: sum
+		sourceColumn: Total Miles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column emp_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: b32d450a-02ea-4e3a-904e-c1a12236e3be
+		summarizeBy: sum
+		sourceColumn: emp_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Type' = if(agg_revenue_call_report[is_impounded] = "YES", "Impounds", if(agg_revenue_call_report[is_impounded] = "NO", "Standard Calls", "ALL"))
+		lineageTag: 8ade9aab-63cb-4ef1-a384-b18baf759674
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column M_Outstanding_Receivable = IF([FHC_Outstanding_Amount] = 1, 0, agg_revenue_call_report[Pending Payments])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 2a4bca6d-bce8-401b-a6c8-e74cf5006a9a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column dax_release_status =
+			
+			IF(
+			    agg_revenue_call_report[released] = "YES", "Released"
+			    , IF(
+			        agg_revenue_call_report[is_impounded] = "YES", "Not Release","Standard Call"))
+		lineageTag: 37271408-1cba-4032-9efa-81a1a56be738
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: 00b07297-08e5-41b1-bae5-3149d3b8d25b
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: ff29ac72-d509-47ff-887d-cfc84988c54b
+		summarizeBy: none
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: f9444fba-1972-437b-a965-61e6c8c996db
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: c71dc90e-72ca-412c-820d-0aef5902a58e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_no
+		dataType: int64
+		formatString: 0
+		lineageTag: fc6930d7-af32-41eb-9ee7-423820f28737
+		summarizeBy: sum
+		sourceColumn: week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column Disp_to_on_scene
+		dataType: int64
+		formatString: 0
+		lineageTag: 700e358f-6539-43fe-86b2-724332be2092
+		summarizeBy: sum
+		sourceColumn: Disp_to_on_scene
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatched_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: eadf4746-76a6-4281-aac6-6c56b97f66bb
+		summarizeBy: none
+		sourceColumn: Dispatched_time
+
+		variation Variation
+			isDefault
+			relationship: bf403f1d-b726-47a3-b51f-d13ae15493eb
+			defaultHierarchy: LocalDateTable_aa0d1e5b-31c6-4239-96dc-374383bb6243.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column On_scene_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 28ff88e9-7ec4-4984-8fe5-280c6c5eeb46
+		summarizeBy: none
+		sourceColumn: On_scene_time
+
+		variation Variation
+			isDefault
+			relationship: 65889030-20bc-4775-8971-3fa0b58d123e
+			defaultHierarchy: LocalDateTable_6a2939f6-3082-4764-95a5-f47cd42465c6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lock Status' = IF(agg_revenue_call_report[is_locked] = "yes", "Yes", "No")
+		lineageTag: 91dacd34-5d27-4f9e-b9aa-abb2397f99f1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Status' = IF(agg_revenue_call_report[is_audited] = "yes", "Yes", "No")
+		lineageTag: 877cde41-9c95-4ba6-ab3c-792c1d9cc40b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Release Status' =
+			
+			IF(
+			    agg_revenue_call_report[released] = "YES", "Released"
+			    , IF(
+			        agg_revenue_call_report[is_impounded] = "yes", "Not Release","Standard Call"))
+		lineageTag: 709c63a3-45f3-47ac-9ffa-cfa2110a908a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = CONCATENATE("Quarter - ",QUARTER(agg_revenue_call_report[Tow Completion Date]))
+		lineageTag: 000b5420-4631-4bb4-8532-8dd2664cb224
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Number = MONTH(agg_revenue_call_report[Tow Completion Date])
+		formatString: 0
+		lineageTag: fdcb5fb4-fd9d-41fb-8b26-764dcbb2b69b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Name = FORMAT(agg_revenue_call_report[Tow Completion Date], "MMMM")
+		lineageTag: 8e848136-9436-44a7-a5ee-bafae2c7001d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Year = FORMAT(agg_revenue_call_report[Tow Completion Date], "yyyy-mm")
+		lineageTag: 66711063-77e5-48cc-a302-78e04e385506
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter_Year = FORMAT(agg_revenue_call_report[Tow Completion Date],"yyyy") & " - Q" & QUARTER(agg_revenue_call_report[Tow Completion Date])
+		lineageTag: b1f16e66-6cda-4524-8a04-56c2adad3c3a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column year = YEAR(agg_revenue_call_report[Tow Completion Date])
+		formatString: 0
+		lineageTag: 1e72fe54-3231-4276-9ba3-7030064dbc4e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreviousYearRevenue =
+			CALCULATE(
+			    SUM(agg_revenue_call_report[Total Generated Revenue]),
+			    SAMEPERIODLASTYEAR(agg_revenue_call_report[Tow Completion Date])
+			)
+		lineageTag: 55179d1f-900b-4300-8479-33643d0fd8b6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dax_column_Revenue = IF(agg_revenue_call_report[is_impounded] = "YES", agg_revenue_call_report[Payment Deposit],agg_revenue_call_report[Total Generated Revenue])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 425efc85-1a4c-4dc8-94e0-949441d11b4d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column dax_column_variance =
+			
+			IF(
+			    agg_revenue_call_report[is_impounded] = "yes"
+			    ,(agg_revenue_call_report[Total Generated Revenue]-agg_revenue_call_report[Payment Deposit])
+			    ,0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: e9775b85-38a0-465f-bb54-a1be7a2b1d08
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column dax_column_Outstanding = IF(agg_revenue_call_report[is_impounded] = "yes", 0, agg_revenue_call_report[Pending Payments])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 350ac89b-8614-47b4-aa98-f04eaeb5d392
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column OpCo-Company
+		dataType: string
+		lineageTag: 9b7c8fae-dd36-4526-960d-015642943dc0
+		summarizeBy: none
+		sourceColumn: OpCo-Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tow_Completion_Month = FORMAT(agg_revenue_call_report[Tow Completion Date],"MMM yyyy")
+		lineageTag: 6571914a-9760-4fb8-b04e-9e19eba7c20b
+		summarizeBy: none
+		sortByColumn: Sort_Tow_Completion_Month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort_Tow_Completion_Month = FORMAT(agg_revenue_call_report[Tow Completion Date],"MM")
+		lineageTag: 5b96771e-b3ea-40a5-98f8-2201ea38ac30
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tow completion Filter Date' = agg_revenue_call_report[Tow Completion Date]
+		formatString: General Date
+		lineageTag: c205da9d-cc91-41e8-b4fe-df66950d8272
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 776cba4e-dab4-41ee-b5b6-0ca21d02fcfb
+			defaultHierarchy: LocalDateTable_afd109cd-fd2d-46c2-9bff-474a73a86969.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_completed_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5af4ad7b-f9ea-498c-bb0e-019a7be5ab90
+		summarizeBy: none
+		sourceColumn: tow_completed_date_time
+
+		variation Variation
+			isDefault
+			relationship: 892da88e-8e05-4beb-a919-4f1dab077a89
+			defaultHierarchy: LocalDateTable_6dcb5169-ec8c-41dd-987c-f69505e1a1fe.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_received_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: af76e395-f082-4ae7-89af-6f70c9f7be7e
+		summarizeBy: none
+		sourceColumn: tow_received_date_time
+
+		variation Variation
+			isDefault
+			relationship: d7089de4-8bf9-420f-b7c5-f47443a789c4
+			defaultHierarchy: LocalDateTable_62745a03-e06c-48b4-997e-0b7ee3906cd7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_application
+		dataType: string
+		lineageTag: 0f21f48a-70d2-49d5-bc6f-349f60843f90
+		summarizeBy: none
+		sourceColumn: source_application
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatcher
+		dataType: string
+		lineageTag: 0b552544-5bc8-4645-9f54-e9dafdf24273
+		summarizeBy: none
+		sourceColumn: Dispatcher
+
+		annotation SummarizationSetBy = Automatic
+
+	column truck
+		dataType: string
+		lineageTag: 3e6e75ee-f46c-4468-9424-61deb78573d8
+		summarizeBy: none
+		sourceColumn: truck
+
+		annotation SummarizationSetBy = Automatic
+
+	column truck_vin
+		dataType: string
+		lineageTag: 9429a854-e515-4de6-8a8a-8e3801f35ae4
+		summarizeBy: none
+		sourceColumn: truck_vin
+
+		annotation SummarizationSetBy = Automatic
+
+	column comparison_flag = ```
+			
+			IF(
+			    YEAR('agg_revenue_call_report'[Tow Completion Date]) IN {YEAR(TODAY()), YEAR(TODAY()) - 1},
+			    1,
+			    0
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 591f40ac-e00f-4d77-81b8-c3d447d0a853
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Label' = Year(agg_revenue_call_report[Tow Completion Date])&" Week - "&WEEKNUM(agg_revenue_call_report[Tow Completion Date])
+		lineageTag: 646e95b9-dfc4-4094-b470-04a31f7d2ee6
+		summarizeBy: none
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number' = YEAR(agg_revenue_call_report[Tow Completion Date])&WEEKNUM(agg_revenue_call_report[Tow Completion Date])
+		lineageTag: 9deefc7b-55cc-4876-a7a0-0ba6e02c9b75
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tow Completed Week' = ```
+			
+			VAR StartOfWeek = agg_revenue_call_report[Tow Completion Date] - WEEKDAY(agg_revenue_call_report[Tow Completion Date], 2) + 1
+			VAR EndOfWeek = StartOfWeek + 6
+			RETURN 
+			    FORMAT(StartOfWeek, "MM/DD") & " - " & FORMAT(EndOfWeek, "MM/DD")
+			
+			```
+		lineageTag: 782f6522-de84-4ac6-936e-3b055cc009be
+		summarizeBy: none
+		sortByColumn: 'Tow Completed Week Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tow Completed Week Sort Order' =
+			
+			VAR StartOfWeek = agg_revenue_call_report[Tow Completion Date]- WEEKDAY(agg_revenue_call_report[Tow Completion Date], 2) + 1
+			VAR EndOfWeek = StartOfWeek + 6
+			RETURN EndOfWeek
+		formatString: General Date
+		lineageTag: eb7e5f5a-1996-4ca7-8c44-6a5d80039e3c
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 72972a8c-3510-4b02-a01c-ac168a2e1f43
+			defaultHierarchy: LocalDateTable_25a5d95c-c69c-4117-9f2d-83363ca20970.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tow Completed Month' = FORMAT(agg_revenue_call_report[Tow Completion Date], "MMM-yyyy")
+		lineageTag: 38805e45-c7cd-4925-9267-b45d3a68614b
+		summarizeBy: none
+		sortByColumn: 'Tow Completed Month Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tow Completed Month Sort Order' = FORMAT(agg_revenue_call_report[Tow Completion Date],"yyyyMM")
+		lineageTag: d38af5fe-0f05-48a2-96a7-22101c571655
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tow_Completed_Date_Map = agg_revenue_call_report[Tow Completion Date]
+		formatString: General Date
+		lineageTag: 863fa4d5-1845-4399-abdd-0c7bebfcb7bb
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 0da7a440-65c8-4c81-9abf-c89e46e80712
+			defaultHierarchy: LocalDateTable_a348dba7-93e6-4d2e-9ea5-4a1d9615c5aa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Outstanding AR' = if(agg_revenue_call_report[is_impounded] = "yes",0,agg_revenue_call_report[Pending Payments])
+		lineageTag: 9e084c64-d3cc-4f6b-afe0-e6c4b236694e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Reporting Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1006ee68-04ce-409f-b41a-8e9db0cb0ee2
+		summarizeBy: none
+		sourceColumn: Reporting Date
+
+		variation Variation
+			isDefault
+			relationship: 6026c02c-2cb5-4c70-b795-a459784a1fe6
+			defaultHierarchy: LocalDateTable_1ddcaf22-874d-4429-800a-0261235c286f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TowCompletedDateDay = ```
+			FORMAT(agg_revenue_call_report[Tow Completion Date], "MM/DD/YY DDD")  
+			```
+		lineageTag: cef5d34c-1246-400a-b75f-c0bd913326c1
+		summarizeBy: none
+		sortByColumn: 'Tow Completion Date'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reporting Date Month' = Format(agg_revenue_call_report[Reporting Date], "MMMM YYYY")
+		lineageTag: 105803ae-6d8f-4f67-acda-68f4c2b4843b
+		summarizeBy: none
+		sortByColumn: 'Reporting Date Month Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reporting Date Month Order' = Format(agg_revenue_call_report[Reporting Date], "YYYYMM")
+		lineageTag: 3cb8d2d2-4e6b-490b-8e20-b17919f82f1b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age = DATEDIFF('agg_revenue_call_report'[Reporting Date],TODAY(),DAY)
+		formatString: 0
+		lineageTag: 9e79c296-3a9c-451e-ae8c-7e6a5f7310c6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Category' =
+			IF('agg_revenue_call_report'[Age] <= 30, "0-30 days",
+			                    IF('agg_revenue_call_report'[Age] > 30 && 'agg_revenue_call_report'[Age] <= 60, "31-60 days",
+			                        IF('agg_revenue_call_report'[Age] > 60 && 'agg_revenue_call_report'[Age] <= 90, "61-90 days",
+			                            IF('agg_revenue_call_report'[Age] > 90 && 'agg_revenue_call_report'[Age] <=120, "90-120 days",
+			                            "120+ days"
+			                            )
+			                        )
+			                    )
+			                )
+		lineageTag: eccbf6e0-5703-4307-ad95-d96c8b33b276
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatcher_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 55470946-3c01-480c-a98a-bcf3e8aa0a37
+		summarizeBy: sum
+		sourceColumn: Dispatcher_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Zero Revenue Call' = IF(agg_revenue_call_report[Total Generated Revenue] = 0, "Yes", "No")
+		lineageTag: 93ca9c5d-9b16-428b-89e6-eb5caf6a9045
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Revenue Status' = IF(agg_revenue_call_report[Total Generated Revenue] = 0,"Zero Revenue","Non Zero Revenue")
+		lineageTag: bb4753da-9329-41a3-bb05-aa0c396dba1a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Exception Data'
+		dataType: string
+		lineageTag: 8e2c87bb-eec6-44eb-9269-a1fd73bff4b7
+		summarizeBy: none
+		sourceColumn: Is Exception Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Duty Type'
+		dataType: string
+		lineageTag: 40f6155b-37cd-4ffc-ae37-c6b589ac74cb
+		summarizeBy: none
+		sourceColumn: Duty Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 706acd3f-c6b6-4bf3-9c34-f2502786ec81
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Taken By'
+		dataType: string
+		lineageTag: b3873caf-c38e-43ce-8117-31131b99e694
+		summarizeBy: none
+		sourceColumn: Call Taken By
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_status
+		dataType: string
+		lineageTag: 60673406-e76c-4cb0-81ad-22f9ba0f18bc
+		summarizeBy: none
+		sourceColumn: payment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 3f93aaaa-816a-4bef-b524-ba42cb5ff59f
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_cancelled
+		dataType: string
+		lineageTag: da04eab4-00cf-474b-bfb6-95e9c429e89b
+		summarizeBy: none
+		sourceColumn: is_cancelled
+
+		annotation SummarizationSetBy = Automatic
+
+	column callstatus
+		dataType: string
+		lineageTag: e93f46d6-9d7e-4bba-a0d0-7e78d07b6617
+		summarizeBy: none
+		sourceColumn: callstatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Call_Status = ```
+			IF('agg_revenue_call_report'[is_impounded] = "yes"
+			                    && 'agg_revenue_call_report'[Lock Status] = "yes" 
+			                    && 'agg_revenue_call_report'[Audit Status] = "yes" 
+			                    && 'agg_revenue_call_report'[released] = "yes"
+			                    , "Closed", 
+			                    IF('agg_revenue_call_report'[is_impounded] = "no"
+			                    && 'agg_revenue_call_report'[Lock Status] = "yes" 
+			                    && 'agg_revenue_call_report'[Audit Status] = "yes" 
+			                    && 'agg_revenue_call_report'[released] = "no",
+			                    "Closed", "Open"
+			                    )
+			                )
+			```
+		lineageTag: 34a321be-751f-4faf-8385-39e24c2492f0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column A_ROWID = 1
+		formatString: 0
+		lineageTag: 62d44b59-1ece-4ed8-9520-a265388119ad
+		summarizeBy: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column en_route
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d986ee72-a5b7-489f-96f0-477c77f6f91a
+		summarizeBy: none
+		sourceColumn: en_route
+
+		variation Variation
+			isDefault
+			relationship: 27ceaf8e-eb78-4443-9273-020bc05f4767
+			defaultHierarchy: LocalDateTable_56948805-7633-4849-a599-5d7ad50eb536.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETA
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5cf9c576-2742-4459-979c-c3f2c291deec
+		summarizeBy: none
+		sourceColumn: ETA
+
+		variation Variation
+			isDefault
+			relationship: aad35421-1589-40be-bbce-03f39b311fa8
+			defaultHierarchy: LocalDateTable_96ab89dc-df32-46ff-8895-cf36f62ba7c0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Membership_type
+		dataType: string
+		lineageTag: 15e3b9dc-ead6-41cf-bd49-b4668aff8739
+		summarizeBy: none
+		sourceColumn: Membership_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition agg_revenue_call_report = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_revenue_call_report = Source{[Schema="agg",Item="agg_revenue_call_report"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(agg_agg_revenue_call_report,{{"Total_revenue", "Total Generated Revenue"}, {"tow_completed_date", "Tow Completion Date"}, {"AccountType", "Account Type"}, {"EmployeeType", "Employee Type"}, {"VehicleType", "Vehicle Type"}, {"TruckType", "Truck Type"}, {"released_date", "Released Date"}, {"audit_date", "Audit Date"}, {"lock_date", "Lock Date"}, {"PaymentDeposit", "Payment Deposit"}, {"PendingPayments", "Pending Payments"}, {"total_miles", "Total Miles"}, {"parent_company", "OpCo-Company"}, {"Company", "Sub-Company"}, {"reporting_date", "Reporting Date"}, {"is_error", "Is Exception Data"}, {"dutytype", "Duty Type"}, {"CallTakenBy", "Call Taken By"}, {"reason", "Reason"}, {"dispatcher", "Dispatcher"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

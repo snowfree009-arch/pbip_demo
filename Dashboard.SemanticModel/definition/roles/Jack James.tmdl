@@ -1,0 +1,7 @@
+role 'Jack James'
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"JACK JAMES TOWING"}
+
+	annotation PBI_Id = ae62e8d4716646abad875f5cf41080b7
+

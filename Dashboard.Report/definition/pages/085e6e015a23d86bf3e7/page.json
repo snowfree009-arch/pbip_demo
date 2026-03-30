@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "085e6e015a23d86bf3e7",
+  "displayName": "Revenue-($)",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "65f96ee05a6b0bcd56ee",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "Revenue"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough",
+        "isLockedInViewMode": true
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "1efabbc14b98f5dc58bb",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "5e76f8d833e93d3c6e82",
+        "boundFilter": "65f96ee05a6b0bcd56ee",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "Revenue"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "5353d9da6f61e81e2669",
+      "target": "e888232e3c291379891c",
+      "type": "DataFilter"
+    }
+  ]
+}

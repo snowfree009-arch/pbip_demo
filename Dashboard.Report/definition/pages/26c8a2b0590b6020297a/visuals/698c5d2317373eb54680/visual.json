@@ -1,0 +1,654 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "698c5d2317373eb54680",
+  "position": {
+    "x": 0,
+    "y": 239.23809523809524,
+    "z": 1000,
+    "height": 481.52380952380952,
+    "width": 1280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "error_code"
+                }
+              },
+              "queryRef": "agg agg_exception_report.error_code",
+              "nativeQueryRef": "Error Code",
+              "displayName": "Error Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "error_code_details"
+                }
+              },
+              "queryRef": "agg agg_exception_report.error_code_details",
+              "nativeQueryRef": "Error Details",
+              "displayName": "Error Details"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_reason"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_reason",
+              "nativeQueryRef": "Source Reason",
+              "displayName": "Source Reason"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "tow_completed_date"
+                }
+              },
+              "queryRef": "agg agg_exception_report.tow_completed_date",
+              "nativeQueryRef": "Tow Completed Date",
+              "displayName": "Tow Completed Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "CallNumber"
+                }
+              },
+              "queryRef": "Sum(agg agg_exception_report.CallNumber)",
+              "nativeQueryRef": "Call Number",
+              "displayName": "Call Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "parent_company"
+                }
+              },
+              "queryRef": "agg agg_exception_report.parent_company",
+              "nativeQueryRef": "OpCo Company",
+              "displayName": "OpCo Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "Company"
+                }
+              },
+              "queryRef": "agg agg_exception_report.Company",
+              "nativeQueryRef": "Sub Company",
+              "displayName": "Sub Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "Location"
+                }
+              },
+              "queryRef": "agg agg_exception_report.Location",
+              "nativeQueryRef": "Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "AccountType"
+                }
+              },
+              "queryRef": "agg agg_exception_report.AccountType",
+              "nativeQueryRef": "Account Type",
+              "displayName": "Account Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "Account"
+                }
+              },
+              "queryRef": "agg agg_exception_report.Account",
+              "nativeQueryRef": "Account"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "dispatcher"
+                }
+              },
+              "queryRef": "agg agg_exception_report.dispatcher",
+              "nativeQueryRef": "Dispatcher",
+              "displayName": "Dispatcher"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_dispatcher_id"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_dispatcher_id",
+              "nativeQueryRef": "Source Dispatcher Id",
+              "displayName": "Source Dispatcher Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_dispatcher"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_dispatcher",
+              "nativeQueryRef": "Source Dispatcher",
+              "displayName": "Source Dispatcher"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "Driver"
+                }
+              },
+              "queryRef": "agg agg_exception_report.Driver",
+              "nativeQueryRef": "Driver"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_driver_id"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_driver_id",
+              "nativeQueryRef": "Source Driver Id",
+              "displayName": "Source Driver Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_driver"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_driver",
+              "nativeQueryRef": "Source Driver",
+              "displayName": "Source Driver"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "EmployeeType"
+                }
+              },
+              "queryRef": "agg agg_exception_report.EmployeeType",
+              "nativeQueryRef": "Employee Type",
+              "displayName": "Employee Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "VehicleType"
+                }
+              },
+              "queryRef": "agg agg_exception_report.VehicleType",
+              "nativeQueryRef": "Vehicle Type",
+              "displayName": "Vehicle Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_vehicle_class"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_vehicle_class",
+              "nativeQueryRef": "source_vehicle_class"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "TruckType"
+                }
+              },
+              "queryRef": "agg agg_exception_report.TruckType",
+              "nativeQueryRef": "Truck Type",
+              "displayName": "Truck Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "truck"
+                }
+              },
+              "queryRef": "agg agg_exception_report.truck",
+              "nativeQueryRef": "Truck",
+              "displayName": "Truck"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_truck_id"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_truck_id",
+              "nativeQueryRef": "Source Truck Id",
+              "displayName": "Source Truck Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_truck"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_truck",
+              "nativeQueryRef": "Source Truck",
+              "displayName": "Source Truck"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "truck_vin"
+                }
+              },
+              "queryRef": "agg agg_exception_report.truck_vin",
+              "nativeQueryRef": "Truck VIN",
+              "displayName": "Truck VIN"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "RateItemID"
+                }
+              },
+              "queryRef": "agg agg_exception_report.RateItemID",
+              "nativeQueryRef": "Rate Item ID",
+              "displayName": "Rate Item ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "RateItem"
+                }
+              },
+              "queryRef": "agg agg_exception_report.RateItem",
+              "nativeQueryRef": "Rate Item",
+              "displayName": "Rate Item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "Total_revenue"
+                }
+              },
+              "queryRef": "Sum(agg agg_exception_report.Total_revenue)",
+              "nativeQueryRef": "Invoiced Amount ($)",
+              "displayName": "Invoiced Amount ($)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_payment_status"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_payment_status",
+              "nativeQueryRef": "Source Payment Status",
+              "displayName": "Source Payment Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "PendingPayments"
+                }
+              },
+              "queryRef": "Sum(agg agg_exception_report.PendingPayments)",
+              "nativeQueryRef": "Outstanding AR ($)",
+              "displayName": "Outstanding AR ($)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "PaymentDeposit"
+                }
+              },
+              "queryRef": "Sum(agg agg_exception_report.PaymentDeposit)",
+              "nativeQueryRef": "PaymentDeposit",
+              "displayName": "Deposits ($)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "total_miles"
+                }
+              },
+              "queryRef": "Sum(agg agg_exception_report.total_miles)",
+              "nativeQueryRef": "total_miles",
+              "displayName": "Total Miles"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "is_impounded"
+                }
+              },
+              "queryRef": "agg agg_exception_report.is_impounded",
+              "nativeQueryRef": "Impound Status",
+              "displayName": "Impound Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "released"
+                }
+              },
+              "queryRef": "agg agg_exception_report.released",
+              "nativeQueryRef": "Release  Status",
+              "displayName": "Release  Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "released_date"
+                }
+              },
+              "queryRef": "agg agg_exception_report.released_date",
+              "nativeQueryRef": "Released Date",
+              "displayName": "Released Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "is_audited"
+                }
+              },
+              "queryRef": "agg agg_exception_report.is_audited",
+              "nativeQueryRef": "Audit Status",
+              "displayName": "Audit Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "audit_date"
+                }
+              },
+              "queryRef": "agg agg_exception_report.audit_date",
+              "nativeQueryRef": "Audit Date",
+              "displayName": "Audit Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "is_locked"
+                }
+              },
+              "queryRef": "agg agg_exception_report.is_locked",
+              "nativeQueryRef": "Lock Status",
+              "displayName": "Lock Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "lock_date"
+                }
+              },
+              "queryRef": "agg agg_exception_report.lock_date",
+              "nativeQueryRef": "Lock Date",
+              "displayName": "Lock Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "source_application"
+                }
+              },
+              "queryRef": "agg agg_exception_report.source_application",
+              "nativeQueryRef": "Source Application",
+              "displayName": "Source Application"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_exception_report"
+                    }
+                  },
+                  "Property": "Last Modified Date"
+                }
+              },
+              "queryRef": "agg agg_exception_report.Last Modified Date",
+              "nativeQueryRef": "Last Modified Date"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_exception_report"
+                  }
+                },
+                "Property": "tow_completed_date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140.73684210526315D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "agg agg_exception_report.tow_completed_date"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "47b8e301255c38956670",
+  "position": {
+    "x": 548.11111111111109,
+    "y": 0.23577954612397889,
+    "z": 4000,
+    "height": 59.615384615384613,
+    "width": 142.47782090368526,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Tows Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "fbf530023bf440b3eb4f"
+}

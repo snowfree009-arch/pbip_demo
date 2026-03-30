@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "cbfe220a33ea76263cad",
+  "position": {
+    "x": 0,
+    "y": 480,
+    "z": 7000,
+    "height": 300.44444444444446,
+    "width": 646,
+    "tabOrder": 13000
+  },
+  "visualGroup": {
+    "displayName": "Tows by Company",
+    "groupMode": "ScaleMode"
+  }
+}

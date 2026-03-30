@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f2c0b450e72d88a877b8",
+  "position": {
+    "x": 720,
+    "y": 804,
+    "z": 11257,
+    "height": 352.21739130434787,
+    "width": 700.00000000000011
+  },
+  "visualGroup": {
+    "displayName": "Labor Productivity Ratio",
+    "groupMode": "ScaleMode"
+  }
+}

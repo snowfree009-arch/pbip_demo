@@ -1,0 +1,9 @@
+role Milne
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"MILNE ROAD SERVICES LLC"}
+
+	annotation PBI_Id = 6e7c3294288b4f1d8c96bc5ad8cd069c
+

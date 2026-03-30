@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "3406475409e647cd4167",
+  "position": {
+    "x": 11.422259715748227,
+    "y": 220.37037037037035,
+    "z": 10000,
+    "height": 60.828877005347593,
+    "width": 1287.495307548751,
+    "tabOrder": 7000
+  },
+  "visualGroup": {
+    "displayName": "OpCo Last Month",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

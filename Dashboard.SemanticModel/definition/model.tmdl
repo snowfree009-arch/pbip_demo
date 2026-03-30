@@ -1,0 +1,121 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["agg_revenue_call_report","agg agg_payroll_payperiod","agg agg_revenue_call_report_payments","agg agg_revenue_call_report_revenue","agg agg_revenue_call_report_account_receivable","agg_budget","agg agg_exception_report","agg agg_RateItem_mapping","agg agg_revenue_file","agg agg_accrued_revenue_file"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_c0f7b7ce-2de8-472b-8bf1-8beadc1deb59
+ref table agg_revenue_call_report
+ref table LocalDateTable_dba7f6d3-9608-4014-91cc-09fd74ed7d39
+ref table LocalDateTable_566aa55c-544d-4868-9a52-b4978ee2ac74
+ref table LocalDateTable_15a211ec-c2b8-4758-aed9-4d71c49522a9
+ref table 'agg agg_payroll_payperiod'
+ref table LocalDateTable_47db7b31-138b-4cc0-b9f2-359aa7049530
+ref table LocalDateTable_acb4aad8-8154-403a-9387-6375e25c9e68
+ref table 'agg agg_revenue_call_report_payments'
+ref table LocalDateTable_994da9cd-f34c-45df-89f2-af4c6405f7b4
+ref table CompanyMasters
+ref table LocalDateTable_aa0d1e5b-31c6-4239-96dc-374383bb6243
+ref table LocalDateTable_6a2939f6-3082-4764-95a5-f47cd42465c6
+ref table LocalDateTable_6dcb5169-ec8c-41dd-987c-f69505e1a1fe
+ref table LocalDateTable_62745a03-e06c-48b4-997e-0b7ee3906cd7
+ref table LocalDateTable_25a5d95c-c69c-4117-9f2d-83363ca20970
+ref table 'agg agg_revenue_call_report_revenue'
+ref table LocalDateTable_838a922d-4b52-442a-8419-fe9b7e232310
+ref table LocalDateTable_8c04f928-e0ac-4b14-814c-393ad4f6803a
+ref table LocalDateTable_95c8e51c-32d6-40a7-8576-debc10ed4a7f
+ref table LocalDateTable_b8acffba-754e-4248-9104-a9e406e7b44b
+ref table LocalDateTable_646a4fef-63d2-48ba-b2db-2c9bd79211e7
+ref table LocalDateTable_b9dee8eb-7864-4135-8084-298c688adc99
+ref table LocalDateTable_e1909c3b-c673-4937-8bcd-20e8fff6e261
+ref table LocalDateTable_899d6af3-fe9c-46c7-b753-4e20c1bebcfc
+ref table DateDimension
+ref table LocalDateTable_076a1d50-ee12-4cec-8c4e-dbab3a20ef6e
+ref table LocalDateTable_a348dba7-93e6-4d2e-9ea5-4a1d9615c5aa
+ref table CallTypeTable
+ref table LocalDateTable_71b2139c-b0e8-4f74-bc3a-6b6d162f06ac
+ref table LocalDateTable_afd109cd-fd2d-46c2-9bff-474a73a86969
+ref table SourceApplicationMaster
+ref table LocalDateTable_fbadccb1-f1ec-4dda-8892-ad505c8e0f1a
+ref table LocalDateTable_2a59578d-9465-4884-9eae-fdcfc7405678
+ref table LocalDateTable_e668dcf3-3990-4a3d-b885-9d5c1970777c
+ref table LocalDateTable_be4389fe-b12b-4f14-8d41-173655ef0a69
+ref table 'agg agg_revenue_call_report_account_receivable'
+ref table LocalDateTable_1ddcaf22-874d-4429-800a-0261235c286f
+ref table LocalDateTable_4dc66688-b35f-4024-b199-35a45293af42
+ref table LocalDateTable_c35d8d33-e7f0-40df-91fe-102ce8862ed9
+ref table agg_budget
+ref table LocalDateTable_cc3edad7-0a9a-4892-8b51-f6b7b43a33f1
+ref table LocalDateTable_1596f15d-2fb2-4721-a738-fa0883984d1a
+ref table LocalDateTable_626fd557-de4c-441f-8e2a-f0c0638c91d3
+ref table LocalDateTable_0cb6bea8-4243-4967-a105-930a3f0ee18c
+ref table ZeroRevenueFlag
+ref table ZeroRevenueShowData
+ref table 'agg agg_exception_report'
+ref table LocalDateTable_caac4c7b-7e53-4adc-8efd-247c144f9652
+ref table LocalDateTable_7bfac8af-0042-4e43-8990-f7482ce20323
+ref table LocalDateTable_63ae0cbd-81a7-40f5-ab96-8586c4eaddc1
+ref table LocalDateTable_4630f30a-3c67-4515-9df0-1e59f63f57c9
+ref table LocalDateTable_7bbf6483-0283-4204-b540-8f4a9703d641
+ref table LocalDateTable_2861d0bb-a7c3-4c34-98fc-8c4080d83f25
+ref table LocalDateTable_f49e5f2d-fb64-4011-9eb0-dd76279e28c9
+ref table LocalDateTable_373c897f-253a-4a64-84b1-8839335bac09
+ref table LocalDateTable_450ac1e4-d843-4a08-a1b2-7c9f888394ca
+ref table LocalDateTable_4978f4aa-7dca-4d81-addc-5c57c65c9cc7
+ref table LocalDateTable_3e5b4e57-31cc-4024-8023-46f95b48d42d
+ref table LocalDateTable_24327788-d2e1-4ff7-b81e-9e4e02c61f39
+ref table 'Company to Source Application'
+ref table LocalDateTable_b3ecff46-a30a-4064-bff8-19e10996b6dc
+ref table 'agg agg_RateItem_mapping'
+ref table LocalDateTable_56948805-7633-4849-a599-5d7ad50eb536
+ref table LocalDateTable_96ab89dc-df32-46ff-8895-cf36f62ba7c0
+ref table 'agg agg_revenue_file'
+ref table LocalDateTable_624f0d35-268b-4656-991f-80e35821361e
+ref table LocalDateTable_30d140d9-d58f-4086-adc6-ef0a3c4916b7
+ref table LocalDateTable_34626f35-509c-41ca-9cc1-6ed8d055d81a
+ref table LocalDateTable_901d2ca5-ebe3-4eee-ba22-751b9c912811
+ref table 'agg agg_accrued_revenue_file'
+ref table LocalDateTable_f40ef2fd-6345-4d11-bf93-d1900d058875
+ref table LocalDateTable_cd8bb8e2-c5d0-4cd5-be10-6dc575c3fc0e
+ref table LocalDateTable_8e1a19bc-614e-4dc9-a041-1059352bf738
+ref table LocalDateTable_09e7c8dd-282e-4ec5-84e0-ea1dd36b58fd
+
+ref role 'Executives No Restriction'
+ref role 'Executives Payroll Restriction'
+ref role Cal-Neveda
+ref role Milne
+ref role 'College Oak'
+ref role 'Big Valley'
+ref role 'Action Road'
+ref role Stauffers
+ref role 'Ten West'
+ref role Statewide
+ref role 'Jack James'
+ref role 'Magic Valley'
+ref role 'Milne Payroll Restriction'
+ref role 'Action Road Payroll Restriction'
+ref role 'Big Valley Payroll Restriction'
+ref role 'Cal-Neveda Payroll Restriction'
+ref role 'College Oak Payroll Restriction'
+ref role 'Jack James Payroll Restriction'
+ref role 'Magic Valley Payroll Restriction'
+ref role 'Statewide Payroll Restriction'
+ref role 'Stauffers Payroll Restriction'
+ref role 'Ten West Payroll Restriction'
+ref role 'Eaton Road'
+ref role 'Eaton Road Payroll Restricted'
+ref role 'Mountain Recovery'
+ref role 'Mountain Recovery Payroll Restriction'
+
+ref cultureInfo en-US
+

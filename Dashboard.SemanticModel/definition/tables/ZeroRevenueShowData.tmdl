@@ -1,0 +1,36 @@
+table ZeroRevenueShowData
+	lineageTag: 50af2d39-77d9-4295-991e-bff886f12dce
+
+	column zero_revenue_id_fk
+		formatString: 0
+		lineageTag: 0fed7691-973c-4a50-8111-c9fbf8ec3f5a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [zero_revenue_id_fk]
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_zero_revenue
+		lineageTag: e51909a3-cf65-4dd4-8c60-b99b3f943b99
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [is_zero_revenue]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ZeroRevenueShowData = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "zero_revenue_id_fk", INTEGER,
+				    "is_zero_revenue", STRING,
+				    {
+				        {1, "Yes"},
+				        {1, "No"},
+				        {2, "No"}
+				    }
+				)
+
+	annotation PBI_Id = 6a3a0e838c9b403bac48e336a4513aa6
+

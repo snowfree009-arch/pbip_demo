@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f65214e406c45749fa35",
+  "position": {
+    "x": 1143.8342245989304,
+    "y": 0,
+    "z": 0,
+    "height": 59.303721488595443,
+    "width": 143.25450398107589,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Outstanding Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "cac24e9befeb4a941eec"
+}

@@ -1,0 +1,36 @@
+table ZeroRevenueFlag
+	lineageTag: 5c6082fe-bd00-49dc-a84d-f132f745481f
+
+	column Label
+		lineageTag: c87e0e90-f63e-4d3b-8d70-44646f416f3e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Label]
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_id
+		formatString: 0
+		lineageTag: 05b01679-b03b-48fa-a92d-98b442166de3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [flag_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ZeroRevenueFlag = calculated
+		mode: import
+		source = ```
+				
+				    DATATABLE(
+				        "flag_id", INTEGER,
+				        "Label", STRING,
+				        {
+				            {1, "Include Zero Revenue"},
+				            {2, "Exclude Zero Revenue"}
+				        }
+				    )
+				```
+
+	annotation PBI_Id = 2b092a0358da4f2a96af8fb24cb5de7b
+

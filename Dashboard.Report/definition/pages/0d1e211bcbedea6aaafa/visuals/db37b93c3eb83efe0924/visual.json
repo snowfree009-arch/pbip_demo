@@ -1,0 +1,413 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "db37b93c3eb83efe0924",
+  "position": {
+    "x": 0,
+    "y": 730.13698630136992,
+    "z": 6000,
+    "height": 400.21629416005771,
+    "width": 800.43258832011543,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Call Type"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Call Type",
+              "nativeQueryRef": "Call Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Company"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Company",
+              "nativeQueryRef": "Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Account"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Account",
+              "nativeQueryRef": "Account"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Account Type"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Account Type",
+              "nativeQueryRef": "Account Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Duty Type"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.dutytype",
+              "nativeQueryRef": "Duty Type",
+              "displayName": "Duty Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Vehicle Type"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Vehicle Type",
+              "nativeQueryRef": "Vehicle Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Truck Type"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Truck Type",
+              "nativeQueryRef": "Truck Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Truck"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.truck",
+              "nativeQueryRef": "truck"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Driver"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Driver",
+              "nativeQueryRef": "Driver"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "CallNumber"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.CallNumber",
+              "nativeQueryRef": "Call Number",
+              "displayName": "Call Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "towing_services_sub_total"
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.towing_services_sub_total)",
+              "nativeQueryRef": "towing_services_sub_total",
+              "displayName": "Towing Service Sub Total ($)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "storage_fees_sub_total"
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.storage_fees_sub_total)",
+              "nativeQueryRef": "storage_fees_sub_total",
+              "displayName": "Storage Fees Sub Total ($)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_revenue_call_report_revenue"
+                        }
+                      },
+                      "Property": "Revenue"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.Revenue)",
+              "nativeQueryRef": "Forecasted Amount ($)1",
+              "displayName": "Forecasted Amount ($)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Total_revenue"
+                }
+              },
+              "queryRef": "Sum(agg agg_revenue_call_report_revenue.Total_revenue)",
+              "nativeQueryRef": "Total_revenue",
+              "displayName": "Invoiced Amount ($)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Tow Completed Date"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Tow Completed Date",
+              "nativeQueryRef": "Tow Completed Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Released Date"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Released Date",
+              "nativeQueryRef": "Released Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Audit Date"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Audit Date",
+              "nativeQueryRef": "Audit Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Lock Date"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Lock Date",
+              "nativeQueryRef": "Lock Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_revenue_call_report_revenue"
+                    }
+                  },
+                  "Property": "Call_Status"
+                }
+              },
+              "queryRef": "agg agg_revenue_call_report_revenue.Call_Status",
+              "nativeQueryRef": "Call Status",
+              "displayName": "Call Status"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "agg agg_revenue_call_report_revenue"
+                  }
+                },
+                "Property": "CallNumber"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Heavy Duty Forecast Data'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "customizeSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "spaceBelowTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,100 @@
+table CompanyMasters
+	lineageTag: 8a1b7086-7495-4fe7-8900-067355c0389b
+
+	measure MasterSelectedCompany = ```
+			
+			"OpCo: " & 
+			IF(
+			    ISFILTERED(CompanyMasters[OpCo Company]), 
+			    SELECTEDVALUE(CompanyMasters[OpCo Company]), 
+			    "ALL"
+			) & 
+			", Sub: " & 
+			IF(
+			    ISFILTERED(CompanyMasters[Sub Company]), 
+			    CONCATENATEX(
+			        VALUES(CompanyMasters[Sub Company]), 
+			        CompanyMasters[Sub Company], 
+			        ", "
+			    ), 
+			    "ALL"
+			)
+			
+			```
+		lineageTag: c5a1e5bc-18c6-4c9c-b081-108216fdf4f9
+
+	measure username = USEROBJECTID()
+		lineageTag: 39867e1c-b666-4c20-9ed2-eb52bd2fee06
+
+	measure 'Welcome User' = "Welcome "&USERNAME()&"!"
+		lineageTag: 7e640a45-b603-403c-a7ed-bb5a4bbbc994
+
+	measure userid = USERPRINCIPALNAME()
+		lineageTag: 68755420-03f3-40ec-ad9d-5db7b0acb81c
+
+	column Legend
+		formatString: 0
+		lineageTag: 4657f533-2443-4f31-984f-19d96a9ec820
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Legend]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OpCo Company'
+		lineageTag: 1998a2ce-7732-45c3-bff1-a78c0f78e237
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [OpCo Company]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Company'
+		lineageTag: ece521b3-3996-44e7-9cf5-2e7de4e813b9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Sub Company]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CompanyMasters = calculated
+		mode: import
+		source = ```
+				
+				DISTINCT(
+				    UNION(
+				        ADDCOLUMNS(
+				            DISTINCT(
+				                SELECTCOLUMNS(
+				                    'agg_revenue_call_report',
+				                    "OpCo Company", 'agg_revenue_call_report'[OpCo-Company],
+				                    "Sub Company", 'agg_revenue_call_report'[Sub-Company]
+				                )
+				            ),
+				            "Legend", 1
+				        ),
+				        ADDCOLUMNS(
+				            DISTINCT(
+				                SELECTCOLUMNS(
+				                    'agg agg_revenue_call_report_revenue',
+				                    "OpCo Company", 'agg agg_revenue_call_report_revenue'[parent_company],
+				                    "Sub Company", 'agg agg_revenue_call_report_revenue'[Company]
+				                )
+				            ),
+				            "Legend", 1
+				        ),
+				        DATATABLE(
+				            "OpCo Company", STRING,
+				            "Sub Company", STRING,
+				            "Legend", INTEGER,
+				            {
+				                {"Select the OpCo Company", "Select the OpCo Company", 1}
+				            }
+				        )
+				    )
+				)
+				
+				```
+
+	annotation PBI_Id = b007da6405104ccd9b5da51292036812
+

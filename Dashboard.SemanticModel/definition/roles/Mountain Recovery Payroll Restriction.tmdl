@@ -1,0 +1,9 @@
+role 'Mountain Recovery Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"MOUNTAIN RECOVERY ROAD SOLUTIONS"}
+
+	annotation PBI_Id = 408683fe2f9d44ecb850b32664de21cc
+

@@ -1,0 +1,7 @@
+role 'Mountain Recovery'
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"MOUNTAIN RECOVERY ROAD SOLUTIONS"}
+
+	annotation PBI_Id = ab7b92dfe9d44e91ba78189769134b2e
+

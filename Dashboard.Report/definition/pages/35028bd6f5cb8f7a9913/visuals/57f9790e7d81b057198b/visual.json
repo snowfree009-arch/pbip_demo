@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "57f9790e7d81b057198b",
+  "position": {
+    "x": 5,
+    "y": 3145,
+    "z": 0,
+    "height": 440,
+    "width": 1291.8626690271865,
+    "tabOrder": 15000
+  },
+  "visualGroup": {
+    "displayName": "Payroll as a % of Revenue",
+    "groupMode": "ScaleMode"
+  }
+}

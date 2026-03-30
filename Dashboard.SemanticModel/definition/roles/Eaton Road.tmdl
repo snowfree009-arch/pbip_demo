@@ -1,0 +1,7 @@
+role 'Eaton Road'
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"EATON ROAD SOLUTIONS"}
+
+	annotation PBI_Id = 7d6cfdc7878147daba31fa81bece2596
+

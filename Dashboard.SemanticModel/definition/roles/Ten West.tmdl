@@ -1,0 +1,7 @@
+role 'Ten West'
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"TEN WEST ROAD SOLUTIONS, LLC"}
+
+	annotation PBI_Id = cdb3d17459164e3aad533f4e5f6cefa9
+

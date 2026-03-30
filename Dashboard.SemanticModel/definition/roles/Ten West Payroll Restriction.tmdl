@@ -1,0 +1,9 @@
+role 'Ten West Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"TEN WEST ROAD SOLUTIONS, LLC"}
+
+	annotation PBI_Id = 38a7f05d78f2470eb07db3181e8990ec
+

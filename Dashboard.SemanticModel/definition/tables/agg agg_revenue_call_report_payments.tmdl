@@ -1,0 +1,489 @@
+table 'agg agg_revenue_call_report_payments'
+	lineageTag: 6e00923f-3a44-439c-b8cc-d66a758d2e89
+
+	measure DepositAmount = sum('agg agg_revenue_call_report_payments'[payment_amount])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 91b9eb0e-d746-48af-9dba-04ac67ee97d6
+
+	measure dxm_PaymentDeposits = sum('agg agg_revenue_call_report_payments'[payment_amount])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a370a138-560b-42c1-8bd7-ccfc544df927
+
+	measure dxm_PaymentDateFilters =
+			
+			"Payment Date: " & IF(
+			    ISFILTERED('agg agg_revenue_call_report_payments'[Payment Date]),
+			    CONCATENATE(format(min('agg agg_revenue_call_report_payments'[Payment Date]),"mm/dd/yyyy"), "-"& format(max('agg agg_revenue_call_report_payments'[Payment Date]),"mm/dd/yyyy")),
+			    "Not Applied"
+			)
+		lineageTag: 950abe12-d8d4-43a3-8b9a-1526193cf961
+
+	measure dxm_PaymentPerTow =
+			
+			DIVIDE(
+			    sum('agg agg_revenue_call_report_payments'[payment_amount]),
+			    count('agg agg_revenue_call_report_payments'[CallNumber]),
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 6363fbb8-ec62-436f-8dd0-031e0946e608
+
+	measure 'Completion Date Filters' =
+			
+			"Completion Date: " & IF(
+			    ISFILTERED('agg agg_revenue_call_report_payments'[Completion Date]),
+			    CONCATENATE(min('agg agg_revenue_call_report_payments'[Completion Date]), "-"&max('agg agg_revenue_call_report_payments'[Completion Date])),
+			    "Not Applied"
+			)
+		lineageTag: 56f3fd47-8d90-4439-b478-a673b4035479
+
+	measure 'Payment Date Filters' =
+			
+			"Payment Date: " & IF(
+			    ISFILTERED('agg agg_revenue_call_report_payments'[Payment Date]),
+			    CONCATENATE(min('agg agg_revenue_call_report_payments'[Payment Date]), "-"&max('agg agg_revenue_call_report_payments'[Payment Date])),
+			    "Not Applied"
+			)
+		lineageTag: 14d61e8f-d23b-428e-ab11-2bac58b80aad
+
+	column CallNumber
+		dataType: string
+		lineageTag: 7204d560-3415-49fa-8716-71958d4bc5da
+		summarizeBy: none
+		sourceColumn: CallNumber
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Company
+		dataType: string
+		lineageTag: 1f6c383b-ee7b-4644-ae13-20761642a3bd
+		summarizeBy: none
+		sourceColumn: Sub-Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Driver
+		dataType: string
+		lineageTag: cbc64596-42e5-466e-833a-576a469736c6
+		summarizeBy: none
+		sourceColumn: Driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Completion Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2d0fb697-efe9-4309-8a7e-f4f8b8e724ba
+		summarizeBy: none
+		sourceColumn: Completion Date
+
+		variation Variation
+			isDefault
+			relationship: 9e92d288-8653-4767-9805-3a05cde1d6a6
+			defaultHierarchy: LocalDateTable_994da9cd-f34c-45df-89f2-af4c6405f7b4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EmployeeType
+		dataType: string
+		lineageTag: 00480205-8a04-4dfd-ae80-fda1e8e73e54
+		summarizeBy: none
+		sourceColumn: EmployeeType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: be8dc7c1-b5f6-46ed-a731-009deb76382d
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column TruckType
+		dataType: string
+		lineageTag: 72f6042b-264d-488b-b14a-dab8ece2b8ce
+		summarizeBy: none
+		sourceColumn: TruckType
+
+		annotation SummarizationSetBy = Automatic
+
+	column VehicleType
+		dataType: string
+		lineageTag: 83260d9e-f38e-4a15-bed3-6f6c7bb398cd
+		summarizeBy: none
+		sourceColumn: VehicleType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		lineageTag: 0b555265-b483-458a-b9db-81a2802233a0
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_count
+		dataType: int64
+		formatString: 0
+		lineageTag: fc6b0a46-f2eb-41cd-83d3-76e7b2d47f90
+		summarizeBy: sum
+		sourceColumn: Impound_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Service_calls_type
+		dataType: string
+		lineageTag: e0580a45-7cef-4239-b5f2-da3786e1fd1b
+		summarizeBy: none
+		sourceColumn: Service_calls_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 13e4d5f2-efea-420b-9d40-7d9126b3f684
+		summarizeBy: none
+		sourceColumn: Payment Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column payment_amount
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f547df55-90c7-4f97-938f-76a2dc92efb8
+		summarizeBy: sum
+		sourceColumn: payment_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3db6a065-8d8b-4cf0-92f3-41ce0033d4f5
+		summarizeBy: sum
+		sourceColumn: payment_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_type
+		dataType: string
+		lineageTag: 9bf8bbc6-87c8-40c4-a521-8e15fb17fc9d
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_revenue
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 53efd3f7-ee89-439c-b3b0-f48e9392ccfc
+		summarizeBy: sum
+		sourceColumn: Total_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_duration_min
+		dataType: int64
+		formatString: 0
+		lineageTag: c0754baa-e3da-4eac-aba3-9c1c3502eedd
+		summarizeBy: sum
+		sourceColumn: Impound_duration_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentDeposit
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: bbd6a20d-ee66-49b4-bd25-2cacb57b2578
+		summarizeBy: sum
+		sourceColumn: PaymentDeposit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column PendingPayments
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 6fd4d7fb-c037-4954-8c0a-f66a8478f21f
+		summarizeBy: sum
+		sourceColumn: PendingPayments
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f385d77-058c-4666-80f5-f3e3565dc192
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: ce762bf7-8ff3-4cc3-be84-e01cb8ab0ea7
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column monthname
+		dataType: string
+		lineageTag: 76f72986-fced-47f7-9ea3-c2e516e37d88
+		summarizeBy: none
+		sourceColumn: monthname
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: string
+		lineageTag: 6d44fc76-6204-4a31-a09f-b1e15699661a
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_as_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bfba701-a6df-4b55-a7cf-7ab2f0149370
+		summarizeBy: sum
+		sourceColumn: quarter_as_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column loaded_miles
+		dataType: double
+		lineageTag: c1a8490e-8a25-47a4-94af-706381171bf5
+		summarizeBy: sum
+		sourceColumn: loaded_miles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unloaded_miles
+		dataType: double
+		lineageTag: 47ca6e7b-71d3-449a-a6c7-8ef13d973383
+		summarizeBy: sum
+		sourceColumn: unloaded_miles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column deadhead_miles
+		dataType: double
+		lineageTag: a654ede9-f526-48a7-8766-fb39c0ecc980
+		summarizeBy: sum
+		sourceColumn: deadhead_miles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_audited
+		dataType: string
+		lineageTag: 98d9bf0f-014f-47a5-9f3d-079015c6f468
+		summarizeBy: none
+		sourceColumn: is_audited
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_locked
+		dataType: string
+		lineageTag: 72ec5088-b757-452e-b54b-460727c596b9
+		summarizeBy: none
+		sourceColumn: is_locked
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_impounded
+		dataType: string
+		lineageTag: c96099da-3a85-4c1f-856d-3937d60f42cb
+		summarizeBy: none
+		sourceColumn: is_impounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b917a9a-23fb-48e7-bfe2-705565481d22
+		summarizeBy: sum
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 287575ca-8a05-4eb7-a1ff-16f8937e1ef7
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_void
+		dataType: string
+		lineageTag: 3ab9a1c9-e6e5-4f6d-b946-7c940331451e
+		summarizeBy: none
+		sourceColumn: is_void
+
+		annotation SummarizationSetBy = Automatic
+
+	column dx_Call_Type = IF('agg agg_revenue_call_report_payments'[Impound_count] = 0, "Standard", "Impounded")
+		dataType: string
+		lineageTag: 739e7038-a257-4450-ab2a-5045bbdbf9ba
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpCo-Company
+		dataType: string
+		lineageTag: f82f3dd3-adcd-4154-809a-40b0b11bdc66
+		summarizeBy: none
+		sourceColumn: OpCo-Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Month' = FORMAT('agg agg_revenue_call_report_payments'[Payment Date],"MMM-yyyy")
+		lineageTag: 05a1003d-a812-4167-b4ed-01188bc2c3c9
+		summarizeBy: none
+		sortByColumn: 'Payment Month Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Month Sort Order' = FORMAT('agg agg_revenue_call_report_payments'[Payment Date],"yyyyMM")
+		lineageTag: 70f82f59-c72d-45f2-9965-759aae74dda9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Week' = ```
+			
+			VAR StartOfWeek = 'agg agg_revenue_call_report_payments'[Payment Date] - WEEKDAY('agg agg_revenue_call_report_payments'[Payment Date], 2) + 1
+			VAR EndOfWeek = StartOfWeek + 6
+			RETURN 
+			    FORMAT(StartOfWeek, "MM/DD") & " - " & FORMAT(EndOfWeek, "MM/DD")
+			```
+		lineageTag: 1896bb0f-62c1-461d-ba42-86cad0199d28
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Week Sort Order' =
+			
+			VAR StartOfWeek = 'agg agg_revenue_call_report_payments'[Payment Date] - WEEKDAY('agg agg_revenue_call_report_payments'[Payment Date], 2) + 1
+			VAR EndOfWeek = StartOfWeek + 6
+			RETURN EndOfWeek
+		formatString: General Date
+		lineageTag: 5cecfa51-f9df-4c9e-8337-f5829df13c2a
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 44767092-7f19-42cb-a62f-fe028d525725
+			defaultHierarchy: LocalDateTable_71b2139c-b0e8-4f74-bc3a-6b6d162f06ac.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lock Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 247a02b4-28a9-4213-94c2-a4dabc460f87
+		summarizeBy: none
+		sourceColumn: Lock Date
+
+		variation Variation
+			isDefault
+			relationship: 2d987f14-e4c1-4fdc-9493-6d7826070c28
+			defaultHierarchy: LocalDateTable_fbadccb1-f1ec-4dda-8892-ad505c8e0f1a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Audit Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2e32361b-ab30-4932-8930-a88e3937eb0f
+		summarizeBy: none
+		sourceColumn: Audit Date
+
+		variation Variation
+			isDefault
+			relationship: 2fe26e29-5a44-411e-97b2-6f9c433b167b
+			defaultHierarchy: LocalDateTable_2a59578d-9465-4884-9eae-fdcfc7405678.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column impound_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a680c560-3fe8-4f6b-9360-a3a2363f1771
+		summarizeBy: none
+		sourceColumn: impound_date
+
+		variation Variation
+			isDefault
+			relationship: 90bfd68c-84b7-444c-96a6-17b3928aa7a5
+			defaultHierarchy: LocalDateTable_e668dcf3-3990-4a3d-b885-9d5c1970777c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Released Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c2139f6d-b827-4aa6-9d6d-f407ef34f449
+		summarizeBy: none
+		sourceColumn: Released Date
+
+		variation Variation
+			isDefault
+			relationship: d88b4325-301a-4a4e-8c11-5f7beec939a6
+			defaultHierarchy: LocalDateTable_be4389fe-b12b-4f14-8d41-173655ef0a69.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Call Type' = IF('agg agg_revenue_call_report_payments'[is_impounded] = "no", "Standard Calls", "Impound Call")
+		lineageTag: a77416ca-a607-4330-9531-a78e30064fc7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'agg agg_revenue_call_report_payments' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_revenue_call_report_payments = Source{[Schema="agg",Item="agg_revenue_call_report_payments"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(agg_agg_revenue_call_report_payments,{{"payment_date", "Payment Date"}, {"tow_completed_date", "Completion Date"}, {"parent_company", "OpCo-Company"}, {"Company", "Sub-Company"}, {"audit_date", "Audit Date"}, {"lock_date", "Lock Date"}, {"released_date", "Released Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

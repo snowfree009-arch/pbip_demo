@@ -1,0 +1,24 @@
+table SourceApplicationMaster
+	lineageTag: b6562c32-0d3b-49aa-adcd-c6ab4a7510c9
+
+	column 'Source Application'
+		lineageTag: 7d3edf0b-16a0-4186-bacc-65e274354952
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Source Application]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SourceApplicationMaster = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				    SELECTCOLUMNS(
+				        agg_revenue_call_report,
+				        "Source Application", agg_revenue_call_report[source_application]
+				    )
+				)
+
+	annotation PBI_Id = 405e885e367c469ba94861952a4338c7
+

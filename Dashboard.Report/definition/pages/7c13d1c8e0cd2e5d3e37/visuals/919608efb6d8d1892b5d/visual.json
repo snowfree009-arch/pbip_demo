@@ -1,0 +1,376 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "919608efb6d8d1892b5d",
+  "position": {
+    "x": 10.350404312668463,
+    "y": 234.60916442048517,
+    "z": 11000,
+    "height": 475,
+    "width": 1260,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "CallNumber"
+                }
+              },
+              "queryRef": "Sum(agg agg_accrued_revenue_file.CallNumber)",
+              "nativeQueryRef": "CallNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "Company"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.Company",
+              "nativeQueryRef": "Company1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "tow_completed_date"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.tow_completed_date",
+              "nativeQueryRef": "Tow Completed Date1",
+              "displayName": "Tow Completed Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "reporting_date"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.reporting_date",
+              "nativeQueryRef": "Reporting Date1",
+              "displayName": "Reporting Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "call_id_sk"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.call_id_sk",
+              "nativeQueryRef": "Call Id Surrogate Key1",
+              "displayName": "Call Id Surrogate Key"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "rateItem"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.rateItem",
+              "nativeQueryRef": "Rate Item",
+              "displayName": "Rate Item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "rateItemID"
+                }
+              },
+              "queryRef": "CountNonNull(agg agg_accrued_revenue_file.rateItemID)",
+              "nativeQueryRef": "rateItemID",
+              "displayName": "Rate Item Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "rateItemPrice"
+                }
+              },
+              "queryRef": "Sum(agg agg_accrued_revenue_file.rateItemPrice)",
+              "nativeQueryRef": "rateItemPrice",
+              "displayName": "Rate Item Price"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "rateItemQuantity"
+                }
+              },
+              "queryRef": "Sum(agg agg_accrued_revenue_file.rateItemQuantity)",
+              "nativeQueryRef": "rateItemQuantity",
+              "displayName": "Rate Item Quantity"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "agg agg_accrued_revenue_file"
+                        }
+                      },
+                      "Property": "total"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(agg agg_accrued_revenue_file.total)",
+              "nativeQueryRef": "Total1",
+              "displayName": "Total"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "is_locked"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.is_locked",
+              "nativeQueryRef": "Lock Status1",
+              "displayName": "Lock Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "is_audited"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.is_audited",
+              "nativeQueryRef": "Audit Status1",
+              "displayName": "Audit Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "is_impounded"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.is_impounded",
+              "nativeQueryRef": "Impound Status1",
+              "displayName": "Impound Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "released"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.released",
+              "nativeQueryRef": "Release Status",
+              "displayName": "Release Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "Account"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.Account",
+              "nativeQueryRef": "Account1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "payment_status"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.payment_status",
+              "nativeQueryRef": "Payment Status1",
+              "displayName": "Payment Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "GLAccount"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.GLAccount",
+              "nativeQueryRef": "GLAccount1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "AccountNumber"
+                }
+              },
+              "queryRef": "Sum(agg agg_accrued_revenue_file.AccountNumber)",
+              "nativeQueryRef": "AccountNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "lock_date"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.lock_date",
+              "nativeQueryRef": "Lock Date1",
+              "displayName": "Lock Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "audit_date"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.audit_date",
+              "nativeQueryRef": "Audit Date1",
+              "displayName": "Audit Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "dutytype"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.dutytype",
+              "nativeQueryRef": "Duty Type1",
+              "displayName": "Duty Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "agg agg_accrued_revenue_file"
+                    }
+                  },
+                  "Property": "transaction_type"
+                }
+              },
+              "queryRef": "agg agg_accrued_revenue_file.transaction_type",
+              "nativeQueryRef": "Transaction Type1",
+              "displayName": "Transaction Type"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

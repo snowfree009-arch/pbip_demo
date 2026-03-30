@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "3e0f2231117d1cd29e0d",
+  "position": {
+    "x": 10,
+    "y": 1166,
+    "z": 10000,
+    "height": 352,
+    "width": 700
+  },
+  "visualGroup": {
+    "displayName": "Revenue per Mile",
+    "groupMode": "ScaleMode"
+  }
+}

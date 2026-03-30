@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "2cefd52e7bdb0bef0fc8",
+  "position": {
+    "x": 10,
+    "y": 804,
+    "z": 11515,
+    "height": 352,
+    "width": 700.00000000000011
+  },
+  "visualGroup": {
+    "displayName": "Employee Ratio by Company",
+    "groupMode": "ScaleMode"
+  }
+}

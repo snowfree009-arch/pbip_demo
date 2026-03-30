@@ -1,0 +1,9 @@
+role 'Eaton Road Payroll Restricted'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"EATON ROAD SOLUTIONS"}
+
+	annotation PBI_Id = 5ef1d27cb1bf49fab854bedc47e943cc
+

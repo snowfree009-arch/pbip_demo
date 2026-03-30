@@ -1,0 +1,163 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "c354b685db5a80f171cf",
+  "displayName": "Payroll as a % of Revenue - Drill Through",
+  "displayOption": "FitToPage",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "88f4297c488ab96c331a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "comm_earning"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "249e21ee36a0d04adaaf",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "Revenue"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "a307596acd95be5e4346",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "avg_daily_sal"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "3980fc1ed856d5c7b554",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "Payroll Percentage"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough",
+        "isLockedInViewMode": true
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "c5c5a206c06cc2673819",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "9ebdc5225903da093e16",
+        "boundFilter": "88f4297c488ab96c331a",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "comm_earning"
+          }
+        }
+      },
+      {
+        "name": "f65b09ac4d970ed95a9e",
+        "boundFilter": "249e21ee36a0d04adaaf",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "Revenue"
+          }
+        }
+      },
+      {
+        "name": "f8dbaa187c076fd6d89c",
+        "boundFilter": "a307596acd95be5e4346",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "avg_daily_sal"
+          }
+        }
+      },
+      {
+        "name": "dcd0c7045408fae3bc22",
+        "boundFilter": "3980fc1ed856d5c7b554",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_payroll_payperiod"
+              }
+            },
+            "Property": "Payroll Percentage"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "abfee7f4c899156d74f7",
+      "target": "d0a3274c692928122717",
+      "type": "DataFilter"
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+relationship c1285130-712d-440f-aa4e-08516e35afde
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.'Lock Date'
+	toColumn: LocalDateTable_dba7f6d3-9608-4014-91cc-09fd74ed7d39.Date
+
+relationship 1133ecef-fbc6-41a1-ae70-fff68e951e36
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.'Audit Date'
+	toColumn: LocalDateTable_566aa55c-544d-4868-9a52-b4978ee2ac74.Date
+
+relationship 09eb7178-4554-4f8e-8354-05c5a0a5a0a6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.'Released Date'
+	toColumn: LocalDateTable_15a211ec-c2b8-4758-aed9-4d71c49522a9.Date
+
+relationship fd2c2a88-5eb2-4b7a-8ed6-43fd321e6349
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_payroll_payperiod'.PayPeriodBeginDate
+	toColumn: LocalDateTable_47db7b31-138b-4cc0-b9f2-359aa7049530.Date
+
+relationship 035a4f18-e6e9-4b8b-9da2-dc1fcff9bb71
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_payroll_payperiod'.PayPeriodEndDate
+	toColumn: LocalDateTable_acb4aad8-8154-403a-9387-6375e25c9e68.Date
+
+relationship 9e92d288-8653-4767-9805-3a05cde1d6a6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_payments'.'Completion Date'
+	toColumn: LocalDateTable_994da9cd-f34c-45df-89f2-af4c6405f7b4.Date
+
+relationship bf403f1d-b726-47a3-b51f-d13ae15493eb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.Dispatched_time
+	toColumn: LocalDateTable_aa0d1e5b-31c6-4239-96dc-374383bb6243.Date
+
+relationship 65889030-20bc-4775-8971-3fa0b58d123e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.On_scene_time
+	toColumn: LocalDateTable_6a2939f6-3082-4764-95a5-f47cd42465c6.Date
+
+relationship 892da88e-8e05-4beb-a919-4f1dab077a89
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.tow_completed_date_time
+	toColumn: LocalDateTable_6dcb5169-ec8c-41dd-987c-f69505e1a1fe.Date
+
+relationship d7089de4-8bf9-420f-b7c5-f47443a789c4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.tow_received_date_time
+	toColumn: LocalDateTable_62745a03-e06c-48b4-997e-0b7ee3906cd7.Date
+
+relationship 72972a8c-3510-4b02-a01c-ac168a2e1f43
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.'Tow Completed Week Sort Order'
+	toColumn: LocalDateTable_25a5d95c-c69c-4117-9f2d-83363ca20970.Date
+
+relationship 1a34e14a-304b-4d72-a774-3af0788be8e6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Tow Completed Date'
+	toColumn: LocalDateTable_838a922d-4b52-442a-8419-fe9b7e232310.Date
+
+relationship c5db97f6-7299-4a71-8894-3c53c0ca9807
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Lock Date'
+	toColumn: LocalDateTable_8c04f928-e0ac-4b14-814c-393ad4f6803a.Date
+
+relationship 79fac665-0513-4a8a-978d-95c703f3e254
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Audit Date'
+	toColumn: LocalDateTable_95c8e51c-32d6-40a7-8576-debc10ed4a7f.Date
+
+relationship 24620ba7-2e86-47cb-b1c4-388dcfd57d0a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Released Date'
+	toColumn: LocalDateTable_b8acffba-754e-4248-9104-a9e406e7b44b.Date
+
+relationship ea8ec637-8c9b-4dda-82f7-5e7b8f666d0f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.Dispatched_time
+	toColumn: LocalDateTable_646a4fef-63d2-48ba-b2db-2c9bd79211e7.Date
+
+relationship fa5d6020-9e99-4b0c-8d1e-682a3db7592a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.On_scene_time
+	toColumn: LocalDateTable_b9dee8eb-7864-4135-8084-298c688adc99.Date
+
+relationship d44479af-217b-4aa7-8e2e-1dc9f626369b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.tow_completed_date_time
+	toColumn: LocalDateTable_e1909c3b-c673-4937-8bcd-20e8fff6e261.Date
+
+relationship 90cb10fb-3704-4ebb-bf02-60f5682eeb37
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.tow_received_date_time
+	toColumn: LocalDateTable_899d6af3-fe9c-46c7-b753-4e20c1bebcfc.Date
+
+relationship 48628f1c-d00e-4b35-95f2-b8a22810ff98
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Reported Week Sort Order'
+	toColumn: LocalDateTable_076a1d50-ee12-4cec-8c4e-dbab3a20ef6e.Date
+
+relationship 0da7a440-65c8-4c81-9abf-c89e46e80712
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.Tow_Completed_Date_Map
+	toColumn: LocalDateTable_a348dba7-93e6-4d2e-9ea5-4a1d9615c5aa.Date
+
+relationship 314139f0-576b-e7c8-95ec-100a7fbba1a9
+	fromColumn: agg_revenue_call_report.is_impounded
+	toColumn: CallTypeTable.'Impound Status'
+
+relationship fbe28264-e63f-8476-2f46-4e80625abd65
+	fromColumn: 'agg agg_revenue_call_report_revenue'.is_impounded
+	toColumn: CallTypeTable.'Impound Status'
+
+relationship 44767092-7f19-42cb-a62f-fe028d525725
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_payments'.'Payment Week Sort Order'
+	toColumn: LocalDateTable_71b2139c-b0e8-4f74-bc3a-6b6d162f06ac.Date
+
+relationship 776cba4e-dab4-41ee-b5b6-0ca21d02fcfb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.'Tow completion Filter Date'
+	toColumn: LocalDateTable_afd109cd-fd2d-46c2-9bff-474a73a86969.Date
+
+relationship 2d987f14-e4c1-4fdc-9493-6d7826070c28
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_payments'.'Lock Date'
+	toColumn: LocalDateTable_fbadccb1-f1ec-4dda-8892-ad505c8e0f1a.Date
+
+relationship 2fe26e29-5a44-411e-97b2-6f9c433b167b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_payments'.'Audit Date'
+	toColumn: LocalDateTable_2a59578d-9465-4884-9eae-fdcfc7405678.Date
+
+relationship 90bfd68c-84b7-444c-96a6-17b3928aa7a5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_payments'.impound_date
+	toColumn: LocalDateTable_e668dcf3-3990-4a3d-b885-9d5c1970777c.Date
+
+relationship d88b4325-301a-4a4e-8c11-5f7beec939a6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_payments'.'Released Date'
+	toColumn: LocalDateTable_be4389fe-b12b-4f14-8d41-173655ef0a69.Date
+
+relationship 279860d6-4f06-cf80-b635-b6ae3a4ec896
+	fromColumn: 'agg agg_revenue_call_report_account_receivable'.is_impounded
+	toColumn: CallTypeTable.'Impound Status'
+
+relationship 6026c02c-2cb5-4c70-b795-a459784a1fe6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.'Reporting Date'
+	toColumn: LocalDateTable_1ddcaf22-874d-4429-800a-0261235c286f.Date
+
+relationship b6db247f-03c4-4922-9b00-5261dab81a38
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_payroll_payperiod'.'Check Date'
+	toColumn: LocalDateTable_4dc66688-b35f-4024-b199-35a45293af42.Date
+
+relationship 2cba0193-7945-4f30-8fbf-a79d5203e17e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_account_receivable'.tow_completed_date
+	toColumn: LocalDateTable_c35d8d33-e7f0-40df-91fe-102ce8862ed9.Date
+
+relationship a10b6902-4eab-491f-9276-1d04c5d3b80b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_budget.PSTARTDATE
+	toColumn: LocalDateTable_cc3edad7-0a9a-4892-8b51-f6b7b43a33f1.Date
+
+relationship b59b644c-5e1f-437e-858d-a18c768f8a04
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_budget.PENDDATE
+	toColumn: LocalDateTable_1596f15d-2fb2-4721-a738-fa0883984d1a.Date
+
+relationship 9f0bb47f-0e3a-4d1d-9bbd-66bd8095b982
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_budget.date
+	toColumn: LocalDateTable_626fd557-de4c-441f-8e2a-f0c0638c91d3.Date
+
+relationship 6baaa0a9-af16-48ea-814e-a0f7e59f492d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Account Created Date'
+	toColumn: LocalDateTable_0cb6bea8-4243-4967-a105-930a3f0ee18c.Date
+
+relationship f5418694-940b-47df-99f9-788aac451c76
+	toCardinality: many
+	fromColumn: agg_revenue_call_report.'Is Zero Revenue Call'
+	toColumn: ZeroRevenueShowData.is_zero_revenue
+
+relationship d3acc39a-e44a-ef63-a707-fd0e00ffc5a5
+	toCardinality: many
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Is Zero Revenue Call'
+	toColumn: ZeroRevenueShowData.is_zero_revenue
+
+relationship 986f4c75-4a0b-45ae-950f-0823383bceb1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.tow_completed_date
+	toColumn: LocalDateTable_caac4c7b-7e53-4adc-8efd-247c144f9652.Date
+
+relationship 4c300788-8520-403a-b87f-25759d1c751c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.reporting_date
+	toColumn: LocalDateTable_7bfac8af-0042-4e43-8990-f7482ce20323.Date
+
+relationship 1bfe9974-c72f-49f9-b27e-75d2ecb9731c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.lock_date
+	toColumn: LocalDateTable_63ae0cbd-81a7-40f5-ab96-8586c4eaddc1.Date
+
+relationship c94c1854-768e-4850-a864-984aef8a5826
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.audit_date
+	toColumn: LocalDateTable_4630f30a-3c67-4515-9df0-1e59f63f57c9.Date
+
+relationship 209dfba7-ad93-4e42-ae0f-a1f5f0533724
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.released_date
+	toColumn: LocalDateTable_7bbf6483-0283-4204-b540-8f4a9703d641.Date
+
+relationship 98e18c8f-c2d7-43d1-8e1b-b198cf71236f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.Dispatched_time
+	toColumn: LocalDateTable_2861d0bb-a7c3-4c34-98fc-8c4080d83f25.Date
+
+relationship ea541fdf-9b8e-48c2-a4a0-a63f32a0c2aa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.On_scene_time
+	toColumn: LocalDateTable_f49e5f2d-fb64-4011-9eb0-dd76279e28c9.Date
+
+relationship cd2288a9-6df8-484e-a887-5724275a64de
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.tow_completed_date_time
+	toColumn: LocalDateTable_373c897f-253a-4a64-84b1-8839335bac09.Date
+
+relationship ccc1b735-b4d2-4720-87d7-b89de1e1c41c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.tow_received_date_time
+	toColumn: LocalDateTable_450ac1e4-d843-4a08-a1b2-7c9f888394ca.Date
+
+relationship fb68acd1-3d65-4858-9fca-47e25be8f9f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.account_created_date
+	toColumn: LocalDateTable_4978f4aa-7dca-4d81-addc-5c57c65c9cc7.Date
+
+relationship 647bb9f0-cce7-4785-a720-933f2d3479ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateDimension.Date
+	toColumn: LocalDateTable_3e5b4e57-31cc-4024-8023-46f95b48d42d.Date
+
+relationship ed0d4fe9-4c5b-a135-d58a-703a65f0aa66
+	fromColumn: 'agg agg_revenue_call_report_revenue'.'Reporting Date'
+	toColumn: DateDimension.Date
+
+relationship 35e29d9e-5125-0942-8926-202055904c83
+	fromColumn: agg_revenue_call_report.'Tow Completion Date'
+	toColumn: DateDimension.Date
+
+relationship 5eda4b05-1cca-5098-d893-349a0fc5b2b3
+	fromColumn: 'agg agg_revenue_call_report_payments'.'Payment Date'
+	toColumn: DateDimension.Date
+
+relationship e8a133ce-b056-c425-75be-47e5b45a3d51
+	fromColumn: 'agg agg_payroll_payperiod'.'Payment Date'
+	toColumn: DateDimension.Date
+
+relationship 0a889b10-2045-4758-838e-bbc576b31030
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_call_report_account_receivable'.calendar_date
+	toColumn: LocalDateTable_24327788-d2e1-4ff7-b81e-9e4e02c61f39.Date
+
+relationship 59787514-39ca-4b09-090d-150ac080f441
+	toCardinality: many
+	fromColumn: 'agg agg_revenue_call_report_account_receivable'.'Reporting Date'
+	toColumn: DateDimension.Date
+
+relationship 977e1665-9ed6-9ac6-8667-43a568013c53
+	fromColumn: ZeroRevenueShowData.zero_revenue_id_fk
+	toColumn: ZeroRevenueFlag.flag_id
+
+relationship c5e705b4-612f-5d69-c3f6-00c66345379e
+	toCardinality: many
+	fromColumn: agg_revenue_call_report.source_application
+	toColumn: SourceApplicationMaster.'Source Application'
+
+relationship fd65016c-c506-84eb-373d-563997d53c56
+	toCardinality: many
+	fromColumn: 'agg agg_revenue_call_report_revenue'.source_application
+	toColumn: SourceApplicationMaster.'Source Application'
+
+relationship 31b76720-3b71-d217-06b2-29552b836a12
+	fromColumn: 'agg agg_revenue_call_report_account_receivable'.source_application
+	toColumn: SourceApplicationMaster.'Source Application'
+
+relationship ae894662-0469-8547-1f68-e345fbd9c5c7
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Company to Source Application'.'Source Application'
+	toColumn: SourceApplicationMaster.'Source Application'
+
+relationship 3e6a966d-01ff-4cfe-9f1a-97403292c051
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_exception_report'.'Last Modified Date'
+	toColumn: LocalDateTable_b3ecff46-a30a-4064-bff8-19e10996b6dc.Date
+
+relationship 5143fbd5-9677-bc87-088a-a945d07c346e
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'agg agg_revenue_call_report_revenue'.rate_id_sk_call_id_sk
+	toColumn: 'agg agg_RateItem_mapping'.rateitem_id_sk_call_id_sk
+
+relationship 3573a5bc-f086-27f1-cd91-e715b086dfd9
+	toCardinality: many
+	fromColumn: 'agg agg_payroll_payperiod'.'OpCo Company'
+	toColumn: CompanyMasters.'OpCo Company'
+
+relationship 6e7d5c9b-1b97-9294-928e-3518fb533ed7
+	fromColumn: 'agg agg_revenue_call_report_payments'.Sub-Company
+	toColumn: CompanyMasters.'Sub Company'
+
+relationship 7942f272-3caa-7eab-848c-899a99969fd4
+	fromColumn: agg_revenue_call_report.Sub-Company
+	toColumn: CompanyMasters.'Sub Company'
+
+relationship 0189d22d-dffd-5d76-c5f2-025077f2bc64
+	fromColumn: 'agg agg_revenue_call_report_revenue'.Company
+	toColumn: CompanyMasters.'Sub Company'
+
+relationship 1a990696-1183-b8ad-0e68-9d5055e8aafe
+	fromColumn: 'agg agg_revenue_call_report_account_receivable'.Company
+	toColumn: CompanyMasters.'Sub Company'
+
+relationship 9b650859-2168-158a-4a5d-e4ded0fc0dbd
+	fromColumn: 'Company to Source Application'.'Sub Company'
+	toColumn: CompanyMasters.'Sub Company'
+
+relationship 4a692c24-6984-fe4c-4b48-4a2adfa5ecf9
+	fromColumn: 'agg agg_exception_report'.Company
+	toColumn: CompanyMasters.'Sub Company'
+
+relationship 27ceaf8e-eb78-4443-9273-020bc05f4767
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.en_route
+	toColumn: LocalDateTable_56948805-7633-4849-a599-5d7ad50eb536.Date
+
+relationship aad35421-1589-40be-bbce-03f39b311fa8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: agg_revenue_call_report.ETA
+	toColumn: LocalDateTable_96ab89dc-df32-46ff-8895-cf36f62ba7c0.Date
+
+relationship 51a084de-67a7-4cc8-a1c8-957627cea1bc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_file'.tow_completed_date
+	toColumn: LocalDateTable_624f0d35-268b-4656-991f-80e35821361e.Date
+
+relationship 89e5c73f-1780-4499-995a-ce2b38602d19
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_file'.reporting_date
+	toColumn: LocalDateTable_30d140d9-d58f-4086-adc6-ef0a3c4916b7.Date
+
+relationship AutoDetected_23800d30-07be-4cf3-aaa6-6e9451aefb33
+	fromColumn: 'agg agg_revenue_file'.call_id_sk
+	toColumn: agg_revenue_call_report.call_id_sk
+
+relationship a2ca6488-4618-8029-fdd0-7f58c1862a8c
+	toCardinality: many
+	fromColumn: agg_budget.company
+	toColumn: CompanyMasters.'OpCo Company'
+
+relationship 290a1770-6618-4e2c-90b8-0f9cbe433903
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_file'.lock_date
+	toColumn: LocalDateTable_34626f35-509c-41ca-9cc1-6ed8d055d81a.Date
+
+relationship d1271cef-fdfa-47dc-912e-71110764dae2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_revenue_file'.audit_date
+	toColumn: LocalDateTable_901d2ca5-ebe3-4eee-ba22-751b9c912811.Date
+
+relationship 2b969bc3-d2f4-46ec-a629-2562aa217b58
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_accrued_revenue_file'.tow_completed_date
+	toColumn: LocalDateTable_f40ef2fd-6345-4d11-bf93-d1900d058875.Date
+
+relationship e81393a6-ef9e-4f6b-b000-6cf55fcde716
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_accrued_revenue_file'.reporting_date
+	toColumn: LocalDateTable_cd8bb8e2-c5d0-4cd5-be10-6dc575c3fc0e.Date
+
+relationship c81e1c8b-588b-418b-a290-d3370e62bcb0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_accrued_revenue_file'.lock_date
+	toColumn: LocalDateTable_8e1a19bc-614e-4dc9-a041-1059352bf738.Date
+
+relationship e2b55f52-78bf-477f-b4fa-79ba60255f29
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'agg agg_accrued_revenue_file'.audit_date
+	toColumn: LocalDateTable_09e7c8dd-282e-4ec5-84e0-ea1dd36b58fd.Date
+
+relationship AutoDetected_9d6a5566-6c4c-4ff2-8a0b-b1d42c08cd3e
+	fromColumn: 'agg agg_accrued_revenue_file'.call_id_sk
+	toColumn: agg_revenue_call_report.call_id_sk
+

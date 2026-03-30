@@ -1,0 +1,9 @@
+role 'Big Valley Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"BIG VALLEY TOWING"}
+
+	annotation PBI_Id = c01c6a936a6540ceab2129546e5cae3c
+

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "dfd1db84fb16ecc8c19d",
+  "position": {
+    "x": 656,
+    "y": 170,
+    "z": 8000,
+    "height": 300,
+    "width": 646,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "Revenue Trends Graph",
+    "groupMode": "ScaleMode"
+  }
+}

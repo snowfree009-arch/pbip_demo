@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "72183ca3a7a79c0b4c8e",
+  "position": {
+    "x": 18.696027736818188,
+    "y": 738.73288474302683,
+    "z": 5000,
+    "height": 69.29519918283961,
+    "width": 1247.3135852911132,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Emp KPI",
+    "groupMode": "ScaleMode"
+  }
+}

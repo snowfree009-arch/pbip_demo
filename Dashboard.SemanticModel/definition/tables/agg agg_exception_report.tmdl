@@ -1,0 +1,611 @@
+table 'agg agg_exception_report'
+	lineageTag: 7fee608b-020b-4000-a1ba-1a3a38f1d06b
+
+	measure ExceptionSelectedCompany = ```
+			
+			"OpCo: " & 
+			IF(
+			    ISFILTERED('agg agg_exception_report'[parent_company]), 
+			    SELECTEDVALUE('agg agg_exception_report'[parent_company]), 
+			    "ALL"
+			) & 
+			", Sub: " & 
+			IF(
+			    ISFILTERED('agg agg_exception_report'[Company]), 
+			    CONCATENATEX(
+			        VALUES('agg agg_exception_report'[Company]), 
+			        'agg agg_exception_report'[Company], 
+			        ", "
+			    ), 
+			    "ALL"
+			)
+			
+			```
+		lineageTag: 538c9f0b-ba51-4cec-afc7-19d894576d8f
+
+	column CallNumber
+		dataType: string
+		lineageTag: 3ba92902-19d0-4cf9-9bcf-e6581dfeaa2f
+		summarizeBy: none
+		sourceColumn: CallNumber
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: 533299d5-cba1-40f0-9449-1be595470c91
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Driver
+		dataType: string
+		lineageTag: 5bc8768c-de9a-4838-9747-99aeebd5561c
+		summarizeBy: none
+		sourceColumn: Driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_completed_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a46e935b-cc49-4c83-bdbc-e42b5d64259b
+		summarizeBy: none
+		sourceColumn: tow_completed_date
+
+		variation Variation
+			isDefault
+			relationship: 986f4c75-4a0b-45ae-950f-0823383bceb1
+			defaultHierarchy: LocalDateTable_caac4c7b-7e53-4adc-8efd-247c144f9652.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column reporting_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 02522674-62e3-433d-87d7-03fb2f4a28a9
+		summarizeBy: none
+		sourceColumn: reporting_date
+
+		variation Variation
+			isDefault
+			relationship: 4c300788-8520-403a-b87f-25759d1c751c
+			defaultHierarchy: LocalDateTable_7bfac8af-0042-4e43-8990-f7482ce20323.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EmployeeType
+		dataType: string
+		lineageTag: 7024a3d8-59a1-48b0-ac76-ed5b38703d85
+		summarizeBy: none
+		sourceColumn: EmployeeType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: bdea63da-ffa4-4e5b-8f82-f28ea7636a82
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column TruckType
+		dataType: string
+		lineageTag: 975b2092-2f16-4ded-ac69-3e00a3cc2464
+		summarizeBy: none
+		sourceColumn: TruckType
+
+		annotation SummarizationSetBy = Automatic
+
+	column VehicleType
+		dataType: string
+		lineageTag: 7e5e3735-361f-4d1b-9ab0-28ca5b947109
+		summarizeBy: none
+		sourceColumn: VehicleType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		lineageTag: a899a259-85fa-4f78-8d52-4788a2e709ec
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_count
+		dataType: int64
+		formatString: 0
+		lineageTag: f3960d89-101e-47bd-9c4f-28902986030f
+		summarizeBy: sum
+		sourceColumn: Impound_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Service_calls_type
+		dataType: string
+		lineageTag: a128de9f-7e63-42a8-8905-f0e30b844797
+		summarizeBy: none
+		sourceColumn: Service_calls_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_revenue
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a85c23ae-d3dd-43ff-86c7-bfe556084c73
+		summarizeBy: sum
+		sourceColumn: Total_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8ad3cfd0-8a0e-4f97-8bba-020fd226914e
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impound_duration_min
+		dataType: int64
+		formatString: 0
+		lineageTag: fc1a6b05-ca78-473e-8993-4a8c5a6ffdbc
+		summarizeBy: sum
+		sourceColumn: Impound_duration_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentDeposit
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 99e2861d-4a77-4129-93f6-05c76de35426
+		summarizeBy: sum
+		sourceColumn: PaymentDeposit
+
+		annotation SummarizationSetBy = Automatic
+
+	column PendingPayments
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 85358fe9-fcd5-4310-b694-78e236f6a9c0
+		summarizeBy: sum
+		sourceColumn: PendingPayments
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_audited
+		dataType: string
+		lineageTag: b758d7d2-2181-495a-8202-ab7e86a1b671
+		summarizeBy: none
+		sourceColumn: is_audited
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_locked
+		dataType: string
+		lineageTag: 755df7d9-2ada-4c86-8312-4cfd64194910
+		summarizeBy: none
+		sourceColumn: is_locked
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_impounded
+		dataType: string
+		lineageTag: 3742a6fb-3d97-4271-95c3-15e2863b7736
+		summarizeBy: none
+		sourceColumn: is_impounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column lock_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fe0154c4-0947-4471-b67b-7e1557eb1515
+		summarizeBy: none
+		sourceColumn: lock_date
+
+		variation Variation
+			isDefault
+			relationship: 1bfe9974-c72f-49f9-b27e-75d2ecb9731c
+			defaultHierarchy: LocalDateTable_63ae0cbd-81a7-40f5-ab96-8586c4eaddc1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column audit_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: db722327-31fa-4296-b57b-789a07b073b9
+		summarizeBy: none
+		sourceColumn: audit_date
+
+		variation Variation
+			isDefault
+			relationship: c94c1854-768e-4850-a864-984aef8a5826
+			defaultHierarchy: LocalDateTable_4630f30a-3c67-4515-9df0-1e59f63f57c9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column released
+		dataType: string
+		lineageTag: 37c4f043-0536-446d-9afe-8836a9926104
+		summarizeBy: none
+		sourceColumn: released
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_miles
+		dataType: double
+		lineageTag: d03b1fc6-965c-4fb5-b1f1-193b43d65130
+		summarizeBy: sum
+		sourceColumn: total_miles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column emp_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 6eb96e1a-a2fa-4210-bc86-464a79251bb0
+		summarizeBy: sum
+		sourceColumn: emp_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column released_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 23bb46e8-03c0-48e5-bc2e-795ee048d857
+		summarizeBy: none
+		sourceColumn: released_date
+
+		variation Variation
+			isDefault
+			relationship: 209dfba7-ad93-4e42-ae0f-a1f5f0533724
+			defaultHierarchy: LocalDateTable_7bbf6483-0283-4204-b540-8f4a9703d641.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Account
+		dataType: string
+		lineageTag: 102aeeb2-916d-4970-8978-1493e8132b33
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: fac752f1-4d39-4a9a-a557-15f7c2dd4375
+		summarizeBy: sum
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 616c03cd-51c0-462e-bbd2-90d7620301c8
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: ff356a6d-2775-4de7-94b1-b84031fca90e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_no
+		dataType: int64
+		formatString: 0
+		lineageTag: afb002c7-17e5-4c33-b9eb-018a71b7d24d
+		summarizeBy: sum
+		sourceColumn: week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column Disp_to_on_scene
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ab65b6c-0071-4756-94b8-6263bcac5e06
+		summarizeBy: sum
+		sourceColumn: Disp_to_on_scene
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatched_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e08f7965-ae2b-4120-8d02-df29ba0b2b79
+		summarizeBy: none
+		sourceColumn: Dispatched_time
+
+		variation Variation
+			isDefault
+			relationship: 98e18c8f-c2d7-43d1-8e1b-b198cf71236f
+			defaultHierarchy: LocalDateTable_2861d0bb-a7c3-4c34-98fc-8c4080d83f25.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column On_scene_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8d5d318d-d9d7-4bc6-a48f-115d855bfed6
+		summarizeBy: none
+		sourceColumn: On_scene_time
+
+		variation Variation
+			isDefault
+			relationship: ea541fdf-9b8e-48c2-a4a0-a63f32a0c2aa
+			defaultHierarchy: LocalDateTable_f49e5f2d-fb64-4011-9eb0-dd76279e28c9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column parent_company
+		dataType: string
+		lineageTag: d249d2ef-f0c9-4d8d-b896-c1d8d19e0e09
+		summarizeBy: none
+		sourceColumn: parent_company
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_completed_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dd404847-eee5-4b5b-b5bb-3abcc1796610
+		summarizeBy: none
+		sourceColumn: tow_completed_date_time
+
+		variation Variation
+			isDefault
+			relationship: cd2288a9-6df8-484e-a887-5724275a64de
+			defaultHierarchy: LocalDateTable_373c897f-253a-4a64-84b1-8839335bac09.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column tow_received_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 57d50ce3-fc64-4f14-9eb8-39da52a4060e
+		summarizeBy: none
+		sourceColumn: tow_received_date_time
+
+		variation Variation
+			isDefault
+			relationship: ccc1b735-b4d2-4720-87d7-b89de1e1c41c
+			defaultHierarchy: LocalDateTable_450ac1e4-d843-4a08-a1b2-7c9f888394ca.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_application
+		dataType: string
+		lineageTag: d6f3baae-a892-4bf6-b29c-a919ebe755f7
+		summarizeBy: none
+		sourceColumn: source_application
+
+		annotation SummarizationSetBy = Automatic
+
+	column dispatcher
+		dataType: string
+		lineageTag: 70fe81b4-502c-49ca-9d23-79342e67aac5
+		summarizeBy: none
+		sourceColumn: dispatcher
+
+		annotation SummarizationSetBy = Automatic
+
+	column truck
+		dataType: string
+		lineageTag: 8d73dfc4-480f-4639-87dd-febf10c43fcc
+		summarizeBy: none
+		sourceColumn: truck
+
+		annotation SummarizationSetBy = Automatic
+
+	column truck_vin
+		dataType: string
+		lineageTag: d047a079-5d78-4d1b-afa9-d8c7a228f736
+		summarizeBy: none
+		sourceColumn: truck_vin
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dispatcher_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c5ba62b-c969-45e4-9b8d-af96fc6e09c7
+		summarizeBy: sum
+		sourceColumn: Dispatcher_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_created_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: caab6dae-a28d-43fb-8a0c-68061b3006aa
+		summarizeBy: none
+		sourceColumn: account_created_date
+
+		variation Variation
+			isDefault
+			relationship: fb68acd1-3d65-4858-9fca-47e25be8f9f5
+			defaultHierarchy: LocalDateTable_4978f4aa-7dca-4d81-addc-5c57c65c9cc7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_error
+		dataType: string
+		lineageTag: 850d10b1-158f-4077-b97a-f40a26ced026
+		summarizeBy: none
+		sourceColumn: is_error
+
+		annotation SummarizationSetBy = Automatic
+
+	column error_code
+		dataType: string
+		lineageTag: 3a2299e0-98a0-4782-8fbc-c28939dade97
+		summarizeBy: none
+		sourceColumn: error_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Type' = IF('agg agg_exception_report'[is_impounded] = "yes", "Impound Call","Standard Call")
+		lineageTag: 5d446cb8-de02-430c-8088-10feb893807f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column dutytype
+		dataType: string
+		lineageTag: 6024166f-9ce1-4600-8195-530b4bf091fa
+		summarizeBy: none
+		sourceColumn: dutytype
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_dispatcher
+		dataType: string
+		lineageTag: fdfe32ed-fd4b-4d3a-a118-f2121cfdc561
+		summarizeBy: none
+		sourceColumn: source_dispatcher
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_dispatcher_id
+		dataType: string
+		lineageTag: e798bbd9-1aef-4c92-b018-4739b7d3fb7c
+		summarizeBy: none
+		sourceColumn: source_dispatcher_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_driver
+		dataType: string
+		lineageTag: 6f7ec649-4b45-45c6-b1dc-27242ebd8896
+		summarizeBy: none
+		sourceColumn: source_driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_driver_id
+		dataType: string
+		lineageTag: 63db556f-c44b-4669-a65f-d98b36304d6c
+		summarizeBy: none
+		sourceColumn: source_driver_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_truck
+		dataType: string
+		lineageTag: afb3d7bf-a277-4071-92ba-b01eb7ba47a4
+		summarizeBy: none
+		sourceColumn: source_truck
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_truck_id
+		dataType: string
+		lineageTag: eaeabb76-a7d4-4fd0-adf9-c0b3f94f4baf
+		summarizeBy: none
+		sourceColumn: source_truck_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_reason
+		dataType: string
+		lineageTag: 34ff7772-ba1d-48c0-8093-be67d39d623a
+		summarizeBy: none
+		sourceColumn: source_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_vehicle_class
+		dataType: string
+		lineageTag: 7d65bb2a-e514-4e3f-9277-50dc82818f27
+		summarizeBy: none
+		sourceColumn: source_vehicle_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_payment_status
+		dataType: string
+		lineageTag: db241ff2-1849-4e1a-a638-20aa6514a296
+		summarizeBy: none
+		sourceColumn: source_payment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column error_code_details
+		dataType: string
+		lineageTag: 9bd0b798-fb4c-4934-80ea-702c7479d775
+		summarizeBy: none
+		sourceColumn: error_code_details
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Modified Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1ffed602-a245-410c-831e-39f3a92ee775
+		summarizeBy: none
+		sourceColumn: Last Modified Date
+
+		variation Variation
+			isDefault
+			relationship: 3e6a966d-01ff-4cfe-9f1a-97403292c051
+			defaultHierarchy: LocalDateTable_b3ecff46-a30a-4064-bff8-19e10996b6dc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column RateItem
+		dataType: string
+		lineageTag: a4cceb30-b207-4f4c-86f5-cba8cb48ba8b
+		summarizeBy: none
+		sourceColumn: RateItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column RateItemID
+		dataType: string
+		lineageTag: 3bda78e2-ad2f-48e2-9a38-685ef9251382
+		summarizeBy: none
+		sourceColumn: RateItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'agg agg_exception_report' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_exception_report = Source{[Schema="agg",Item="agg_exception_report"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(agg_agg_exception_report,{{"last_modified_date", "Last Modified Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,478 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "0d1e211bcbedea6aaafa",
+  "displayName": "Heavy Duty Forecast Dashboard",
+  "displayOption": "FitToWidth",
+  "height": 1130,
+  "width": 1300,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "25a328e0a0162deb17b6",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "Is Exception Data"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "agg_revenue_call_report",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "Is Exception Data"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'No'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "8339eb0914000c14eb60",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "Is Exception Data"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "agg agg_revenue_call_report_revenue",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "Is Exception Data"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'No'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "6549e15f160c3e1bebb3",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "Duty Type"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "agg agg_revenue_call_report_revenue",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "Duty Type"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Heavy'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "5083899679cbfdae814a",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_revenue"
+              }
+            },
+            "Property": "is_impounded"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "agg agg_revenue_call_report_revenue",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "is_impounded"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'yes'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      }
+    ],
+    "filterSortOrder": "Custom"
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#E6E6E6'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "e250919b25cb09c46eb8",
+      "target": "48d6fa40aa139fd39466",
+      "type": "DataFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "f3b8fc30a4bd94ee08b4",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "d1652bc0bff653314c68",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "04b5ae682038f9d6a73a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "58790d80f6c47a4fa82f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c03a6d5edd10ca64d5c",
+      "target": "aed953bafa8f28dca7a8",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e250919b25cb09c46eb8",
+      "target": "f3b8fc30a4bd94ee08b4",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e250919b25cb09c46eb8",
+      "target": "d1652bc0bff653314c68",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e250919b25cb09c46eb8",
+      "target": "04b5ae682038f9d6a73a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e250919b25cb09c46eb8",
+      "target": "58790d80f6c47a4fa82f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "48d6fa40aa139fd39466",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c03a6d5edd10ca64d5c",
+      "target": "48d6fa40aa139fd39466",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c03a6d5edd10ca64d5c",
+      "target": "c7de20c7263ec8f46e05",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "c7de20c7263ec8f46e05",
+      "type": "NoFilter"
+    },
+    {
+      "source": "48d6fa40aa139fd39466",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c7de20c7263ec8f46e05",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e250919b25cb09c46eb8",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c03a6d5edd10ca64d5c",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c7de20c7263ec8f46e05",
+      "target": "48d6fa40aa139fd39466",
+      "type": "NoFilter"
+    },
+    {
+      "source": "443b030e6ff60db6ed60",
+      "target": "aed953bafa8f28dca7a8",
+      "type": "NoFilter"
+    },
+    {
+      "source": "367397c6e53ef2978fc1",
+      "target": "aed953bafa8f28dca7a8",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aed953bafa8f28dca7a8",
+      "target": "c1d1ed6863b944af230b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "443b030e6ff60db6ed60",
+      "target": "c1d1ed6863b944af230b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "443b030e6ff60db6ed60",
+      "target": "48d6fa40aa139fd39466",
+      "type": "NoFilter"
+    },
+    {
+      "source": "443b030e6ff60db6ed60",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "443b030e6ff60db6ed60",
+      "target": "c7de20c7263ec8f46e05",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c03a6d5edd10ca64d5c",
+      "target": "c1d1ed6863b944af230b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "367397c6e53ef2978fc1",
+      "target": "c1d1ed6863b944af230b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "367397c6e53ef2978fc1",
+      "target": "48d6fa40aa139fd39466",
+      "type": "NoFilter"
+    },
+    {
+      "source": "367397c6e53ef2978fc1",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "367397c6e53ef2978fc1",
+      "target": "c7de20c7263ec8f46e05",
+      "type": "NoFilter"
+    },
+    {
+      "source": "eb781537811ead5d03ae",
+      "target": "0db34d55d86eb1b46a3b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "eb781537811ead5d03ae",
+      "target": "48d6fa40aa139fd39466",
+      "type": "NoFilter"
+    },
+    {
+      "source": "eb781537811ead5d03ae",
+      "target": "588c33ca801930959260",
+      "type": "NoFilter"
+    },
+    {
+      "source": "eb781537811ead5d03ae",
+      "target": "c7de20c7263ec8f46e05",
+      "type": "NoFilter"
+    },
+    {
+      "source": "eb781537811ead5d03ae",
+      "target": "c1d1ed6863b944af230b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c448c76708bb35a250b2",
+      "target": "eb781537811ead5d03ae",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e250919b25cb09c46eb8",
+      "target": "eb781537811ead5d03ae",
+      "type": "NoFilter"
+    },
+    {
+      "source": "db37b93c3eb83efe0924",
+      "target": "eb781537811ead5d03ae",
+      "type": "DataFilter"
+    }
+  ]
+}

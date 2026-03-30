@@ -1,0 +1,107 @@
+table 'agg agg_RateItem_mapping'
+	lineageTag: 14df1e6f-a69e-4c16-be96-af9e89829228
+
+	column 'GL Account'
+		dataType: string
+		lineageTag: 6a2b69ad-19f3-46e8-aa37-70838fb7d87c
+		summarizeBy: none
+		sourceColumn: GL Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Number'
+		dataType: string
+		lineageTag: 903533d1-18e4-48d9-8662-12c968ba501c
+		summarizeBy: none
+		sourceColumn: Account Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Item ID SK'
+		dataType: string
+		lineageTag: 62db4f4e-e2e1-4f19-aa75-3bd1b484a6af
+		summarizeBy: none
+		sourceColumn: Line Item ID SK
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ee6d567-9ecf-4833-9cf2-49583d75ae05
+		summarizeBy: sum
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Item'
+		dataType: string
+		lineageTag: 8b420ca2-8a1f-467d-b25b-8667869ada61
+		summarizeBy: none
+		sourceColumn: Line Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Item ID'
+		dataType: string
+		lineageTag: 16a81d92-8e11-4577-9777-226f92cd1273
+		summarizeBy: none
+		sourceColumn: Line Item ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Item Price'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 49607c7d-241b-428d-9e47-f05f34e66c88
+		summarizeBy: sum
+		sourceColumn: Line Item Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rate Item Quantity'
+		dataType: double
+		lineageTag: ee6dc2a6-cd07-4cbd-8a8c-c36a5cb48a03
+		summarizeBy: sum
+		sourceColumn: Rate Item Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Line Item Total'
+		dataType: double
+		lineageTag: f4b849b2-7fcf-4df2-a7fe-f99f5da5d8f5
+		summarizeBy: sum
+		sourceColumn: Line Item Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sum
+		dataType: double
+		lineageTag: 440be468-3b39-47d8-932c-8a2ea6f5b6c1
+		summarizeBy: sum
+		sourceColumn: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rateitem_id_sk_call_id_sk = 'agg agg_RateItem_mapping'[Line Item ID SK]&"-"&'agg agg_RateItem_mapping'[call_id_sk]
+		lineageTag: 48e77601-069c-45aa-abda-f7ce428a6c57
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'agg agg_RateItem_mapping' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_RateItem_mapping = Source{[Schema="agg",Item="agg_RateItem_mapping"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(agg_agg_RateItem_mapping,{{"AccountNumber", "Account Number"}, {"GLAccount", "GL Account"}, {"rateItem", "Line Item"}, {"rateItemID", "Line Item ID"}, {"rateItem_id_sk", "Line Item ID SK"}, {"rateItemPrice", "Line Item Price"}, {"rateItemQuantity", "Rate Item Quantity"}, {"total", "Line Item Total"}})
+				in
+				    #"Renamed Columns"
+

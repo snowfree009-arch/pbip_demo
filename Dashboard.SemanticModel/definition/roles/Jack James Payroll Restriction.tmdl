@@ -1,0 +1,9 @@
+role 'Jack James Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"JACK JAMES TOWING"}
+
+	annotation PBI_Id = a6675468418544f5b6f01ba61506dffc
+

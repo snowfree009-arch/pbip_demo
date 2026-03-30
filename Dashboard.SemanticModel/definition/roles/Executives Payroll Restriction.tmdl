@@ -1,0 +1,9 @@
+role 'Executives Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [company_id_sk] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"MILNE ROAD SERVICES LLC","CAL-NEVADA ROAD SERVICES LLC","BIG VALLEY TOWING","COLLEGE OAK ROAD SOLUTIONS LLC","ACTION ROAD SOLUTIONS, INC.","STAUFFERS TOWING LLC","TEN WEST ROAD SOLUTIONS, LLC","STATEWIDE TOWING AND RECOVERY","JACK JAMES TOWING","MAGIC VALLEY TOWING","EATON ROAD SOLUTIONS","MOUNTAIN RECOVERY ROAD SOLUTIONS"}
+
+	annotation PBI_Id = 05ad73db63fa404e8822052d6d9f1372
+

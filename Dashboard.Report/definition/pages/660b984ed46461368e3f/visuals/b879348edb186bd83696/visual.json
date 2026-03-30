@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "b879348edb186bd83696",
+  "position": {
+    "x": 1038.9298792486873,
+    "y": 0.12004801920768671,
+    "z": 1000,
+    "height": 60,
+    "width": 125.15024038461539,
+    "tabOrder": 8000
+  },
+  "visualGroup": {
+    "displayName": "Payment by Tow Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "3dc7c6002de6dd080deb"
+}

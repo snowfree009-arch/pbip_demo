@@ -1,0 +1,7 @@
+role Cal-Neveda
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"CAL-NEVADA ROAD SERVICES LLC"}
+
+	annotation PBI_Id = 45b7ffc45d6f4335a2f37ff0d6e634ef
+

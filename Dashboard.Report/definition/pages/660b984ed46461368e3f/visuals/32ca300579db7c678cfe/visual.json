@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "32ca300579db7c678cfe",
+  "position": {
+    "x": 1168.9298792486873,
+    "y": 0,
+    "z": 0,
+    "height": 60.704453441295541,
+    "width": 125.15024038461537,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "Avg Impound Duration",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "3dc7c6002de6dd080deb"
+}

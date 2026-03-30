@@ -1,0 +1,9 @@
+role 'Action Road Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"ACTION ROAD SOLUTIONS, INC."}
+
+	annotation PBI_Id = dbb083914f6f43f6abcf68a250756b16
+

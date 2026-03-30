@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "2ab07a9c957b423cc70b",
+  "position": {
+    "x": 720,
+    "y": 442,
+    "z": 12031,
+    "height": 352.06090808416377,
+    "width": 700.98283499446291
+  },
+  "visualGroup": {
+    "displayName": "Service Call (#Tows)",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,9 @@
+role 'Cal-Neveda Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"CAL-NEVADA ROAD SERVICES LLC"}
+
+	annotation PBI_Id = be0d9d3e91eb428f843c0cb59962fa0c
+

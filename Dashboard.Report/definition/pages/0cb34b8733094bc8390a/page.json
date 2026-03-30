@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "0cb34b8733094bc8390a",
+  "displayName": "Average Dispatch to Arrival Time",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter5d062c9d0dd96ebec31a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "dxm_DispatchToOnsceneArrival"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "fe0ceb60e161a8a8a049",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filter5d062c9d0dd96ebec31a",
+        "boundFilter": "Filter5d062c9d0dd96ebec31a",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg_revenue_call_report"
+              }
+            },
+            "Property": "dxm_DispatchToOnsceneArrival"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "b563dc5ad6830ea90e56",
+      "target": "d84f3c28e0724ceb306b",
+      "type": "DataFilter"
+    }
+  ]
+}

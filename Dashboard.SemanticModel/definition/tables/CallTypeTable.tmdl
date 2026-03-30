@@ -1,0 +1,34 @@
+table CallTypeTable
+	lineageTag: 94b4008e-af79-4f67-b0ac-8c657a44c6b6
+
+	column 'Call Type'
+		lineageTag: bc439a3a-5472-4b45-ae48-9a75e3e4d548
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Call Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Impound Status'
+		lineageTag: 227c5ee8-93a9-45f3-a6fa-ec33734f9f51
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Impound Status]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CallTypeTable = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Call Type", STRING,
+				    "Impound Status", STRING,
+				    {
+				        {"Standard Calls", "no"},
+				        {"Impound Calls", "yes"}
+				    }
+				)
+
+	annotation PBI_Id = ac42c4c4381946aeb97f10b419725555
+

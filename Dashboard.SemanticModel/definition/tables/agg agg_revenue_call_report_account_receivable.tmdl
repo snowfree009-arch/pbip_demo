@@ -1,0 +1,291 @@
+table 'agg agg_revenue_call_report_account_receivable'
+	lineageTag: e629ab95-7284-468d-89e1-e5936c58c184
+
+	column 'Call Number'
+		dataType: string
+		lineageTag: 6f02de72-e5c9-469f-9f44-f5cb14f5e99e
+		summarizeBy: none
+		sourceColumn: Call Number
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: cd1cd0de-043b-4318-9ad8-c8ed6dd745be
+		summarizeBy: sum
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reporting Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 85dde799-a49f-4dde-951d-0bc0ffed59b8
+		summarizeBy: none
+		sourceColumn: Reporting Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: cbf79f1d-213c-4ce9-ab2d-a7a115d27eb6
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		variation Variation
+			isDefault
+			relationship: 0a889b10-2045-4758-838e-bbc576b31030
+			defaultHierarchy: LocalDateTable_24327788-d2e1-4ff7-b81e-9e4e02c61f39.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'OpCo Company'
+		dataType: string
+		lineageTag: 94306280-763c-4e2f-b1f1-a963fb5a9417
+		summarizeBy: none
+		sourceColumn: OpCo Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: 3d0ef794-f693-4965-80b9-b01f68a43e87
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 426466aa-90cb-41a4-a3bb-3a060fe805ab
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: 36db39cc-2fb0-4d48-ae9e-4ae3a5fbdbbe
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		lineageTag: 0903963d-cb7d-4f98-95d6-7a40f43cfeb3
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_amount
+		dataType: double
+		lineageTag: 7d72fd65-d26d-43e3-a82e-a4c5fafe05bd
+		summarizeBy: sum
+		sourceColumn: transaction_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Outstanding AR ($)'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: db59edd1-4333-4cef-b72c-70235bfd3ac1
+		summarizeBy: sum
+		sourceColumn: Outstanding AR ($)
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_impounded
+		dataType: string
+		lineageTag: af9c4a76-3992-40a8-a2b3-fb06da1b66b1
+		summarizeBy: none
+		sourceColumn: is_impounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 7b6b3980-dc6e-49fa-9f09-a3389f825ef5
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_audited
+		dataType: string
+		lineageTag: 0efdeb13-0a21-45b0-8d1e-791b6b9f7c88
+		summarizeBy: none
+		sourceColumn: is_audited
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_locked
+		dataType: string
+		lineageTag: 1a6988c0-b07e-4d07-ae78-3e7afc7223f2
+		summarizeBy: none
+		sourceColumn: is_locked
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_application
+		dataType: string
+		lineageTag: bdeba09c-ae7b-49d5-bba0-39d37bab9c0f
+		summarizeBy: none
+		sourceColumn: source_application
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('agg agg_revenue_call_report_account_receivable'[calendar_date], "MMM-yyyy")
+		lineageTag: 84286346-98b0-40f3-9649-a74e8af37833
+		summarizeBy: none
+		sortByColumn: 'Month Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Sort Order' = FORMAT('agg agg_revenue_call_report_account_receivable'[calendar_date], "yyyyMM")
+		lineageTag: 5203a2fe-d147-4eaf-9e9c-cada4a668ddf
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age = DATEDIFF('agg agg_revenue_call_report_account_receivable'[Reporting Date],TODAY(),DAY)
+		formatString: 0
+		lineageTag: aaaa3f95-a071-4560-b7a2-9cdaa6bef7bf
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Category' = ```
+			IF('agg agg_revenue_call_report_account_receivable'[Age] <= 30, "0-30 days",
+			                    IF('agg agg_revenue_call_report_account_receivable'[Age] > 30 && 'agg agg_revenue_call_report_account_receivable'[Age] <= 60, "31-60 days",
+			                        IF('agg agg_revenue_call_report_account_receivable'[Age] > 60 && 
+			                        'agg agg_revenue_call_report_account_receivable'[Age] <= 90, "61-90 days",
+			                            IF('agg agg_revenue_call_report_account_receivable'[Age] > 90 &&
+			                            'agg agg_revenue_call_report_account_receivable'[Age] <=120, "91-120 days",
+			                            "120+ days"
+			                            )
+			                        )
+			                    )
+			)
+			```
+		lineageTag: 70b6c6ac-ed43-42d5-a79d-bf5d497232ef
+		summarizeBy: none
+		sortByColumn: 'Age Category Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Category Sort Order' = ```
+			
+			IF('agg agg_revenue_call_report_account_receivable'[Age] <= 30, 1,
+			    IF('agg agg_revenue_call_report_account_receivable'[Age] > 30 && 'agg agg_revenue_call_report_account_receivable'[Age] <= 60, 2,
+			        IF('agg agg_revenue_call_report_account_receivable'[Age] > 60 && 
+			            'agg agg_revenue_call_report_account_receivable'[Age] <= 90, 3,
+			                IF('agg agg_revenue_call_report_account_receivable'[Age] > 90 &&
+			                    'agg agg_revenue_call_report_account_receivable'[Age] <=120, 4,
+			                    5
+			                )
+			            )
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: 00383a9d-a591-46fe-8c20-66d583f164f5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Current Month' = ```
+			
+			IF(
+			    EOMONTH('agg agg_revenue_call_report_account_receivable'[calendar_date],0) = EOMONTH(TODAY(),0), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: d164a9ac-ad9c-4094-a823-fd774e44ab56
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_pending_payment
+		dataType: double
+		lineageTag: b0c6129c-758a-4601-9150-b0bf2a729d4b
+		summarizeBy: sum
+		sourceColumn: avg_pending_payment
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tow_completed_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0eb85f69-d628-4c5e-af42-9d4a8e3b2302
+		summarizeBy: none
+		sourceColumn: tow_completed_date
+
+		variation Variation
+			isDefault
+			relationship: 2cba0193-7945-4f30-8fbf-a79d5203e17e
+			defaultHierarchy: LocalDateTable_c35d8d33-e7f0-40df-91fe-102ce8862ed9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column revenue
+		dataType: double
+		lineageTag: a0f60aa3-b46c-471e-aa8c-9a4679d97669
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Reporting Month' = FORMAT('agg agg_revenue_call_report_account_receivable'[Reporting Date], "MMM-yyyy")
+		lineageTag: ce6d3883-df5f-45c3-9950-07c11c8b79b2
+		summarizeBy: none
+		sortByColumn: 'Reporting Month Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reporting Month Sort Order' = FORMAT('agg agg_revenue_call_report_account_receivable'[Reporting Date], "yyyyMM")
+		lineageTag: 579bbbc7-ce8a-46c9-800c-c4dde39b1bd9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'agg agg_revenue_call_report_account_receivable' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_revenue_call_report_account_receivable = Source{[Schema="agg",Item="agg_revenue_call_report_account_receivable"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(agg_agg_revenue_call_report_account_receivable,{{"PendingPayments", "Outstanding AR ($)"}, {"CallNumber", "Call Number"}, {"reporting_date", "Reporting Date"}, {"parent_company", "OpCo Company"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ec53d6e1409fe1981332",
+  "position": {
+    "x": 5,
+    "y": 1770,
+    "z": 3000,
+    "height": 450.444376704093,
+    "width": 1290.7932011331443,
+    "tabOrder": 13000
+  },
+  "visualGroup": {
+    "displayName": "Rev Per Tow By Vehicle Type",
+    "groupMode": "ScaleMode"
+  }
+}

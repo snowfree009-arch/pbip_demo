@@ -1,0 +1,9 @@
+role 'College Oak Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"COLLEGE OAK ROAD SOLUTIONS LLC"}
+
+	annotation PBI_Id = f3d64905a34246709f06dc3d756c322e
+

@@ -1,0 +1,121 @@
+table DateDimension
+	lineageTag: 4e12d857-5a1c-4a0b-b455-bdd487d9f9a2
+
+	column Date
+		formatString: Short Date
+		lineageTag: 02d1f9d7-3c5d-4223-87f6-dee205c5187b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 647bb9f0-cce7-4785-a720-933f2d3479ff
+			defaultHierarchy: LocalDateTable_3e5b4e57-31cc-4024-8023-46f95b48d42d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: cb103040-c86f-4093-ac59-f9f0e1397f34
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 1fd63e89-346c-480b-aa9b-3c64fb4c3abe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: 4a80933e-eafa-42f4-87da-0deff9b444fb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: c184600e-d038-404a-be45-022c79596ace
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		lineageTag: 81e0df35-f8e6-4ee1-bf34-b68bad4c5404
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day of Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Number'
+		formatString: 0
+		lineageTag: 46026144-0891-4ce2-b5fc-4570c9855484
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day of Week Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 9db61c41-b2e3-4e4b-ad1e-0106eee4a56a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Weekday'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 144ace9a-f9de-4f8e-8890-9fc4bc55730e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Weekday]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Day'
+		lineageTag: dd43261c-6c78-4179-9580-326b83574bac
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date Day]
+		sortByColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateDimension = calculated
+		mode: import
+		source = ```
+				
+				VAR StartDate = DATE(2024, 1, 1)
+				VAR EndDate = TODAY()-1
+				VAR DateTable = 
+				    ADDCOLUMNS(
+				        CALENDAR(StartDate, EndDate),
+				        "Year", YEAR([Date]),
+				        "Month", FORMAT([Date], "MMMM"),
+				        "Month Number", MONTH([Date]),
+				        "Day", DAY([Date]),
+				        "Date Day", (FORMAT([Date],"MM/dd/yy")&" "&format([Date],"ddd")),
+				        "Day of Week", FORMAT([Date], "dddd"),
+				        "Day of Week Number", WEEKDAY([Date], 1),
+				        "Quarter", "Q" & FORMAT([Date], "Q"),
+				        "Is Weekday", IF(WEEKDAY([Date], 2) <= 5, TRUE(), FALSE())
+				    )
+				RETURN
+				    DateTable
+				
+				```
+
+	annotation PBI_Id = b59768f7937f44dab9b4fcce1b036b71
+

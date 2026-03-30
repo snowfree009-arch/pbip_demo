@@ -1,0 +1,7 @@
+role Stauffers
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"STAUFFERS TOWING LLC"}
+
+	annotation PBI_Id = 661f2ace527442d6977da61eccad3b17
+

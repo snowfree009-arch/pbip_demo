@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "e2c6e9c2bce39bf79e03",
+  "position": {
+    "x": 11.111111111111114,
+    "y": 138.88888888888889,
+    "z": 14000,
+    "height": 61.111111111111107,
+    "width": 1287.9670796342957,
+    "tabOrder": 16000
+  },
+  "visualGroup": {
+    "displayName": "OpCo Current Week",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

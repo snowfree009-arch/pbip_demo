@@ -1,0 +1,505 @@
+table 'agg agg_payroll_payperiod'
+	lineageTag: eb7f0ffa-e4dc-4547-988b-d62bcb45c40f
+
+	measure TotalEmployeeCount = DISTINCTCOUNTNOBLANK('agg agg_payroll_payperiod'[emp_id_sk])
+		formatString: 0
+		lineageTag: 784b9986-c968-4667-ace7-7ae07aac1809
+
+	measure dxm_avg_rate =
+			
+			DIVIDE(
+			    sum('agg agg_payroll_payperiod'[avg_daily_sal]),
+			    [AvgRate_Daily_Hours],
+			    0
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b76ca16c-ba3d-47f5-bd0c-4b10ad3ff20c
+
+	measure DateFilters =
+			
+			"Date Range: " & IF(
+			    ISFILTERED('agg agg_payroll_payperiod'[Payment Date]),
+			    CONCATENATE(min('agg agg_payroll_payperiod'[Payment Date]), "-"&max('agg agg_payroll_payperiod'[Payment Date])),
+			    "Not Applied"
+			)
+		lineageTag: 4c3e712c-95af-4b81-aa69-ae722b17a7c7
+
+	measure AvgRate_Daily_Hours =
+			
+			CALCULATE(
+			    SUM('agg agg_payroll_payperiod'[avg_daily_hrs]),
+			    ALL('agg agg_payroll_payperiod'),
+			    KEEPFILTERS(VALUES('agg agg_payroll_payperiod'[Sub Company])),
+			    KEEPFILTERS(VALUES('agg agg_payroll_payperiod'[Payment Date])),
+			    KEEPFILTERS(VALUES('agg agg_payroll_payperiod'[Employee Name]))
+			)
+		formatString: 0.00
+		lineageTag: 72d7d1e7-7d2c-43dd-98a8-c87e0f2015bb
+
+	measure 'Average Daily Hours' = ```
+			
+			VAR SummaryTable = 
+			    SUMMARIZE(
+			        'agg agg_payroll_payperiod',
+			        'agg agg_payroll_payperiod'[Payment Date],
+			        'agg agg_payroll_payperiod'[Sub Company],
+			        'agg agg_payroll_payperiod'[Employee Name]
+			    )
+			VAR Result = 
+			    SUMX(
+			        SummaryTable,
+			        [AvgRate_Daily_Hours]
+			    )
+			RETURN Result
+			```
+		lineageTag: 0a6487d6-d34a-469c-95fb-9f02dda28f28
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Rate' = ```
+			
+			VAR SummaryTable = 
+			    SUMMARIZE(
+			        'agg agg_payroll_payperiod',
+			        'agg agg_payroll_payperiod'[Payment Date],
+			        'agg agg_payroll_payperiod'[Sub Company],
+			        'agg agg_payroll_payperiod'[Employee Name]
+			    )
+			VAR Result = 
+			    SUMX(
+			        SummaryTable,
+			        [dxm_avg_rate]
+			    )
+			RETURN Result
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 0db605f0-f8b5-4c9b-8a50-5570bad885b3
+
+	measure 'Show No Data' = IF(sum('agg agg_payroll_payperiod'[company_id_sk]) = BLANK(), "Details Not  Available","")
+		lineageTag: 1bb47c1c-22e1-4925-8472-a4a015d292ce
+
+	measure 'Payroll Percentage' =
+			DIVIDE(SUM('agg agg_payroll_payperiod'[avg_daily_sal]),
+			                            SUM('agg agg_payroll_payperiod'[Revenue]),
+			                            0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1aced655-acb5-4297-b20f-f42d349948d8
+
+	measure 'Employee Count' = DISTINCTCOUNTNOBLANK('agg agg_payroll_payperiod'[Payroll Employee Count])
+		formatString: 0
+		lineageTag: 1603aff2-5a61-4f22-9bc2-cce4f90096f3
+
+	column 'Payment Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8587c2eb-30b6-4101-b943-3d3d7ced4f93
+		summarizeBy: none
+		sourceColumn: Payment Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PayPeriodBeginDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a65aff15-3319-48f5-b535-6d72c96bc6fb
+		summarizeBy: none
+		sourceColumn: PayPeriodBeginDate
+
+		variation Variation
+			isDefault
+			relationship: fd2c2a88-5eb2-4b7a-8ed6-43fd321e6349
+			defaultHierarchy: LocalDateTable_47db7b31-138b-4cc0-b9f2-359aa7049530.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PayPeriodEndDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2aed1480-fc4d-411e-98d6-6a06cf8f9ee8
+		summarizeBy: none
+		sourceColumn: PayPeriodEndDate
+
+		variation Variation
+			isDefault
+			relationship: 035a4f18-e6e9-4b8b-9da2-dc1fcff9bb71
+			defaultHierarchy: LocalDateTable_acb4aad8-8154-403a-9387-6375e25c9e68.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Sub Company'
+		dataType: string
+		lineageTag: 2e2dd137-6f2d-40c2-a414-a3b8462d537b
+		summarizeBy: none
+		sourceColumn: Sub Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column emp_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 45488330-3931-4a37-b875-b39952bcb12d
+		summarizeBy: sum
+		sourceColumn: emp_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Name'
+		dataType: string
+		lineageTag: 2f89137d-4856-4e63-8c24-29623b3eac77
+		summarizeBy: none
+		sourceColumn: Employee Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a440ed1a-0dd1-4590-8e56-114f23451a5b
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column Net
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: cc0d027c-cd4f-43e6-89cf-6ff8eeb1c1b6
+		summarizeBy: sum
+		sourceColumn: Net
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_daily_sal
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7ff68309-988e-4437-9319-be3b2d27b463
+		summarizeBy: sum
+		sourceColumn: avg_daily_sal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Type'
+		dataType: string
+		lineageTag: a60afc3d-c099-4d1f-a8d1-f107ab52a9a7
+		summarizeBy: none
+		sourceColumn: Employee Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: c707018d-a6c3-4bd5-89ac-254388bf699b
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_driver
+		dataType: string
+		lineageTag: c4fbb916-338d-4e0f-b270-dbb97b8056bb
+		summarizeBy: none
+		sourceColumn: is_driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Type Category' = if('agg agg_payroll_payperiod'[is_driver] = "1", "Driver", "Non Driver")
+		lineageTag: bfb830e4-c1f8-4666-a359-2c38b1772629
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_active
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c6bed31-57bf-414c-9655-e490c19adc64
+		summarizeBy: sum
+		sourceColumn: is_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column dxc_total_hours = 8
+		formatString: 0
+		lineageTag: 4ebe60d8-77be-42dc-ae80-5aa3ef01f35a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_hrs
+		dataType: double
+		lineageTag: 60d2cfd7-671a-4564-9e7a-cc45cfd7a653
+		summarizeBy: sum
+		sourceColumn: Total_hrs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Job Title'
+		dataType: string
+		lineageTag: bd63b492-de71-4be6-87cb-183642ebe43f
+		summarizeBy: none
+		sourceColumn: Job Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarDate_emp_id_sk
+		dataType: string
+		lineageTag: aa51d0b3-a15d-44de-a7d7-c3f89cd2ec6d
+		summarizeBy: none
+		sourceColumn: CalendarDate_emp_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: ff25a24e-6f28-422f-a3fa-d2e2695d2e28
+		summarizeBy: sum
+		sourceColumn: call_id_sk
+
+		annotation SummarizationSetBy = User
+
+	column avg_daily_hrs
+		dataType: double
+		formatString: 0.00
+		lineageTag: 1b5cfe6e-2253-475e-9abd-fe4975f23f8b
+		summarizeBy: sum
+		sourceColumn: avg_daily_hrs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Check Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f415c5a4-8360-4b8a-b80d-7216ce56a7e1
+		summarizeBy: none
+		sourceColumn: Check Date
+
+		variation Variation
+			isDefault
+			relationship: b6db247f-03c4-4922-9b00-5261dab81a38
+			defaultHierarchy: LocalDateTable_4dc66688-b35f-4024-b199-35a45293af42.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: bad4b8f2-d713-480f-99c7-f7f4adc34153
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_pay
+		dataType: double
+		lineageTag: 76b41cda-b4a7-49c9-af75-ddd3567947ea
+		summarizeBy: sum
+		sourceColumn: gross_pay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column comm_earning
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b939b0b5-c15a-4585-8e88-05fa767cb9bf
+		summarizeBy: sum
+		sourceColumn: comm_earning
+
+		annotation SummarizationSetBy = Automatic
+
+	column pay_type_code
+		dataType: string
+		lineageTag: 65d0c658-3517-4bc8-9bcb-6fef8d4e1fe3
+		summarizeBy: none
+		sourceColumn: pay_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pay Period' = FORMAT('agg agg_payroll_payperiod'[PayPeriodBeginDate], "MM/DD")&" - "&FORMAT('agg agg_payroll_payperiod'[PayPeriodEndDate],"MM/DD")
+		lineageTag: 120eeeba-6198-4f7a-81d1-56802ab08ada
+		summarizeBy: none
+		sortByColumn: PayPeriodEndDate
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Month' = FORMAT('agg agg_payroll_payperiod'[Payment Date],"MMM-yyyy")
+		lineageTag: eb6d1928-94d7-4a7e-810d-3e289a86af1e
+		summarizeBy: none
+		sortByColumn: 'Payment Month Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Month Sort' = FORMAT('agg agg_payroll_payperiod'[Payment Date],"yyyyMM")
+		lineageTag: 1c0d806f-9d2f-4e97-a6fb-49d5333e9ece
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OpCo Company'
+		dataType: string
+		lineageTag: 7d55ce74-92be-40cc-88ae-74a6f29814a0
+		summarizeBy: none
+		sourceColumn: OpCo Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Active Status' = IF('agg agg_payroll_payperiod'[is_active] = 1, "Yes", "No")
+		lineageTag: 55f7190f-b350-402b-82b0-3d29ffabb43f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver Status' = IF('agg agg_payroll_payperiod'[is_driver] = "1", "Driver", "Non Driver")
+		lineageTag: 17a843fa-7476-4531-903f-f5f45f9f5ab4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Payroll Employee' = IF('agg agg_payroll_payperiod'[avg_daily_sal] = 0, "No", "Yes")
+		lineageTag: d42e1436-869a-41dc-8f34-21c7738df3cd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payroll Employee Count' =
+			
+			IF('agg agg_payroll_payperiod'[avg_daily_sal] = 0, BLANK(),
+			'agg agg_payroll_payperiod'[emp_id_sk])
+		formatString: 0
+		lineageTag: 2ec3de99-a26c-48e1-b189-bb0518ea20ee
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Id'
+		dataType: string
+		lineageTag: 9adf8e32-6332-4be0-b850-cfae159227ee
+		summarizeBy: none
+		sourceColumn: Employee Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Masked Employee Name' = ```
+			
+			IF(
+			    'agg agg_payroll_payperiod'[Employee Name] IN {
+			        "Michael Baumbach", "Brian Banks", "Douglas Nelson", "Clifford Osborne", "Shauna Banks", 
+			        "James Cady", "Chuck Huston", "Jesse Stauffer", "Tory Stauffer", "Kody Stauffer", 
+			        "Shanae Aland", "James Kirk", "Jake Young"
+			    },
+			    "",
+			    'agg agg_payroll_payperiod'[Employee Name]
+			)
+			```
+		lineageTag: 359ddd9f-5cb1-4f68-95b1-3117038a8a01
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Masked Employee Type' = ```
+			
+			IF(
+			    'agg agg_payroll_payperiod'[Employee Name] IN {
+			        "Michael Baumbach", "Brian Banks", "Douglas Nelson", "Clifford Osborne", "Shauna Banks", 
+			        "James Cady", "Chuck Huston", "Jesse Stauffer", "Tory Stauffer", "Kody Stauffer", 
+			        "Shanae Aland", "James Kirk", "Jake Young"
+			    },
+			    "",
+			    'agg agg_payroll_payperiod'[Employee Type]
+			)
+			
+			```
+		lineageTag: a12a8023-9835-4427-ba00-2addc2ada800
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Masked Location' = ```
+			
+			IF(
+			    'agg agg_payroll_payperiod'[Employee Name] IN {
+			        "Michael Baumbach", "Brian Banks", "Douglas Nelson", "Clifford Osborne", "Shauna Banks", 
+			        "James Cady", "Chuck Huston", "Jesse Stauffer", "Tory Stauffer", "Kody Stauffer", 
+			        "Shanae Aland", "James Kirk", "Jake Young"
+			    },
+			    "",
+			    'agg agg_payroll_payperiod'[Location]
+			)
+			
+			```
+		lineageTag: 61693423-a6d9-433d-9b39-06987281426e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Masked Employee ID' = ```
+			
+			IF(
+			    'agg agg_payroll_payperiod'[Employee Name] IN {
+			        "Michael Baumbach", "Brian Banks", "Douglas Nelson", "Clifford Osborne", "Shauna Banks", 
+			        "James Cady", "Chuck Huston", "Jesse Stauffer", "Tory Stauffer", "Kody Stauffer", 
+			        "Shanae Aland", "James Kirk", "Jake Young"
+			    },
+			    "",
+			    'agg agg_payroll_payperiod'[Employee Id]
+			)
+			
+			```
+		lineageTag: ed2f3218-7543-4585-b659-369719fc5964
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Masked Salary' = ```
+			
+			IF(
+			    'agg agg_payroll_payperiod'[Employee Name] IN {
+			        "Michael Baumbach", "Brian Banks", "Douglas Nelson", "Clifford Osborne", "Shauna Banks", 
+			        "James Cady", "Chuck Huston", "Jesse Stauffer", "Tory Stauffer", "Kody Stauffer", 
+			        "Shanae Aland", "James Kirk", "Jake Young"
+			    },
+			    0,
+			    'agg agg_payroll_payperiod'[avg_daily_sal]
+			)
+			
+			```
+		dataType: double
+		lineageTag: 968e3a25-41e6-4dee-8700-a8fc60c0198c
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'agg agg_payroll_payperiod' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_payroll_payperiod = Source{[Schema="agg",Item="agg_payroll_payperiod"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(agg_agg_payroll_payperiod,{{"EmployeeType", "Employee Type"}, {"EmployeeName", "Employee Name"}, {"Job_title", "Job Title"}, {"CalendarDate", "Payment Date"}, {"parent_company", "OpCo Company"}, {"Company", "Sub Company"}, {"employee_id", "Employee Id"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

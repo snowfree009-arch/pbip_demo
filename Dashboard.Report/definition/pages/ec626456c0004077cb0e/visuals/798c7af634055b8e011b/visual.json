@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "798c7af634055b8e011b",
+  "position": {
+    "x": 10.868146529457892,
+    "y": 675,
+    "z": 4000,
+    "height": 1136.6666666666665,
+    "width": 1260.7985201372087,
+    "tabOrder": 3000
+  },
+  "visualGroup": {
+    "displayName": "Emp Filter",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "577f4b6882bebc71d2a3",
+  "position": {
+    "x": 655.83333333333348,
+    "y": 480,
+    "z": 6000,
+    "height": 300.85154639597317,
+    "width": 646,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Payment Transaction Trends Graph",
+    "groupMode": "ScaleMode"
+  }
+}

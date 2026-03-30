@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c7687e7cdd34dab4f60b",
+  "position": {
+    "x": 6.9219068057567226,
+    "y": 150.85559996980723,
+    "z": 17000,
+    "height": 61.111111111111107,
+    "width": 1288.0341161852411,
+    "tabOrder": 19000
+  },
+  "visualGroup": {
+    "displayName": "OpCo Current Day",
+    "groupMode": "ScaleMode"
+  }
+}

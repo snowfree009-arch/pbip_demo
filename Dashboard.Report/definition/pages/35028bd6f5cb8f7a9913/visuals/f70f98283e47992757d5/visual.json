@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f70f98283e47992757d5",
+  "position": {
+    "x": 398.11111111111109,
+    "y": 0.23577954612397889,
+    "z": 5000,
+    "height": 58.923569427771113,
+    "width": 142.6490682845791,
+    "tabOrder": 6000
+  },
+  "visualGroup": {
+    "displayName": "Budget Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "fbf530023bf440b3eb4f"
+}

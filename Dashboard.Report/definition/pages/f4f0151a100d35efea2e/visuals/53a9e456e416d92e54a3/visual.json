@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "53a9e456e416d92e54a3",
+  "position": {
+    "x": 720,
+    "y": 1528,
+    "z": 9000,
+    "height": 352,
+    "width": 700
+  },
+  "visualGroup": {
+    "displayName": "Dispatch to arrival",
+    "groupMode": "ScaleMode"
+  }
+}

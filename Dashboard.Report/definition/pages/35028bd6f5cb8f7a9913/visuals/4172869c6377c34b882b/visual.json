@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "4172869c6377c34b882b",
+  "position": {
+    "x": 240.25933971625489,
+    "y": 0,
+    "z": 6000,
+    "height": 59.303721488595443,
+    "width": 143.6188050891075,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Revenue Card",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "bcc3f9d638ca52b0b6fc"
+}

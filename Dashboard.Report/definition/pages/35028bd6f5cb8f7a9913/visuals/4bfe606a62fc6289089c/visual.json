@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "4bfe606a62fc6289089c",
+  "position": {
+    "x": 6.1964224418715874,
+    "y": 2690.5413863297777,
+    "z": 1000,
+    "height": 443.1818181818154,
+    "width": 1290,
+    "tabOrder": 14000
+  },
+  "visualGroup": {
+    "displayName": "Deposits ",
+    "groupMode": "ScaleMode"
+  }
+}

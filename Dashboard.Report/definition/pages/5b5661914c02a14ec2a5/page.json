@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "5b5661914c02a14ec2a5",
+  "displayName": "Transacttions ($)",
+  "displayOption": "FitToWidth",
+  "height": 810,
+  "width": 1415,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter5d7f7a575b328e94a3c6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_payments"
+              }
+            },
+            "Property": "dxm_PaymentDeposits"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "4ef0683fc5579d389714",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filter5d7f7a575b328e94a3c6",
+        "boundFilter": "Filter5d7f7a575b328e94a3c6",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "agg agg_revenue_call_report_payments"
+              }
+            },
+            "Property": "dxm_PaymentDeposits"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "7192926ba479c2d56888",
+      "target": "4db42626731ce540b196",
+      "type": "DataFilter"
+    }
+  ]
+}

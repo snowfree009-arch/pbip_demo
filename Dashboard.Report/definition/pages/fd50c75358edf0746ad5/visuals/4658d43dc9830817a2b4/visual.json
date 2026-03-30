@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "4658d43dc9830817a2b4",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 1000,
+    "height": 169.46015424164526,
+    "width": 1278.3547557840618,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMasters"
+                    }
+                  },
+                  "Property": "username"
+                }
+              },
+              "queryRef": "CompanyMasters.username",
+              "nativeQueryRef": "username"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

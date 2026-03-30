@@ -1,0 +1,9 @@
+role 'Stauffers Payroll Restriction'
+	modelPermission: read
+
+	tablePermission 'agg agg_payroll_payperiod' = [OpCo Company] == Blank()
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"STAUFFERS TOWING LLC"}
+
+	annotation PBI_Id = 01a5d3e44e074126b5d45376f7483503
+

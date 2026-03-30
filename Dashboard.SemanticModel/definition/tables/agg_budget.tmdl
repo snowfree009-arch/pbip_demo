@@ -1,0 +1,216 @@
+table agg_budget
+	lineageTag: 441a5f21-9da8-4a0f-b06e-eded07dfb007
+
+	measure OpCoCurrentWeekBudget =
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    WEEKNUM(agg_budget[date],2) = WEEKNUM(TODAY(),2) && YEAR(agg_budget[date]) = YEAR(TODAY())
+			    )
+		lineageTag: 13c52df9-adad-4c83-9892-46556b0e5f93
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OpCoLastWeekBudget =
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    WEEKNUM(agg_budget[date],2) = WEEKNUM(TODAY()-7,2) && YEAR(agg_budget[date]) = YEAR(TODAY()-7)
+			)
+		lineageTag: be5d8299-6413-4e2b-8e28-b68f08e0d299
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OpCoLastYearWeekBudget = ```
+			
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    FILTER(
+			        'agg_budget',
+			        'agg_budget'[date] >= TODAY() - WEEKDAY(TODAY(), 2) + 1 - 365 &&
+			        'agg_budget'[date] <= TODAY() - WEEKDAY(TODAY(), 2) + 7 - 365 &&
+			        YEAR('agg_budget'[date]) = YEAR(TODAY()) - 1
+			    )
+			)
+			
+			```
+		lineageTag: 4028aef0-65d5-41ec-9b22-1894d0490517
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OpCoCurrentMonthBudget =
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    Month(agg_budget[date]) = Month(TODAY()) && YEAR(agg_budget[date]) = YEAR(TODAY())
+			)
+		lineageTag: 4a38a7e1-1d39-405f-ade6-3c70d44a6db3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OpCoLastMonthBudget = ```
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    Month(agg_budget[date]) = IF(MONTH(TODAY()) = 1, 12, MONTH(TODAY())-1) 
+			    && YEAR(agg_budget[date]) = IF(MONTH(TODAY()) = 1, YEAR(TODAY())-1, YEAR(TODAY()))
+			)
+			```
+		lineageTag: cd159d2b-433b-451d-b6d9-ea30499bcf09
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OpCoLastYearMonthBudget =
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    Month(agg_budget[date]) = Month(TODAY()) && YEAR(agg_budget[date]) = YEAR(TODAY())-1
+			)
+		lineageTag: 29c1bec8-74c9-44b3-a0df-2789d88e5279
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OpCoYesterdayBudget =
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    agg_budget[date] = TODAY()-1
+			)
+		lineageTag: b3370558-4ae9-4261-98d1-4253b0a8b3d8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OpCoDayBeforeYesterdayBudget =
+			CALCULATE(
+			    SUM('agg_budget'[daily_amount]),
+			    agg_budget[date] = TODAY()-2
+			)
+		lineageTag: 4b0edd73-8865-42b2-bf0e-1f15b310980d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column company
+		dataType: string
+		lineageTag: 8cccb011-1c0e-4f52-8f81-f4308605a8b0
+		summarizeBy: none
+		sourceColumn: company
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERIODKEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 528781b0-fa3e-4146-a7a3-83bf35abd7b1
+		summarizeBy: sum
+		sourceColumn: PERIODKEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column GLACCOUNTNO
+		dataType: string
+		lineageTag: dde280d0-3c49-4518-b90d-72682627b3d6
+		summarizeBy: none
+		sourceColumn: GLACCOUNTNO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCTTITLE
+		dataType: string
+		lineageTag: 08ee0193-0c35-4e0b-a23b-bd798fec7cb5
+		summarizeBy: none
+		sourceColumn: ACCTTITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERIODNAME
+		dataType: string
+		lineageTag: 7962ce4c-3151-47cc-970d-c5c50d290b26
+		summarizeBy: none
+		sourceColumn: PERIODNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PSTARTDATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 515f9ee9-1b1b-40e2-b40b-0a11d6dd0cfa
+		summarizeBy: none
+		sourceColumn: PSTARTDATE
+
+		variation Variation
+			isDefault
+			relationship: a10b6902-4eab-491f-9276-1d04c5d3b80b
+			defaultHierarchy: LocalDateTable_cc3edad7-0a9a-4892-8b51-f6b7b43a33f1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PENDDATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a4f79865-8765-4fc9-8d71-b47c8945e6a2
+		summarizeBy: none
+		sourceColumn: PENDDATE
+
+		variation Variation
+			isDefault
+			relationship: b59b644c-5e1f-437e-858d-a18c768f8a04
+			defaultHierarchy: LocalDateTable_1596f15d-2fb2-4721-a738-fa0883984d1a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AMOUNT
+		dataType: double
+		lineageTag: 7cde6da2-322c-488b-b41d-7667ff54d6b5
+		summarizeBy: sum
+		sourceColumn: AMOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e7849dcc-69a9-40f0-bd02-2238718ed567
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 9f0bb47f-0e3a-4d1d-9bbd-66bd8095b982
+			defaultHierarchy: LocalDateTable_626fd557-de4c-441f-8e2a-f0c0638c91d3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column daily_amount
+		dataType: double
+		lineageTag: 58087cf2-a636-4bb5-8eb8-778af8e1d2cc
+		summarizeBy: sum
+		sourceColumn: daily_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column company_id_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 650e65b0-5223-43f4-9fd6-f0bf9966057b
+		summarizeBy: sum
+		sourceColumn: company_id_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	partition agg_budget = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("firstline.database.windows.net", "firstline_dwh"),
+				    agg_agg_budget = Source{[Schema="agg",Item="agg_budget"]}[Data]
+				in
+				    agg_agg_budget
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,7 @@
+role 'Action Road'
+	modelPermission: read
+
+	tablePermission CompanyMasters = [OpCo Company] IN {"ACTION ROAD SOLUTIONS, INC."}
+
+	annotation PBI_Id = d5de39cab5284bc8815288badb352e3a
+

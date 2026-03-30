@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "4aabaf60e2527161e74f",
+  "position": {
+    "x": 1265.1760085714391,
+    "y": 413.21672359390686,
+    "z": 9000,
+    "height": 24.462485864595106,
+    "width": 25.91362126245847,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "actionButton",
+    "objects": {
+      "icon": [
+        {
+          "properties": {
+            "shapeType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'information'"
+                }
+              }
+            },
+            "lineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualLink": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bookmark'"
+                }
+              }
+            },
+            "tooltip": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outstanding AR ($): Calculated as the sum of the pending amount, which is the difference between the payment received and the revenue amount. This is applicable only for standard calls. For impound calls, it is considered as 0 since payments are treated as revenue in impound calls.  Variance ($): Calculated as the sum of the variance amount, which is the difference between the payment received and the actual invoiced amount. This is applicable only for impound calls. For standard calls, the variance is considered as 0.'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'info icon'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "320bd8761eb7673f3c9f",
+  "howCreated": "InsertVisualButton"
+}

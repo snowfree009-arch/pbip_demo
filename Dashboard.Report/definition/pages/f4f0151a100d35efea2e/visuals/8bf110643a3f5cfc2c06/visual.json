@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "8bf110643a3f5cfc2c06",
+  "position": {
+    "x": 720,
+    "y": 80.680994378178085,
+    "z": 12125,
+    "height": 352,
+    "width": 700
+  },
+  "visualGroup": {
+    "displayName": "Deposit and Transaction Group",
+    "groupMode": "ScaleMode"
+  }
+}
